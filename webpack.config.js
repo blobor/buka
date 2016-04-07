@@ -8,7 +8,8 @@ module.exports = {
     },
     devtool: '#source-map',
     devServer: {
-        port: 3333
+        port: 3333,
+        inline: true
     },
     module: {
         loaders: [
