@@ -3,7 +3,6 @@ import moment from 'moment-timezone';
 
 const originalTimeZone = 'Europe/Kiev';
 const skiLiftDateFormat = 'DD.MM.YYYY HH:mm:ss';
-const usersTimeZone = moment.tz.guess();
 
 export default function proceed(data) {
   const $ = cheerio.load(data.html);
@@ -22,7 +21,7 @@ export default function proceed(data) {
 
         return {
           skiLiftId: $(columns[0]).text(),
-          date: moment.tz($(columns[1]).text(), skiLiftDateFormat, originalTimeZone).tz(usersTimeZone).format(),
+          date: moment.tz($(columns[1]).text(), skiLiftDateFormat, originalTimeZone).local().format('L LTS'),
           initialLift: $(columns[2]).text(),
           liftsLeft: $(columns[3]).text()
         }
