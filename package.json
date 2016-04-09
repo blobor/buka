@@ -9,6 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^0.20.0",
+    "inputmask-core": "^2.1.1",
     "moment-timezone": "^0.5.3",
     "react": "^15.0.0",
     "react-dom": "^15.0.0"
