@@ -1,7 +1,8 @@
 import React from 'react';
 import bukovelAPI from './dataAccess/bukovelApi';
+import CardNumberInput from './CardNumberInput';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor() {
     super();
 
@@ -19,8 +20,11 @@ class App extends React.Component {
       })
   }
   render() {
-    return <pre>{this.state.html}</pre>
+    return (
+      <div>
+        <CardNumberInput/>
+        <pre>{this.state.html}</pre>
+      </div>
+    );
   }
 }
-
-export default App
