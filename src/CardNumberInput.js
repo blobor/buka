@@ -3,6 +3,8 @@ import InputMask from 'inputmask-core';
 
 const ENTER_KEY = 'Enter';
 const BACKSPACE_KEY = 'Backspace';
+const KEYCODE_Y = 89;
+const KEYCODE_Z = 90;
 
 class CardNumberInput extends React.Component {
   constructor() {
@@ -56,9 +58,8 @@ class CardNumberInput extends React.Component {
       }, () => triggerOnchange(this.state, this.props));
     }
   }
-  
-  handleChange(event) {
 
+  handleChange(event) {
     const maskValue = this.mask.getValue()
     const elementValue = event.target.value;
     if (elementValue !== maskValue) {
@@ -91,6 +92,28 @@ class CardNumberInput extends React.Component {
   }
 
   handleKeyDown(event) {
+    if (isUndoEvent(event)) {
+      event.preventDefault()
+      if (this.mask.undo()) {
+        const value = getDisplayMaskValue(this.mask);
+        this.setState({
+          text: value,
+          isValid: isValidValue(value, this.mask)
+        }, () => triggerOnchange(this.state, this.props));
+      }
+      return;
+    } else if (isRedoEvent(event)) {
+      event.preventDefault()
+      if (this.mask.redo()) {
+        const value = getDisplayMaskValue(this.mask);
+        this.setState({
+          text: value,
+          isValid: isValidValue(value, this.mask)
+        }, () => triggerOnchange(this.state, this.props));
+      }
+      return;
+    }
+
     if (event.key === BACKSPACE_KEY) {
       event.preventDefault();
 
@@ -165,6 +188,14 @@ function triggerOnchange(state, props) {
       isValid: state.isValid
     });
   }
+}
+
+function isUndoEvent(event) {
+  return (event.ctrlKey || event.metaKey) && event.keyCode === (event.shiftKey ? KEYCODE_Y : KEYCODE_Z);
+}
+
+function isRedoEvent(event) {
+  return (event.ctrlKey || event.metaKey) && event.keyCode === (event.shiftKey ? KEYCODE_Z : KEYCODE_Y);
 }
 
 export default CardNumberInput;
