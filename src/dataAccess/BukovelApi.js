@@ -5,7 +5,7 @@ import adapter from './bukovelAdapter';
 const url = 'http://shop.bukovel.info/index.php?route=balance/balance/getBalance';
 
 class BukovelAPI {
-  static getCardBalance(cardNumber = '01-2167-30-92545') {
+  static getCardBalance(cardNumber) {
     let postRequest = new Request(url, {
       method: 'post',
       headers: {
@@ -16,7 +16,8 @@ class BukovelAPI {
 
     return fetch(postRequest)
       .then(response => response.json())
-      .then(adapter);
+      .then(adapter)
+      .catch(e => e);
   }
 }
 
