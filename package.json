@@ -12,7 +12,8 @@
     "inputmask-core": "^2.1.1",
     "moment-timezone": "^0.5.3",
     "react": "^15.0.0",
-    "react-dom": "^15.0.0"
+    "react-dom": "^15.0.0",
+    "whatwg-fetch": "^0.11.0"
   },
   "devDependencies": {
     "babel-core": "^6.7.2",
