@@ -148,6 +148,7 @@ class CardNumberInput extends React.Component {
 
   render() {
     return <input type="text"
+      {...this.props}
       placeholder={PATTERN.replace(/1/g, 'X')}
       size={this.mask.pattern.length}
       maxLength={this.mask.pattern.length}
