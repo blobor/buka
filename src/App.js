@@ -15,14 +15,6 @@ export default class App extends React.Component {
     this.handleCardNumberChange = this.handleCardNumberChange.bind(this);
   }
 
-  // componentWillMount() {
-  //   setTimeout(() => {
-  //     this.setState({
-  //       cardNumber: TEST_CARD_NUMBER
-  //     })
-  //   })
-  // }
-
   handleCardNumberChange(event) {
     if (event.isValid) {
       bukovelAPI
