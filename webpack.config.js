@@ -3,8 +3,8 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const sassLoaders = [
-  'css-loader?sourceMap',
-  'sass-loader?outputStyle=expanded'
+  'css-loader',
+  'sass-loader'
 ];
 
 module.exports = {
@@ -31,6 +31,10 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style', sassLoaders)
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style', 'css')
       },
       {
         test: /\.json?$/,
