@@ -5,6 +5,7 @@ const ENTER_KEY = 'Enter';
 const BACKSPACE_KEY = 'Backspace';
 const KEYCODE_Y = 89;
 const KEYCODE_Z = 90;
+const PATTERN = '11-1111-11-11111';
 
 class CardNumberInput extends React.Component {
   constructor() {
@@ -24,7 +25,7 @@ class CardNumberInput extends React.Component {
   componentWillMount() {
     const selection = this.props.value ? this.props.value.length : 0;
     let options = {
-      pattern: '11-1111-11-11111',
+      pattern: PATTERN,
       placeholderChar: ' ',
       value: this.props.value,
       selection: {
@@ -147,6 +148,7 @@ class CardNumberInput extends React.Component {
 
   render() {
     return <input type="text"
+      placeholder={PATTERN.replace(/1/g, 'X')}
       size={this.mask.pattern.length}
       maxLength={this.mask.pattern.length}
       onChange={this.handleChange}
