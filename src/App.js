@@ -10,7 +10,7 @@ export default class App extends React.Component {
 
     this.state = {
       html: '',
-      cardNumber: TEST_CARD_NUMBER
+      cardNumber: ''
     };
     this.handleCardNumberChange = this.handleCardNumberChange.bind(this);
   }
@@ -31,6 +31,7 @@ export default class App extends React.Component {
     return (
       <div>
         <CardNumberInput onChange={this.handleCardNumberChange} value={this.state.cardNumber} />
+        <p>{`Test card number: ${TEST_CARD_NUMBER}`}</p>
         <pre>{this.state.html}</pre>
       </div>
     );
