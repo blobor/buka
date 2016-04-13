@@ -1,5 +1,6 @@
 import React from 'react';
 import InputMask from 'inputmask-core';
+import TextField from 'material-ui/lib/text-field';
 
 const ENTER_KEY = 'Enter';
 const BACKSPACE_KEY = 'Backspace';
@@ -147,9 +148,10 @@ class CardNumberInput extends React.Component {
   }
 
   render() {
-    return <input type="text"
+    return <TextField type="text"
       {...this.props}
-      placeholder={PATTERN.replace(/1/g, 'X')}
+      floatingLabelText="Card Number"
+      hintText={PATTERN.replace(/1/g, 'X')}
       size={this.mask.pattern.length}
       maxLength={this.mask.pattern.length}
       onChange={this.handleChange}

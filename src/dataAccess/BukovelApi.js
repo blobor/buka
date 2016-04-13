@@ -1,6 +1,6 @@
 import cheerio from 'cheerio';
 import moment from 'moment-timezone';
-import { default as fetch, Request } from '../core/fetch';
+import fetch, { Request } from '../core/fetch';
 import adapter from './bukovelAdapter';
 
 const url = 'http://shop.bukovel.info/index.php?route=balance/balance/getBalance';

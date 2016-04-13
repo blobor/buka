@@ -2,12 +2,8 @@
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
-
-    & .mdl-textfield__input, & .mdl-textfield__label {
-        font-family: inherit;
-    }
 }
 
-.mdl-textfield, p {
+.buka-cardnumber__input {
     align-self: center;
 }
