@@ -1,3 +1,6 @@
+import 'material-design-lite/material.css';
+import 'material-design-lite/material.js';
+
 import React from 'react';
 import bukovelAPI from './dataAccess/bukovelApi';
 import CardNumberInput from './CardNumberInput';
@@ -29,8 +32,15 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <CardNumberInput onChange={this.handleCardNumberChange} value={this.state.cardNumber} />
+      <div className="buka-container">
+        <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <CardNumberInput
+            id="CardNumber"
+            className="mdl-textfield__input"
+            onChange={this.handleCardNumberChange}
+            value={this.state.cardNumber} />
+          <label className="mdl-textfield__label" for="CardNumber">Card Number</label>
+        </div>
         <p>{`Test card number: ${TEST_CARD_NUMBER}`}</p>
         <pre>{this.state.html}</pre>
       </div>
