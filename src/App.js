@@ -1,6 +1,6 @@
 import React from 'react';
-import bukovelAPI from './dataAccess/bukovelApi';
-import CardNumberInput from './CardNumberInput';
+import bukovelAPI from './data-access/bukovelAPI';
+import CardNumberInput from './components/CardNumberInput';
 
 const TEST_CARD_NUMBER = '01-2167-30-92545';
 
