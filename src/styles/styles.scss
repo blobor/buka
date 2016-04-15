@@ -1,9 +1,14 @@
-.buka-container {
+html, body {
     font-family: 'Roboto', sans-serif;
+}
+
+.buka-container {
     display: flex;
     flex-direction: column;
 }
 
 .buka-cardnumber__container {
+    display: flex;
+    align-items: center;
     align-self: center;
 }

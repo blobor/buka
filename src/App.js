@@ -2,8 +2,7 @@ import React from 'react';
 import bukovelAPI from './data-access/bukovelAPI';
 import ActionHelpOutline from 'material-ui/lib/svg-icons/action/help-outline';
 import CardNumberInput from './components/CardNumberInput';
-
-const TEST_CARD_NUMBER = '01-2167-30-92545';
+import TestCardNumber from './components/TestCardNumber';
 
 export default class App extends React.Component {
   constructor() {
@@ -33,12 +32,12 @@ export default class App extends React.Component {
       <div className="buka-container">
         <div className="buka-cardnumber__container">
           <CardNumberInput
+              id="-cardnumber"
               className="buka-cardnumber__input"
               onChange={this.handleCardNumberChange}
               value={this.state.cardNumber} />
-          <ActionHelpOutline className="buka-cardnumber__help"/>
+          <TestCardNumber />
         </div>
-        <p>{`Test card number: ${TEST_CARD_NUMBER}`}</p>
         <pre>{this.state.html}</pre>
       </div>
     );
