@@ -3,6 +3,7 @@ import bukovelAPI from './data-access/bukovelAPI';
 import ActionHelpOutline from 'material-ui/lib/svg-icons/action/help-outline';
 import CardNumberInput from './components/CardNumberInput';
 import TestCardNumber from './components/TestCardNumber';
+import CircularProgress from 'material-ui/lib/circular-progress';
 
 export default class App extends React.Component {
   constructor() {
@@ -10,35 +11,42 @@ export default class App extends React.Component {
 
     this.state = {
       html: '',
-      cardNumber: ''
+      cardNumber: '',
+      isDataLoads: false
     };
     this.handleCardNumberChange = this.handleCardNumberChange.bind(this);
   }
 
   handleCardNumberChange(event) {
     if (event.isValid) {
+      this.setState({
+        isDataLoads: true
+      });
       bukovelAPI
         .getCardBalance(event.text)
         .then(data => {
           this.setState({
+            isDataLoads: false,
             html: JSON.stringify(data, null, '\t')
           });
-        })
+        });
     }
   }
 
   render() {
+    const grid = this.state.isDataLoads ? <CircularProgress size={1.5} /> :  <pre>{this.state.html}</pre>;
+    
     return (
       <div className="buka-container">
         <div className="buka-cardnumber__container">
           <CardNumberInput
-              id="-cardnumber"
-              className="buka-cardnumber__input"
-              onChange={this.handleCardNumberChange}
-              value={this.state.cardNumber} />
+            id="cardnumber"
+            className="buka-cardnumber__input"
+            onChange={this.handleCardNumberChange}
+            value={this.state.cardNumber} />
           <TestCardNumber />
         </div>
-        <pre>{this.state.html}</pre>
+        {grid}
       </div>
     );
   }
