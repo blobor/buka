@@ -6,7 +6,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "webpack -p --config ./config/webpack.config.prod.js --progress",
-    "prestart": "npm run build",
+    "postinstall": "npm run build",
     "start": "node server.js",
     "webpack": "webpack-dev-server --config ./config/webpack.config.dev.js --progress"
   },
