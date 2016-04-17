@@ -19,12 +19,17 @@ export default class App extends React.Component {
 
   handleCardNumberChange(event) {
     if (event.isValid) {
-      this.setState({
-        isDataLoads: true
-      });
+      let spinnerTimeOut = setTimeout(() => {
+        console.log('Spinner start');
+        this.setState({
+          isDataLoads: true
+        });
+      }, 100);
       bukovelAPI
         .getCardBalance(event.text)
         .then(data => {
+          clearTimeout(spinnerTimeOut);
+          console.log('Spinner end');
           this.setState({
             isDataLoads: false,
             html: JSON.stringify(data, null, '\t')
@@ -34,8 +39,8 @@ export default class App extends React.Component {
   }
 
   render() {
-    const grid = this.state.isDataLoads ? <CircularProgress size={1.5} /> :  <pre>{this.state.html}</pre>;
-    
+    const grid = this.state.isDataLoads ? <CircularProgress size={1.5} /> : <pre>{this.state.html}</pre>;
+
     return (
       <div className="buka-container">
         <div className="buka-cardnumber__container">
