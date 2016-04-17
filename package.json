@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "rm -rf dist && mkdir dist",
     "build": "webpack -p --config ./config/webpack.config.prod.js --progress",
     "postinstall": "npm run build",
     "start": "node server.js",
@@ -35,7 +35,6 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "json-loader": "^0.5.4",
     "node-sass": "^3.4.2",
-    "rimraf": "^2.5.2",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.12.14",
