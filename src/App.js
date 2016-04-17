@@ -20,7 +20,6 @@ export default class App extends React.Component {
   handleCardNumberChange(event) {
     if (event.isValid) {
       let spinnerTimeOut = setTimeout(() => {
-        console.log('Spinner start');
         this.setState({
           isDataLoads: true
         });
@@ -29,7 +28,6 @@ export default class App extends React.Component {
         .getCardBalance(event.text)
         .then(data => {
           clearTimeout(spinnerTimeOut);
-          console.log('Spinner end');
           this.setState({
             isDataLoads: false,
             html: JSON.stringify(data, null, '\t')
