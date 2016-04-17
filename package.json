@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "build": "webpack -p --config ./config/webpack.config.prod.js --progress",
+    "start": "webpack-dev-server --config ./config/webpack.config.dev.js --progress"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.7.4",
     "cheerio": "^0.20.0",
     "inputmask-core": "^2.1.1",
-    "material-ui": "^0.15.0-alpha.2",
+    "material-ui": "^0.14.4",
     "moment-timezone": "^0.5.3",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
