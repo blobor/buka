@@ -10,6 +10,9 @@
     "start": "node server.js",
     "webpack": "webpack-dev-server --config ./config/webpack.config.dev.js --progress"
   },
+  "engines": {
+    "node": "5.10"
+  },
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.7.4",
