@@ -48,13 +48,6 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      'screw-ie8': true,
-      compress: {
-        warnings: false
-      }
-    }),
     new ExtractTextPlugin("bundle.css")
   ]
 }
