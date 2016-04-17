@@ -84,7 +84,7 @@ class CardNumberInput extends React.Component {
     event.preventDefault();
 
     this.mask.setSelection(getElementSelection(event.target));
-    if (this.mask.paste(event.clipboardData.getData('text'))) {
+    if (this.mask.paste(event.clipboardData.getData('text/plain'))) {
       const value = getDisplayMaskValue(this.mask);
       this.setState({
         text: value,
