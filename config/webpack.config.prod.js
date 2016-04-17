@@ -1,6 +1,7 @@
 'use strict';
 
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const sassLoaders = [
@@ -11,7 +12,7 @@ const sassLoaders = [
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: '../build',
+    path: './dist',
     publicPath: '/',
     filename: '[name].js'
   },
@@ -50,6 +51,11 @@ module.exports = {
         warnings: false
       }
     }),
+    new CopyWebpackPlugin([
+      {
+        from: './index.html'
+      }
+    ]),
     new ExtractTextPlugin("bundle.css")
   ]
 }
