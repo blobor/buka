@@ -6,9 +6,9 @@
   "scripts": {
     "prebuild": "rm -rf dist && mkdir dist",
     "build": "webpack -p --config ./config/webpack.config.prod.js --progress",
-    "postinstall": "npm run build",
     "start": "node server.js",
-    "webpack": "webpack-dev-server --config ./config/webpack.config.dev.js --progress"
+    "webpack": "webpack-dev-server --config ./config/webpack.config.dev.js --progress",
+    "heroku-postbuild": "npm run build"
   },
   "engines": {
     "node": "5.10"
