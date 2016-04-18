@@ -1,6 +1,6 @@
 import React from 'react';
 import InputMask from 'inputmask-core';
-import TextField from 'material-ui/lib/text-field';
+import TextField from 'material-ui/textfield';
 
 const ENTER_KEY = 'Enter';
 const BACKSPACE_KEY = 'Backspace';

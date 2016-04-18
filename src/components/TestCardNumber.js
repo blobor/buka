@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Popover from 'material-ui/lib/popover/popover';
-import { faintBlack, cyan500 } from 'material-ui/lib/styles/colors';
-import ActionHelpOutline from 'material-ui/lib/svg-icons/action/help-outline';
+import Popover from 'material-ui/popover/popover';
+import { faintBlack, cyan500 } from 'material-ui/styles/colors';
+import ActionHelpOutline from 'material-ui/svg-icons/action/help-outline';
 
 const TEST_CARD_NUMBER = '01-2167-30-92545';
 

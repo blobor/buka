@@ -1,11 +1,13 @@
 import React from 'react';
 import bukovelAPI from './data-access/bukovelAPI';
-import ActionHelpOutline from 'material-ui/lib/svg-icons/action/help-outline';
+import ActionHelpOutline from 'material-ui/svg-icons/action/help-outline';
 import CardNumberInput from './components/CardNumberInput';
 import TestCardNumber from './components/TestCardNumber';
-import CircularProgress from 'material-ui/lib/circular-progress';
+import CircularProgress from 'material-ui/CircularProgress';
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor() {
     super();
 
@@ -16,6 +18,13 @@ export default class App extends React.Component {
     };
     this.handleCardNumberChange = this.handleCardNumberChange.bind(this);
   }
+  
+  getChildContext() {
+    return {
+      muiTheme: getMuiTheme(baseTheme)
+    };
+  }
+
 
   handleCardNumberChange(event) {
     if (event.isValid) {
@@ -54,3 +63,9 @@ export default class App extends React.Component {
     );
   }
 }
+
+App.childContextTypes = {
+  muiTheme: React.PropTypes.object.isRequired,
+};
+
+export default App;
