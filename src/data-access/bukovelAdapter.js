@@ -5,6 +5,14 @@ const originalTimeZone = 'Europe/Kiev';
 const skiLiftDateFormat = 'DD.MM.YYYY HH:mm:ss';
 
 export default function proceed(data) {
+
+  if(data.error) {
+    return {
+      errors: Object.values(data.error),
+      lifts: []
+    };
+  }
+
   const $ = cheerio.load(data.html);
   const orginalPurchaseDate = $('table #order_info_header_white:nth-child(1) > span').text();
 

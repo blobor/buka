@@ -17,8 +17,7 @@ class BukovelAPI {
 
     return fetch(postRequest)
       .then(response => response.json())
-      .then(adapter)
-      .catch(e => e);
+      .then(adapter);
   }
 }
 
