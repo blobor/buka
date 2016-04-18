@@ -1,11 +1,13 @@
 'use strict';
 
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 const sassLoaders = [
-  'css-loader',
-  'sass-loader'
+  'style',
+  'css',
+  'postcss',
+  'sass'
 ];
 
 module.exports = {
@@ -20,6 +22,10 @@ module.exports = {
     port: 3333,
     inline: true
   },
+  stats: {
+    colors: true,
+    reasons: true
+  },
   module: {
     loaders: [
       {
@@ -32,11 +38,11 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', sassLoaders)
+        loader: sassLoaders.join('!')
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css')
+        loader: 'style!css!postcss'
       },
       {
         test: /\.json?$/,
@@ -44,10 +50,16 @@ module.exports = {
       }
     ]
   },
+  postcss: function () {
+    return [
+      autoprefixer({
+        browsers: ['last 2 versions']
+      })
+    ];
+  },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new ExtractTextPlugin("bundle.css")
+    new webpack.optimize.OccurenceOrderPlugin()
   ]
 }

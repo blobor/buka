@@ -3,10 +3,12 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 const sassLoaders = [
-  'css-loader',
-  'sass-loader'
+  'css',
+  'postcss',
+  'sass'
 ];
 
 module.exports = {
@@ -32,7 +34,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css')
+        loader: ExtractTextPlugin.extract('style', 'css!postcss')
       },
       {
         test: /\.json?$/,
@@ -40,10 +42,17 @@ module.exports = {
       }
     ]
   },
+  postcss: function () {
+    return [
+      autoprefixer({
+        browsers: ['last 2 versions']
+      })
+    ];
+  },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
     new webpack.DefinePlugin({
-      'process.env':{
+      'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
@@ -56,11 +65,9 @@ module.exports = {
         warnings: false
       }
     }),
-    new CopyWebpackPlugin([
-      {
-        from: './index.html'
-      }
-    ]),
+    new CopyWebpackPlugin([{
+      from: './index.html'
+    }]),
     new ExtractTextPlugin("bundle.css")
   ]
 }
