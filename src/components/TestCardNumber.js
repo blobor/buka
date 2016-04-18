@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Popover from 'material-ui/popover/popover';
+import Popover from 'material-ui/Popover';
 import { faintBlack, cyan500 } from 'material-ui/styles/colors';
 import ActionHelpOutline from 'material-ui/svg-icons/action/help-outline';
 
