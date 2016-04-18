@@ -36,8 +36,8 @@ export default function proceed(data) {
         return {
           skiLiftId: $(columns[0]).text(),
           date: getAdoptedDateString($(columns[1]).text()),
-          initialLift: $(columns[2]).text(),
-          liftsLeft: $(columns[3]).text()
+          initialLift: Number.parseInt($(columns[2]).text()),
+          liftsLeft: Number.parseInt($(columns[3]).text())
         }
       })
       .toArray();
