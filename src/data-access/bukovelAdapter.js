@@ -6,17 +6,23 @@ const skiLiftDateFormat = 'DD.MM.YYYY HH:mm:ss';
 
 export default function proceed(data) {
 
-  if(data.error) {
+  if (data.error) {
     return {
       errors: Object.values(data.error),
       lifts: []
     };
   }
 
+  const cardNumber = data.success;
   const $ = cheerio.load(data.html);
-  const orginalPurchaseDate = $('table #order_info_header_white:nth-child(1) > span').text();
+  const dataTables = $('table');
+  const orginalPurchaseDate = dataTables.eq(0).find('#order_info_header_white:nth-child(1) > span').text();
 
-  return getLifts($($('table')[1]));
+  return {
+    cardNumber: cardNumber,
+    purchaseDate: getAdoptedDateString(orginalPurchaseDate),
+    lifts: getLifts(dataTables.eq(1))
+  };
 
   function getLifts($tableNode) {
     return $tableNode
@@ -29,11 +35,15 @@ export default function proceed(data) {
 
         return {
           skiLiftId: $(columns[0]).text(),
-          date: moment.tz($(columns[1]).text(), skiLiftDateFormat, originalTimeZone).local().format('L LTS'),
+          date: getAdoptedDateString($(columns[1]).text()),
           initialLift: $(columns[2]).text(),
           liftsLeft: $(columns[3]).text()
         }
       })
       .toArray();
+  }
+
+  function getAdoptedDateString(date) {
+    return moment.tz(date, skiLiftDateFormat, originalTimeZone).local().format('L LTS');
   }
 }

@@ -40,7 +40,7 @@ class CardNumberInput extends React.Component {
     this.setState({
       text: value,
       isValid: isValidValue(value, this.mask)
-    }, () => triggerOnchange(this.state, this.props));
+    }, _ => triggerOnchange(this.state, this.props));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -57,7 +57,7 @@ class CardNumberInput extends React.Component {
       this.setState({
         text: value,
         isValid: isValidValue(value, this.mask)
-      }, () => triggerOnchange(this.state, this.props));
+      }, _ => triggerOnchange(this.state, this.props));
     }
   }
 
@@ -76,7 +76,7 @@ class CardNumberInput extends React.Component {
       this.setState({
         text: value,
         isValid: isValidValue(value, this.mask)
-      }, () => triggerOnchange(this.state, this.props));
+      }, _ => triggerOnchange(this.state, this.props));
     }
   }
 
@@ -89,7 +89,7 @@ class CardNumberInput extends React.Component {
       this.setState({
         text: value,
         isValid: isValidValue(value, this.mask)
-      }, () => triggerOnchange(this.state, this.props));
+      }, _ => triggerOnchange(this.state, this.props));
     }
   }
 
@@ -101,7 +101,7 @@ class CardNumberInput extends React.Component {
         this.setState({
           text: value,
           isValid: isValidValue(value, this.mask)
-        }, () => triggerOnchange(this.state, this.props));
+        }, _ => triggerOnchange(this.state, this.props));
       }
       return;
     } else if (isRedoEvent(event)) {
@@ -111,7 +111,7 @@ class CardNumberInput extends React.Component {
         this.setState({
           text: value,
           isValid: isValidValue(value, this.mask)
-        }, () => triggerOnchange(this.state, this.props));
+        }, _ => triggerOnchange(this.state, this.props));
       }
       return;
     }
@@ -125,7 +125,7 @@ class CardNumberInput extends React.Component {
         this.setState({
           text: value,
           isValid: isValidValue(value, this.mask)
-        }, () => triggerOnchange(this.state, this.props));
+        }, _ => triggerOnchange(this.state, this.props));
       }
     }
   }
@@ -143,7 +143,7 @@ class CardNumberInput extends React.Component {
       this.setState({
         text: value,
         isValid: isValidValue(value, this.mask)
-      }, () => triggerOnchange(this.state, this.props));
+      }, _ => triggerOnchange(this.state, this.props));
     }
   }
 

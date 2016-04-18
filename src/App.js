@@ -28,7 +28,7 @@ class App extends React.Component {
 
   handleCardNumberChange(event) {
     if (event.isValid) {
-      let spinnerTimeOut = setTimeout(() => {
+      let spinnerTimeOut = setTimeout(_ => {
         this.setState({
           isDataLoads: true
         });
