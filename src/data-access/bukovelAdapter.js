@@ -34,13 +34,18 @@ export default function proceed(data) {
         var columns = $(element).find('td');
 
         return {
-          skiLiftId: columns.eq(0).text(),
+          id: getliftId(columns.eq(0).text()),
           date: getAdoptedDateString(columns.eq(1).text()),
           initialLift: Number.parseInt(columns.eq(2).text()),
           liftsLeft: Number.parseInt(columns.eq(3).text())
         }
       })
       .toArray();
+
+      function getliftId(text) {
+        const whiteSpaceChar = ' ';
+        return text.slice(text.lastIndexOf(whiteSpaceChar) + whiteSpaceChar.length, text.length);
+      }
   }
 
   function getAdoptedDateString(date) {
