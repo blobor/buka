@@ -34,10 +34,10 @@ export default function proceed(data) {
         var columns = $(element).find('td');
 
         return {
-          skiLiftId: $(columns[0]).text(),
-          date: getAdoptedDateString($(columns[1]).text()),
-          initialLift: Number.parseInt($(columns[2]).text()),
-          liftsLeft: Number.parseInt($(columns[3]).text())
+          skiLiftId: columns.eq(0).text(),
+          date: getAdoptedDateString(columns.eq(1).text()),
+          initialLift: Number.parseInt(columns.eq(2).text()),
+          liftsLeft: Number.parseInt(columns.eq(3).text())
         }
       })
       .toArray();
