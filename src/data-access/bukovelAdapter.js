@@ -16,12 +16,16 @@ export default function proceed(data) {
   const cardNumber = data.success;
   const $ = cheerio.load(data.html);
   const dataTables = $('table');
-  const orginalPurchaseDate = dataTables.eq(0).find('#order_info_header_white:nth-child(1) > span').text();
+  const skipassInfoTable = dataTables.eq(0);
+  const skipassLiftsInfoTable = dataTables.eq(1);
+  const service = skipassInfoTable.find('#order_info_header:nth-child(1) > span').text();
+  const orginalPurchaseDate = skipassInfoTable.find('#order_info_header_white:nth-child(1) > span').text();
 
   return {
     cardNumber: cardNumber,
+    capacity: 0,
     purchaseDate: getAdoptedDateString(orginalPurchaseDate),
-    lifts: getLifts(dataTables.eq(1))
+    lifts: getLifts(skipassLiftsInfoTable)
   };
 
   function getLifts($tableNode) {
