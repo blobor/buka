@@ -1,4 +1,3 @@
-import cheerio from 'cheerio';
 import moment from 'moment-timezone';
 import fetch, { Request } from '../core/fetch';
 import adapter from './bukovelAdapter';
