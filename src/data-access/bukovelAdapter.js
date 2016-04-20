@@ -1,4 +1,4 @@
-import cheerio from 'cheerio';
+import isNil from 'lodash.isnil';
 import moment from 'moment-timezone';
 
 const originalTimeZone = 'Europe/Kiev';
@@ -13,43 +13,50 @@ export default function proceed(data) {
     };
   }
 
+  const parser = new DOMParser();
   const cardNumber = data.success;
-  const $ = cheerio.load(data.html);
-  const dataTables = $('table');
-  const skipassInfoTable = dataTables.eq(0);
-  const skipassLiftsInfoTable = dataTables.eq(1);
-  const service = skipassInfoTable.find('#order_info_header:nth-child(1) > span').text();
-  const orginalPurchaseDate = skipassInfoTable.find('#order_info_header_white:nth-child(1) > span').text();
+
+  const dom = parser.parseFromString(data.html, 'text/html');
+
+  const dataTables = dom.getElementsByTagName('table');
+  const skipassInfoTable = dataTables[0];
+  const skipassLiftsInfoTable = dataTables[1];
+  const skipassServiceInfo = skipassInfoTable.querySelector('#order_info_header:first-child > span').textContent;
+  const orginalPurchaseDate = skipassInfoTable.querySelector('#order_info_header_white:first-child > span').textContent;
 
   return {
     cardNumber: cardNumber,
     capacity: 0,
     purchaseDate: getAdoptedDateString(orginalPurchaseDate),
-    lifts: getLifts(skipassLiftsInfoTable)
+    lifts: Array.from(getLifts(skipassLiftsInfoTable))
   };
 
-  function getLifts($tableNode) {
-    return $tableNode
-      .find('tr')
-      // skip first row,
-      // because it is table header
-      .slice(1)
-      .map((index, element) => {
-        var columns = $(element).find('td');
+  function* getLifts(table) {
+    if (isNil(table)) {
+      return;
+    }
 
-        return {
-          id: getliftId(columns.eq(0).text()),
-          date: getAdoptedDateString(columns.eq(1).text()),
-          initialLift: Number.parseInt(columns.eq(2).text()),
-          liftsLeft: Number.parseInt(columns.eq(3).text())
-        }
-      })
-      .toArray();
+    const rows = table.getElementsByTagName('tr');
+    const rowsCount = rows.length;
 
-      function getliftId(text) {
-        const whiteSpaceChar = ' ';
-        return text.slice(text.lastIndexOf(whiteSpaceChar) + whiteSpaceChar.length, text.length);
+    // skip first row,
+    // because it is table header
+    for (let i = 1; i < rowsCount; i++) {
+
+      let columns = rows[i].getElementsByTagName('td');
+
+      yield {
+        id: getliftId(columns[0].textContent),
+        date: getAdoptedDateString(columns[1].textContent),
+        initialLift: Number.parseInt(columns[2].textContent),
+        liftsLeft: Number.parseInt(columns[3].textContent)
       }
+    }
+
+    function getliftId(text) {
+      const whiteSpaceChar = ' ';
+      return text.slice(text.lastIndexOf(whiteSpaceChar) + whiteSpaceChar.length, text.length);
+    }
   }
 
   function getAdoptedDateString(date) {
