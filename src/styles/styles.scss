@@ -13,3 +13,7 @@ html, body {
     align-items: center;
     align-self: center;
 }
+
+.buka-cardnumber__input input::-ms-clear {
+    display: none;
+}
