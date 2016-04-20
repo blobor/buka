@@ -84,7 +84,9 @@ class CardNumberInput extends React.Component {
     event.preventDefault();
 
     this.mask.setSelection(getElementSelection(event.target));
-    if (this.mask.paste(event.clipboardData.getData('text/plain'))) {
+    let pastedValue = getTextFromClipboardData(event);
+
+    if (this.mask.paste(pastedValue)) {
       const value = getDisplayMaskValue(this.mask);
       this.setState({
         text: value,
@@ -151,7 +153,7 @@ class CardNumberInput extends React.Component {
     return <TextField type="text"
       {...this.props}
       floatingLabelText="Card Number"
-      hintText={PATTERN.replace(/1/g, 'X')}
+      hintText={PATTERN.replace(/1/g, 'X') }
       size={this.mask.pattern.length}
       maxLength={this.mask.pattern.length}
       onChange={this.handleChange}
@@ -201,6 +203,19 @@ function isUndoEvent(event) {
 
 function isRedoEvent(event) {
   return (event.ctrlKey || event.metaKey) && event.keyCode === (event.shiftKey ? KEYCODE_Z : KEYCODE_Y);
+}
+
+function getTextFromClipboardData(event) {
+  let result;
+
+  // IE 
+  if (window.clipboardData) {
+    result = window.clipboardData.getData('Text');
+  } else {
+    result = (event.originalEvent || event).clipboardData.getData('text/plain');
+  }
+
+  return result;
 }
 
 export default CardNumberInput;
