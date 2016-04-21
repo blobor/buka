@@ -19,7 +19,7 @@ class CardNumberInput extends React.Component {
 
     this.handlePaste = this.handlePaste.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleBeforeInput = this.handleBeforeInput.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -62,7 +62,7 @@ class CardNumberInput extends React.Component {
   }
 
   handleChange(event) {
-    const maskValue = this.mask.getValue()
+    const maskValue = this.mask.getValue();
     const elementValue = event.target.value;
     if (elementValue !== maskValue) {
       // Cut or delete operations will have shortened the value
@@ -132,7 +132,7 @@ class CardNumberInput extends React.Component {
     }
   }
 
-  handleKeyPress(event) {
+  handleBeforeInput(event) {
     if (event.metaKey || event.altKey || event.ctrlKey || event.key === ENTER_KEY) {
       return
     }
@@ -140,7 +140,7 @@ class CardNumberInput extends React.Component {
     event.preventDefault();
 
     this.mask.setSelection(getElementSelection(event.target));
-    if (this.mask.input(event.key)) {
+    if (this.mask.input(event.data)) {
       const value = getDisplayMaskValue(this.mask);
       this.setState({
         text: value,
@@ -159,7 +159,7 @@ class CardNumberInput extends React.Component {
       onChange={this.handleChange}
       onPaste={this.handlePaste}
       onKeyDown={this.handleKeyDown}
-      onKeyPress={this.handleKeyPress}
+      onBeforeInput={this.handleBeforeInput}
       value={this.state.text} />
   }
 }
