@@ -1,7 +1,9 @@
 {
   "name": "buka",
   "version": "0.0.1",
+  "license": "MIT",
   "description": "",
+  "author": "Bogdan Lobor <b.lobor@outlook.com>",
   "main": "index.js",
   "scripts": {
     "prebuild": "rm -rf dist && mkdir dist",
@@ -13,7 +15,6 @@
   "engines": {
     "node": "5.10"
   },
-  "license": "MIT",
   "dependencies": {
     "autoprefixer": "^6.3.6",
     "babel-core": "^6.7.2",
