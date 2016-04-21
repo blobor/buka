@@ -3,6 +3,8 @@ import bukovelAPI from './data-access/bukovelAPI';
 import ActionHelpOutline from 'material-ui/svg-icons/action/help-outline';
 import CardNumberInput from './components/CardNumberInput';
 import TestCardNumber from './components/TestCardNumber';
+import LiftsTable from './components/LiftsTable';
+import Paper from 'material-ui/Paper';
 import CircularProgress from 'material-ui/CircularProgress';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -12,7 +14,9 @@ class App extends React.Component {
     super();
 
     this.state = {
-      html: '',
+      cardInfo: {
+        lifts: []
+      },
       cardNumber: '',
       isDataLoads: false
     };
@@ -39,15 +43,21 @@ class App extends React.Component {
           clearTimeout(spinnerTimeOut);
           this.setState({
             isDataLoads: false,
-            html: JSON.stringify(data, null, '\t')
+            cardInfo: data
           });
         });
     }
   }
+  
+  renderTable() {
+    return this.state.isDataLoads ? <CircularProgress size={1.5} /> : (
+      <Paper zDepth={2}>
+        <LiftsTable lifts={this.state.cardInfo.lifts} />
+      </Paper>
+    );
+  }
 
   render() {
-    const grid = this.state.isDataLoads ? <CircularProgress size={1.5} /> : <pre>{this.state.html}</pre>;
-
     return (
       <div className="buka-container">
         <div className="buka-cardnumber__container">
@@ -58,7 +68,7 @@ class App extends React.Component {
             value={this.state.cardNumber} />
           <TestCardNumber />
         </div>
-        {grid}
+        {this.renderTable()}
       </div>
     );
   }
