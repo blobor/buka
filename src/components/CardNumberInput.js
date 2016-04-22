@@ -15,7 +15,7 @@ class CardNumberInput extends React.Component {
     this.state = {
       isValid: false,
       text: ''
-    }
+    };
 
     this.handlePaste = this.handlePaste.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -33,7 +33,7 @@ class CardNumberInput extends React.Component {
         start: selection,
         end: selection
       }
-    }
+    };
     this.mask = new InputMask(options);
 
     const value = getDisplayMaskValue(this.mask);
@@ -51,7 +51,7 @@ class CardNumberInput extends React.Component {
       this.mask.setSelection({
         start: selection,
         end: selection
-      })
+      });
 
       const value = getDisplayMaskValue(this.mask);
       this.setState({
@@ -67,10 +67,10 @@ class CardNumberInput extends React.Component {
     if (elementValue !== maskValue) {
       // Cut or delete operations will have shortened the value
       if (elementValue.length < maskValue.length) {
-        const sizeDiff = maskValue.length - elementValue.length
+        const sizeDiff = maskValue.length - elementValue.length;
         this.mask.setSelection(getElementSelection(event.target));
-        this.mask.selection.end = this.mask.selection.start + sizeDiff
-        this.mask.backspace()
+        this.mask.selection.end = this.mask.selection.start + sizeDiff;
+        this.mask.backspace();
       }
       const value = getDisplayMaskValue(this.mask);
       this.setState({
@@ -97,7 +97,8 @@ class CardNumberInput extends React.Component {
 
   handleKeyDown(event) {
     if (isUndoEvent(event)) {
-      event.preventDefault()
+      event.preventDefault();
+
       if (this.mask.undo()) {
         const value = getDisplayMaskValue(this.mask);
         this.setState({
@@ -107,7 +108,8 @@ class CardNumberInput extends React.Component {
       }
       return;
     } else if (isRedoEvent(event)) {
-      event.preventDefault()
+      event.preventDefault();
+
       if (this.mask.redo()) {
         const value = getDisplayMaskValue(this.mask);
         this.setState({
@@ -134,7 +136,7 @@ class CardNumberInput extends React.Component {
 
   handleBeforeInput(event) {
     if (event.metaKey || event.altKey || event.ctrlKey || event.key === ENTER_KEY) {
-      return
+      return;
     }
 
     event.preventDefault();
@@ -160,20 +162,20 @@ class CardNumberInput extends React.Component {
       onPaste={this.handlePaste}
       onKeyDown={this.handleKeyDown}
       onBeforeInput={this.handleBeforeInput}
-      value={this.state.text} />
+      value={this.state.text} />;
   }
 }
 
 CardNumberInput.propTypes = {
   value: React.PropTypes.string,
   onChange: React.PropTypes.func
-}
+};
 
 function getElementSelection(element) {
   return {
     start: element.selectionStart,
     end: element.selectionEnd
-  }
+  };
 }
 
 function getDisplayMaskValue(mask) {
