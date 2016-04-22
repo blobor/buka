@@ -21,7 +21,7 @@ export default function proceed(data) {
   const dataTables = dom.getElementsByTagName('table');
   const skipassInfoTable = dataTables[0];
   const skipassLiftsInfoTable = dataTables[1];
-  const skipassServiceInfo = skipassInfoTable.querySelector('#order_info_header:first-child > span').textContent;
+  // const skipassServiceInfo = skipassInfoTable.querySelector('#order_info_header:first-child > span').textContent;
   const orginalPurchaseDate = skipassInfoTable.querySelector('#order_info_header_white:first-child > span').textContent;
 
   return {

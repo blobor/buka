@@ -1,4 +1,3 @@
-import moment from 'moment-timezone';
 import fetch, { Request } from '../core/fetch';
 import adapter from './bukovelAdapter';
 
@@ -9,7 +8,7 @@ class BukovelAPI {
     let postRequest = new Request(url, {
       method: 'post',
       headers: {
-        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
       },
       body: `card_number=${encodeURIComponent(cardNumber)}`
     });

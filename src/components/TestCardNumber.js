@@ -11,29 +11,30 @@ export default class TestCardNumber extends Component {
     super();
 
     this.state = {
-      open: false,
+      open: false
     };
 
     this.handleTouchTap = this.handleTouchTap.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
   }
+  
 
   handleTouchTap(event) {
     this.setState({
       open: true,
-      anchorEl: event.currentTarget,
+      anchorEl: event.currentTarget
     });
-  };
+  }
 
   handleRequestClose() {
     this.setState({
-      open: false,
+      open: false
     });
   }
 
   render() {
     return (
-      <div className="buka-cardnumber__help">
+      <div className='buka-cardnumber__help'>
         <ActionHelpOutline
           onClick={this.handleTouchTap}
           color={faintBlack}

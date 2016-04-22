@@ -1,6 +1,5 @@
 import React from 'react';
 import bukovelAPI from './data-access/bukovelAPI';
-import ActionHelpOutline from 'material-ui/svg-icons/action/help-outline';
 import CardNumberInput from './components/CardNumberInput';
 import TestCardNumber from './components/TestCardNumber';
 import LiftsTable from './components/LiftsTable';
@@ -32,7 +31,7 @@ class App extends React.Component {
 
   handleCardNumberChange(event) {
     if (event.isValid) {
-      let spinnerTimeOut = setTimeout(_ => {
+      let spinnerTimeOut = setTimeout(() => {
         this.setState({
           isDataLoads: true
         });
@@ -59,11 +58,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="buka-container">
-        <div className="buka-cardnumber__container">
+      <div className='buka-container'>
+        <div className='buka-cardnumber__container'>
           <CardNumberInput
-            id="cardnumber"
-            className="buka-cardnumber__input"
+            id='cardnumber'
+            className='buka-cardnumber__input'
             onChange={this.handleCardNumberChange}
             value={this.state.cardNumber} />
           <TestCardNumber />
@@ -75,7 +74,7 @@ class App extends React.Component {
 }
 
 App.childContextTypes = {
-  muiTheme: React.PropTypes.object.isRequired,
+  muiTheme: React.PropTypes.object.isRequired
 };
 
 export default App;

@@ -25,6 +25,11 @@ const LiftsTable = (props) => (
   </Table>
 );
 
+LiftsTable.propTypes = {
+  lifts: React.PropTypes.arrayOf(React.PropTypes.object)
+}
+
+
 function getLiftsRows(lifts) {
   return lifts.map((liftInfo, index) => (
     <TableRow key={index}>
