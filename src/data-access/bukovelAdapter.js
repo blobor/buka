@@ -50,7 +50,7 @@ export default function proceed(data) {
         date: getAdoptedDateString(columns[1].textContent),
         initialLift: Number.parseInt(columns[2].textContent),
         liftsLeft: Number.parseInt(columns[3].textContent)
-      }
+      };
     }
 
     function getliftId(text) {

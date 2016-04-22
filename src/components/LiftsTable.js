@@ -27,8 +27,7 @@ const LiftsTable = (props) => (
 
 LiftsTable.propTypes = {
   lifts: React.PropTypes.arrayOf(React.PropTypes.object)
-}
-
+};
 
 function getLiftsRows(lifts) {
   return lifts.map((liftInfo, index) => (

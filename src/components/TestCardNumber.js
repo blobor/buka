@@ -17,7 +17,6 @@ export default class TestCardNumber extends Component {
     this.handleTouchTap = this.handleTouchTap.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
   }
-  
 
   handleTouchTap(event) {
     this.setState({

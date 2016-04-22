@@ -21,13 +21,12 @@ class App extends React.Component {
     };
     this.handleCardNumberChange = this.handleCardNumberChange.bind(this);
   }
-  
+
   getChildContext() {
     return {
       muiTheme: getMuiTheme(baseTheme)
     };
   }
-
 
   handleCardNumberChange(event) {
     if (event.isValid) {
@@ -47,7 +46,7 @@ class App extends React.Component {
         });
     }
   }
-  
+
   renderTable() {
     return this.state.isDataLoads ? <CircularProgress size={1.5} /> : (
       <Paper zDepth={2}>
