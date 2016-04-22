@@ -210,7 +210,7 @@ function isRedoEvent(event) {
 function getTextFromClipboardData(event) {
   let result;
 
-  // IE 
+  // IE
   if (window.clipboardData) {
     result = window.clipboardData.getData('Text');
   } else {
