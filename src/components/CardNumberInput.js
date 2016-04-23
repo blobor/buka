@@ -1,4 +1,5 @@
 import React from 'react';
+import { getSelection } from 'react/lib/ReactInputSelection';
 import InputMask from 'inputmask-core';
 import TextField from 'material-ui/TextField';
 
@@ -85,7 +86,7 @@ class CardNumberInput extends React.Component {
   handlePaste(event) {
     event.preventDefault();
 
-    this.mask.setSelection(getElementSelection(event.target));
+    this.mask.setSelection(getSelection(event.target));
     let pastedValue = getTextFromClipboardData(event);
 
     if (this.mask.paste(pastedValue)) {
@@ -125,7 +126,7 @@ class CardNumberInput extends React.Component {
     if (event.key === BACKSPACE_KEY) {
       event.preventDefault();
 
-      this.mask.setSelection(getElementSelection(event.target));
+      this.mask.setSelection(getSelection(event.target));
       if (this.mask.backspace()) {
         const value = getDisplayMaskValue(this.mask);
         this.setState({
@@ -143,7 +144,7 @@ class CardNumberInput extends React.Component {
 
     event.preventDefault();
 
-    this.mask.setSelection(getElementSelection(event.target));
+    this.mask.setSelection(getSelection(event.target));
     if (this.mask.input(event.data)) {
       const value = getDisplayMaskValue(this.mask);
       this.setState({
@@ -172,13 +173,6 @@ CardNumberInput.propTypes = {
   value: React.PropTypes.string,
   onChange: React.PropTypes.func
 };
-
-function getElementSelection(element) {
-  return {
-    start: element.selectionStart,
-    end: element.selectionEnd
-  };
-}
 
 function getDisplayMaskValue(mask) {
   return mask
