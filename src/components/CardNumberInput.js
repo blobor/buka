@@ -64,13 +64,15 @@ class CardNumberInput extends React.Component {
   handleChange(event) {
     const maskValue = this.mask.getValue();
     const elementValue = event.target.value;
+
+    // in case browser don't support 'beforeInput' event
     if (elementValue !== maskValue) {
-      // Cut or delete operations will have shortened the value
-      if (elementValue.length < maskValue.length) {
-        const sizeDiff = maskValue.length - elementValue.length;
-        this.mask.setSelection(getElementSelection(event.target));
-        this.mask.selection.end = this.mask.selection.start + sizeDiff;
-        this.mask.backspace();
+      this.mask.selection = {
+        start: 0,
+        end: 0
+      };
+      for (const char of elementValue) {
+        this.mask.input(char);
       }
       const value = getDisplayMaskValue(this.mask);
       this.setState({
