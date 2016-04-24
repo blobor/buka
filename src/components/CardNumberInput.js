@@ -1,5 +1,5 @@
 import React from 'react';
-import { getSelection } from 'react/lib/ReactInputSelection';
+import { getSelection, setSelection } from 'react/lib/ReactInputSelection';
 import InputMask from 'inputmask-core';
 import TextField from 'material-ui/TextField';
 
@@ -147,6 +147,7 @@ class CardNumberInput extends React.Component {
     this.mask.setSelection(getSelection(event.target));
     if (this.mask.input(event.data)) {
       const value = getDisplayMaskValue(this.mask);
+      setSelection(event.target, this.mask.selection);
       this.setState({
         text: value,
         isValid: isValidValue(value, this.mask)
@@ -175,6 +176,10 @@ CardNumberInput.propTypes = {
 };
 
 function getDisplayMaskValue(mask) {
+  if (!mask.value.includes(mask.pattern.placeholderChar)) {
+    return mask.getValue();
+  }
+
   return mask
     .getValue()
     .slice(0, mask.selection.end);
