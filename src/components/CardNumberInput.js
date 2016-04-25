@@ -155,7 +155,8 @@ class CardNumberInput extends React.Component {
     return <TextField type='text'
       {...this.props}
       ref='textField'
-      placeholder={PATTERN.replace(/1/g, 'X')}
+      floatingLabelText='Card Number'
+      hintText={PATTERN.replace(/1/g, 'X')}
       size={this.mask.pattern.length}
       maxLength={this.mask.pattern.length}
       onChange={this.handleChange}
