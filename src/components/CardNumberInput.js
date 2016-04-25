@@ -36,12 +36,6 @@ class CardNumberInput extends React.Component {
       }
     };
     this.mask = new InputMask(options);
-
-    const value = getDisplayMaskValue(this.mask);
-    this.setState({
-      text: value,
-      isValid: isValidValue(value, this.mask)
-    }, () => triggerOnchange(this.state, this.props));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -147,19 +141,21 @@ class CardNumberInput extends React.Component {
     this.mask.setSelection(getSelection(event.target));
     if (this.mask.input(event.data)) {
       const value = getDisplayMaskValue(this.mask);
-      setSelection(event.target, this.mask.selection);
       this.setState({
         text: value,
         isValid: isValidValue(value, this.mask)
-      }, () => triggerOnchange(this.state, this.props));
+      }, () => {
+        setSelection(this.refs.textField.input, this.mask.selection);
+        triggerOnchange(this.state, this.props);
+      });
     }
   }
 
   render() {
     return <TextField type='text'
       {...this.props}
-      floatingLabelText='Card Number'
-      hintText={PATTERN.replace(/1/g, 'X') }
+      ref='textField'
+      placeholder={PATTERN.replace(/1/g, 'X')}
       size={this.mask.pattern.length}
       maxLength={this.mask.pattern.length}
       onChange={this.handleChange}
