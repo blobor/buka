@@ -3,6 +3,7 @@ import bukovelAPI from './data-access/bukovelAPI';
 import CardNumberInput from './components/CardNumberInput';
 import TestCardNumber from './components/TestCardNumber';
 import LiftsTable from './components/LiftsTable';
+import AppBar from 'material-ui/AppBar';
 import Paper from 'material-ui/Paper';
 import CircularProgress from 'material-ui/CircularProgress';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
@@ -58,6 +59,7 @@ class App extends React.Component {
   render() {
     return (
       <div className='buka-container'>
+        <AppBar title='Buka' />
         <div className='buka-cardnumber__container'>
           <CardNumberInput
             id='cardnumber'
