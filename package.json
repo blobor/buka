@@ -11,7 +11,8 @@
     "start": "node server.js",
     "test": "gulp lint",
     "webpack": "webpack-dev-server --config ./config/webpack.config.dev.js --progress",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "precommit": "npm test"
   },
   "engines": {
     "node": "5.10"
@@ -47,6 +48,7 @@
     "whatwg-fetch": "^0.11.0"
   },
   "devDependencies": {
+    "husky": "^0.11.4",
     "webpack-dev-server": "^1.14.1"
   }
 }
