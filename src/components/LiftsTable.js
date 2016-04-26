@@ -9,13 +9,13 @@ import TableBody from 'material-ui/Table/TableBody';
 const showCheckboxes = false;
 
 const LiftsTable = (props) => (
-  <Table>
+  <Table selectable={false}>
     <TableHeader
         displaySelectAll={showCheckboxes}
         adjustForCheckbox={showCheckboxes}>
       <TableRow>
         <TableHeaderColumn>Index</TableHeaderColumn>
-        <TableHeaderColumn>Lift ID</TableHeaderColumn>
+        <TableHeaderColumn>Lift</TableHeaderColumn>
         <TableHeaderColumn>Date</TableHeaderColumn>
       </TableRow>
     </TableHeader>
