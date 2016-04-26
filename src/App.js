@@ -58,17 +58,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='buka-container'>
-        <AppBar title='Buka' />
-        <div className='buka-cardnumber__container'>
-          <CardNumberInput
-            id='cardnumber'
-            className='buka-cardnumber__input'
-            onChange={this.handleCardNumberChange}
-            value={this.state.cardNumber} />
-          <TestCardNumber />
-        </div>
-        {this.renderTable()}
+      <div>
+        <header className='buka__header'>
+          <AppBar title='Buka' />
+        </header>
+        <section className='buka__container'>
+          <div className='buka-cardnumber__container'>
+            <CardNumberInput
+              id='cardnumber'
+              className='buka-cardnumber__input'
+              onChange={this.handleCardNumberChange}
+              value={this.state.cardNumber} />
+            <TestCardNumber />
+          </div>
+          {this.renderTable()}
+        </section>
+        <footer>
+        </footer>
       </div>
     );
   }
