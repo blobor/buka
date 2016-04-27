@@ -6,8 +6,11 @@ import LiftsTable from './components/LiftsTable';
 import AppBar from 'material-ui/AppBar';
 import Paper from 'material-ui/Paper';
 import CircularProgress from 'material-ui/CircularProgress';
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+const muiTheme = getMuiTheme();
 
 class App extends React.Component {
   constructor() {
@@ -21,12 +24,6 @@ class App extends React.Component {
       isDataLoads: false
     };
     this.handleCardNumberChange = this.handleCardNumberChange.bind(this);
-  }
-
-  getChildContext() {
-    return {
-      muiTheme: getMuiTheme(baseTheme)
-    };
   }
 
   handleCardNumberChange(event) {
@@ -58,30 +55,28 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <header className='buka__header'>
-          <AppBar title='Buka' />
-        </header>
-        <section className='buka__container'>
-          <div className='buka-cardnumber__container'>
-            <CardNumberInput
-              id='cardnumber'
-              className='buka-cardnumber__input'
-              onChange={this.handleCardNumberChange}
-              value={this.state.cardNumber} />
-            <TestCardNumber />
-          </div>
-          {this.renderTable()}
-        </section>
-        <footer>
-        </footer>
-      </div>
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <div>
+          <header className='buka__header'>
+            <AppBar title='Buka' />
+          </header>
+          <main className='buka__container'>
+            <div className='buka-cardnumber__container'>
+              <CardNumberInput
+                id='cardnumber'
+                className='buka-cardnumber__input'
+                onChange={this.handleCardNumberChange}
+                value={this.state.cardNumber} />
+              <TestCardNumber />
+            </div>
+            {this.renderTable()}
+          </main>
+          <footer>
+          </footer>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
-
-App.childContextTypes = {
-  muiTheme: React.PropTypes.object.isRequired
-};
 
 export default App;
