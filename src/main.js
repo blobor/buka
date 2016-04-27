@@ -8,7 +8,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-
 //Needed for onTouchTap
 //Can go away when react 1.0 release
 //Check this repo:
