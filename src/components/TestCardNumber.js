@@ -9,7 +9,7 @@ const TEST_CARD_NUMBERS = [
   '01-2167-30-92545'
 ];
 
-export default class TestCardNumber extends Component {
+class TestCardNumber extends Component {
 
   constructor() {
     super();
@@ -27,12 +27,18 @@ export default class TestCardNumber extends Component {
     return (
         <IconMenu
           className='buka-cardnumber__help'
+          onChange={this.props.onChange}
           iconButtonElement={<IconButton><ActionHelpOutline color={faintBlack} hoverColor={cyan500} /></IconButton>}
           anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-          targetOrigin={{horizontal: 'left', vertical: 'top'}}
-        >
+          targetOrigin={{horizontal: 'left', vertical: 'top'}}>
           {this.renredCardNumbers()}
         </IconMenu>
     );
   }
 }
+
+TestCardNumber.propTypes = {
+  onChange: React.PropTypes.func
+};
+
+export default TestCardNumber;

@@ -24,6 +24,13 @@ class App extends React.Component {
       isDataLoads: false
     };
     this.handleCardNumberChange = this.handleCardNumberChange.bind(this);
+    this.testCardNumberChange = this.testCardNumberChange.bind(this);
+  }
+
+  testCardNumberChange(event, value) {
+    this.setState({
+      cardNumber: value
+    });
   }
 
   handleCardNumberChange(event) {
@@ -67,7 +74,7 @@ class App extends React.Component {
                 className='buka-cardnumber__input'
                 onChange={this.handleCardNumberChange}
                 value={this.state.cardNumber} />
-              <TestCardNumber />
+              <TestCardNumber onChange={this.testCardNumberChange} />
             </div>
             {this.renderTable()}
           </main>
