@@ -1,4 +1,5 @@
 import React from 'react';
+import times from 'lodash.times';
 import { getSelection, setSelection } from 'react/lib/ReactInputSelection';
 import InputMask from 'inputmask-core';
 import TextField from 'material-ui/TextField';
@@ -57,18 +58,27 @@ class CardNumberInput extends React.Component {
   }
 
   handleChange(event) {
-    const maskValue = this.mask.getValue();
+    const maskValue = getDisplayMaskValue(this.mask);
     const elementValue = event.target.value;
 
-    // in case browser don't support 'beforeInput' event
     if (elementValue !== maskValue) {
-      this.mask.selection = {
-        start: 0,
-        end: 0
-      };
-      for (const char of elementValue) {
-        this.mask.input(char);
+      const sizeDiff = Math.abs(maskValue.length - elementValue.length);
+
+      // Cut, delete operations will have shortened the value
+      // or if browser don't support 'KeyboardEvent.key' property
+      if (elementValue.length < maskValue.length) {
+        this.mask.setSelection(getSelection(event.target));
+        this.mask.selection.end = this.mask.selection.start + sizeDiff;
+        this.mask.backspace();
       }
+
+      // in case browser don't support 'beforeInput' event
+      else if (elementValue.length > maskValue.length) {
+        times(sizeDiff, (i) => {
+          this.mask.input(elementValue[elementValue.length - sizeDiff - i]);
+        });
+      }
+
       const value = getDisplayMaskValue(this.mask);
       this.setState({
         text: value,
