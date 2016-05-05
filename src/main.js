@@ -1,5 +1,7 @@
 import 'normalize.css';
+import 'material-design-lite/material.css';
 import './styles/styles.scss';
+import './styles/lifts-table.scss';
 
 import 'babel-polyfill';
 import injectTapEventPlugin from 'react-tap-event-plugin';

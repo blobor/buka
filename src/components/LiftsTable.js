@@ -1,28 +1,18 @@
 import React from 'react';
-import Table from 'material-ui/Table';
-import TableHeaderColumn from 'material-ui/Table/TableHeaderColumn';
-import TableRow from 'material-ui/Table/TableRow';
-import TableHeader from 'material-ui/Table/TableHeader';
-import TableRowColumn from 'material-ui/Table/TableRowColumn';
-import TableBody from 'material-ui/Table/TableBody';
-
-const showCheckboxes = false;
 
 const LiftsTable = (props) => (
-  <Table selectable={false}>
-    <TableHeader
-        displaySelectAll={showCheckboxes}
-        adjustForCheckbox={showCheckboxes}>
-      <TableRow>
-        <TableHeaderColumn>Index</TableHeaderColumn>
-        <TableHeaderColumn>Lift</TableHeaderColumn>
-        <TableHeaderColumn>Date</TableHeaderColumn>
-      </TableRow>
-    </TableHeader>
-    <TableBody displayRowCheckbox={showCheckboxes}>
+  <table className='mdl-data-table lifts-table mdl-shadow--2dp'>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Lift</th>
+        <th className='mdl-data-table__cell--non-numeric'>Date</th>
+      </tr>
+    </thead>
+    <tbody>
       {getLiftsRows(props.lifts)}
-    </TableBody>
-  </Table>
+    </tbody>
+  </table>
 );
 
 LiftsTable.propTypes = {
@@ -31,11 +21,11 @@ LiftsTable.propTypes = {
 
 function getLiftsRows(lifts) {
   return lifts.map((liftInfo, index) => (
-    <TableRow key={index}>
-      <TableRowColumn>{++index}</TableRowColumn>
-      <TableRowColumn>{liftInfo.id}</TableRowColumn>
-      <TableRowColumn>{liftInfo.date}</TableRowColumn>
-    </TableRow>
+    <tr key={index}>
+      <td>{++index}</td>
+      <td>{liftInfo.id}</td>
+      <td className='mdl-data-table__cell--non-numeric'>{liftInfo.date}</td>
+    </tr>
   ));
 }
 

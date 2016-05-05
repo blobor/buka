@@ -4,7 +4,6 @@ import CardNumberInput from './components/CardNumberInput';
 import TestCardNumber from './components/TestCardNumber';
 import LiftsTable from './components/LiftsTable';
 import AppBar from 'material-ui/AppBar';
-import Paper from 'material-ui/Paper';
 import CircularProgress from 'material-ui/CircularProgress';
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -53,11 +52,9 @@ class App extends React.Component {
   }
 
   renderTable() {
-    return this.state.isDataLoads ? <CircularProgress size={1.5} /> : (
-      <Paper zDepth={2}>
-        <LiftsTable lifts={this.state.cardInfo.lifts} />
-      </Paper>
-    );
+    return this.state.isDataLoads
+      ? <CircularProgress size={1.5} />
+      : <LiftsTable lifts={this.state.cardInfo.lifts} />;
   }
 
   render() {
