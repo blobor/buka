@@ -62,4 +62,4 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin()
   ]
-}
+};

@@ -53,7 +53,7 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production')
+        NODE_ENV: JSON.stringify('production')
       }
     }),
     new webpack.NoErrorsPlugin(),
@@ -61,13 +61,13 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       'screw-ie8': true,
-      compress: {
+      'compress': {
         warnings: false
       }
     }),
     new CopyWebpackPlugin([{
       from: './index.html'
     }]),
-    new ExtractTextPlugin("bundle.css")
+    new ExtractTextPlugin('bundle.css')
   ]
-}
+};
