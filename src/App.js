@@ -1,4 +1,5 @@
 import React from 'react';
+import isEmpty from 'lodash.isempty';
 import bukovelAPI from './data-access/bukovelAPI';
 import CardNumberInput from './components/CardNumberInput';
 import TestCardNumber from './components/TestCardNumber';
@@ -52,9 +53,11 @@ class App extends React.Component {
   }
 
   renderTable() {
-    return this.state.isDataLoads
-      ? <CircularProgress size={1.5} />
-      : <LiftsTable lifts={this.state.cardInfo.lifts} />;
+    if (this.state.isDataLoads) {
+      return <CircularProgress size={1.5} />;
+    } else if (!isEmpty(this.state.cardInfo.lifts)) {
+      return <LiftsTable lifts={this.state.cardInfo.lifts} />;
+    }
   }
 
   render() {
