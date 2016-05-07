@@ -4,14 +4,15 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
+const commonConfig = require('./webpack.config.common');
+
 const sassLoaders = [
   'css',
   'postcss',
   'sass'
 ];
 
-module.exports = {
-  entry: './src/main.js',
+let config = {
   output: {
     path: './dist',
     publicPath: '/',
@@ -67,3 +68,5 @@ module.exports = {
     new ExtractTextPlugin('bundle.css')
   ]
 };
+
+module.exports = Object.assign({}, commonConfig, config);

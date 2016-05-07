@@ -3,6 +3,8 @@
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 
+const commonConfig = require('./webpack.config.common');
+
 const sassLoaders = [
   'style',
   'css',
@@ -10,8 +12,7 @@ const sassLoaders = [
   'sass'
 ];
 
-module.exports = {
-  entry: './src/main.js',
+let config = {
   output: {
     path: './',
     publicPath: '/',
@@ -63,3 +64,5 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin()
   ]
 };
+
+module.exports = Object.assign({}, commonConfig, config);
