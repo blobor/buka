@@ -1,7 +1,6 @@
 'use strict';
 
 const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
@@ -65,9 +64,6 @@ module.exports = {
         warnings: false
       }
     }),
-    new CopyWebpackPlugin([{
-      from: './index.html'
-    }]),
     new ExtractTextPlugin('bundle.css')
   ]
 };
