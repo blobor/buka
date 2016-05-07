@@ -16,7 +16,7 @@ gulp.task('lint', () => {
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('minify:html', () => {
+gulp.task('build:html', () => {
   const files = [
     './index.html'
   ];
