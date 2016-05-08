@@ -63,7 +63,7 @@ class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <div>
+        <div className='buka'>
           <header className='buka__header'>
             <AppBar title='Buka' />
           </header>
