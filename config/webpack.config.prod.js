@@ -23,10 +23,7 @@ let config = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['react', 'babel-preset-es2015']
-        }
+        loader: 'babel'
       },
       {
         test: /\.scss$/,
