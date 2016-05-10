@@ -6,7 +6,7 @@ module.exports = {
     'config/**/*.js',
     'src/**/*.js'
   ],
-  index: './index.html',
+  index: './src/index.html',
   htmlMinOptions: {
     removeComments: true,
     collapseWhitespace: true,

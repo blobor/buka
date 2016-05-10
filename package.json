@@ -10,7 +10,7 @@
     "build": "gulp build:html && webpack -p --config ./config/webpack.config.prod.js --progress",
     "start": "node src/server.js",
     "test": "gulp lint",
-    "webpack": "webpack-dev-server --config ./config/webpack.config.dev.js --progress",
+    "webpack": "webpack-dev-server --config ./config/webpack.config.dev.js --content-base src/ --progress",
     "heroku-postbuild": "npm run build",
     "precommit": "npm test"
   },
