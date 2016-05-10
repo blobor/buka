@@ -3,7 +3,8 @@ const app = express();
 
 const port = process.env.PORT || 3333;
 
-app.set('port', port);
+// don't send "X-Powered By" header
+app.disable('x-powered-by');
 app.use(express.static(`${__dirname}/dist`));
 
 app.listen(port, function() {
