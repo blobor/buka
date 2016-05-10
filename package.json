@@ -4,11 +4,11 @@
   "license": "MIT",
   "description": "",
   "author": "Bogdan Lobor <b.lobor@outlook.com>",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
     "prebuild": "rm -rf dist && mkdir dist",
     "build": "gulp build:html && webpack -p --config ./config/webpack.config.prod.js --progress",
-    "start": "node server.js",
+    "start": "node src/server.js",
     "test": "gulp lint",
     "webpack": "webpack-dev-server --config ./config/webpack.config.dev.js --progress",
     "heroku-postbuild": "npm run build",
