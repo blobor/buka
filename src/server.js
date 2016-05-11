@@ -1,15 +1,45 @@
-import PATH from 'path';
+import path from 'path';
+import { readFile as fsReadFile } from 'fs';
+
 import express from 'express';
+import isNil from 'lodash.isnil';
+import handlebars from 'handlebars';
+
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+
+import App from './app/App.js';
 
 const app = express();
+
+// cache compiled index page
+let indexTemplate = null;
+
+//
+// Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the
+// user agent is not known.
+// -----------------------------------------------------------------------------
+global.navigator = global.navigator || {};
+global.navigator.userAgent = global.navigator.userAgent || 'all';
 
 const ROOT = '../';
 
 const port = process.env.PORT || 3333;
-const staticFolder = PATH.resolve(__dirname, ROOT, 'dist');
+const staticFolder = path.resolve(__dirname, ROOT, 'dist');
 
 // don't send "X-Powered By" header
 app.disable('x-powered-by');
+
+app.get('/', (req, res) => {
+  getIndexTemplate()
+    .then(template => {
+      global.navigator.userAgent = req.headers['user-agent'];
+      const data = {
+        content: renderToString(<App/>)
+      };
+      res.send(template(data));
+    });
+});
 app.use(express.static(staticFolder));
 
 app.listen(port, function() {
@@ -18,3 +48,20 @@ app.listen(port, function() {
   console.log(`__dirname = ${__dirname}`); // eslint-disable-line no-console
   console.log(`staticFolder = ${staticFolder}`); // eslint-disable-line no-console
 });
+
+function getIndexTemplate() {
+  if (isNil(indexTemplate)) {
+    return new Promise((resolve, reject) => {
+      fsReadFile(path.resolve(staticFolder, 'index.html'), 'utf8', (err, data) => {
+        if (err) {
+          reject(err);
+        } else {
+          indexTemplate = handlebars.compile(data);
+          resolve(indexTemplate);
+        }
+      });
+    });
+  } else {
+    return Promise.resolve(indexTemplate);
+  }
+}
