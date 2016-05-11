@@ -10,11 +10,11 @@ import CircularProgress from 'material-ui/CircularProgress';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-const muiTheme = getMuiTheme();
-
 class App extends React.Component {
   constructor() {
     super();
+
+    this.muiTheme = getMuiTheme();
 
     this.state = {
       cardInfo: {
@@ -62,7 +62,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
+      <MuiThemeProvider muiTheme={this.muiTheme}>
         <div className='buka'>
           <header className='buka__header'>
             <AppBar title='Buka' />
