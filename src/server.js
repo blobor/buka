@@ -2,6 +2,9 @@ import path from 'path';
 import { readFile as fsReadFile } from 'fs';
 
 import express from 'express';
+import helmet from 'helmet';
+import compression from 'compression';
+import enforce from 'express-sslify';
 import isNil from 'lodash.isnil';
 import handlebars from 'handlebars';
 
@@ -11,6 +14,16 @@ import { renderToString } from 'react-dom/server';
 import App from './app/App.js';
 
 const app = express();
+
+// configure middlewares
+if (process.env.NODE_ENV === 'production') {
+  app.use(enforce.HTTPS({
+    // app is behind Heroku load balancer
+    trustProtoHeader: true
+  }));
+}
+app.use(helmet());
+app.use(compression());
 
 // cache compiled index page
 let indexTemplate = null;
@@ -26,9 +39,6 @@ const ROOT = '../';
 
 const port = process.env.PORT || 3333;
 const staticFolder = path.resolve(__dirname, ROOT, 'dist');
-
-// don't send "X-Powered By" header
-app.disable('x-powered-by');
 
 app.get('/', (req, res) => {
   getIndexTemplate()
