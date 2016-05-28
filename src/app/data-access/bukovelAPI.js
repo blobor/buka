@@ -1,21 +1,17 @@
-import fetch, { Request } from '../core/fetch';
-import adapter from './bukovelAdapter';
+import isNil from 'lodash.isnil';
+import fetch from '../core/fetch';
+import { proceed } from './bukovelAdapter';
 
-const url = 'http://shop.bukovel.info/index.php?route=balance/balance/getBalance';
+const url = 'https://buka-server.herokuapp.com';
 
 class BukovelAPI {
   static getCardBalance(cardNumber) {
-    let postRequest = new Request(url, {
-      method: 'post',
-      headers: {
-        'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-      },
-      body: `card_number=${encodeURIComponent(cardNumber)}`
-    });
-
-    return fetch(postRequest)
+    if (isNil(cardNumber)) {
+      return Promise.reject('Card Number is nill');
+    }
+    return fetch(`${url}/skipass/${cardNumber}`)
       .then(response => response.json())
-      .then(adapter);
+      .then(proceed);
   }
 }
 
