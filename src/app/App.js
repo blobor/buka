@@ -3,7 +3,7 @@ import isEmpty from 'lodash.isempty';
 import bukovelAPI from './data-access/bukovelAPI';
 import CardNumberInput from './components/CardNumberInput';
 import TestCardNumber from './components/TestCardNumber';
-import LiftsTable from './components/LiftsTable';
+import SkipassInfo from './components/SkipassInfo';
 import AppBar from 'material-ui/AppBar';
 import CircularProgress from 'material-ui/CircularProgress';
 
@@ -17,7 +17,7 @@ class App extends React.Component {
     this.muiTheme = getMuiTheme();
 
     this.state = {
-      cardInfo: {
+      skipass: {
         lifts: []
       },
       cardNumber: '',
@@ -46,7 +46,7 @@ class App extends React.Component {
           clearTimeout(spinnerTimeOut);
           this.setState({
             isDataLoads: false,
-            cardInfo: data
+            skipass: data
           });
         });
     }
@@ -55,8 +55,8 @@ class App extends React.Component {
   renderTable() {
     if (this.state.isDataLoads) {
       return <CircularProgress size={1.5} />;
-    } else if (!isEmpty(this.state.cardInfo.lifts)) {
-      return <LiftsTable lifts={this.state.cardInfo.lifts} />;
+    } else if (!isEmpty(this.state.skipass.lifts)) {
+      return <SkipassInfo skipass={this.state.skipass} />;
     }
   }
 
