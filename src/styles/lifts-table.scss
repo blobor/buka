@@ -1,3 +1,12 @@
+@import 'screen-sizes.scss';
+
 .lifts-table {
     width: 100%;
+}
+
+@media (max-width: $xsmall) {
+  .lifts-table.mdl-data-table td {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
 }

@@ -1,3 +1,5 @@
+@import 'screen-sizes.scss';
+
 .scipass-info {
   width: 100%;
   display: flex;
@@ -9,8 +11,9 @@
   width: 100%;
 }
 
-@media (max-width: 48em) {
-  .scipass-info__table {
-    font-size: .8em;
+@media (max-width: $xsmall) {
+  .scipass-info__table.mdl-data-table td {
+    padding-left: 7px;
+    padding-right: 7px;
   }
 }
