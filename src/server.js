@@ -1,5 +1,6 @@
 import path from 'path';
-import { readFile as fsReadFile } from 'fs';
+import pify from 'pify';
+import fs from 'fs';
 
 import express from 'express';
 import helmet from 'helmet';
@@ -12,6 +13,8 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 
 import App from './app/App.js';
+
+const fsPromisify = pify(fs);
 
 const app = express();
 
@@ -61,16 +64,11 @@ app.listen(port, function() {
 
 function getIndexTemplate() {
   if (isNil(indexTemplate)) {
-    return new Promise((resolve, reject) => {
-      fsReadFile(path.resolve(staticFolder, 'index.html'), 'utf8', (err, data) => {
-        if (err) {
-          reject(err);
-        } else {
-          indexTemplate = handlebars.compile(data);
-          resolve(indexTemplate);
-        }
+    return fsPromisify
+      .readFile(path.resolve(staticFolder, 'index.html'), 'utf8')
+      .then(data => {
+        indexTemplate = handlebars.compile(data);
       });
-    });
   } else {
     return Promise.resolve(indexTemplate);
   }
