@@ -5,7 +5,10 @@ module.exports = {
     app: './src/app/main.js',
     vendor: [
       'react',
-      'react-dom'
+      'react-dom',
+      'moment',
+      'material-ui',
+      'inputmask-core'
     ]
   }
 };
