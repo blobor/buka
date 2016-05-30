@@ -1,4 +1,5 @@
 import React from 'react';
+import { getAdoptedDateString } from '../helpers/date';
 
 const LiftsTable = (props) => (
   <table className='mdl-data-table lifts-table mdl-shadow--2dp'>
@@ -24,7 +25,7 @@ function getLiftsRows(lifts) {
     <tr key={index}>
       <td>{++index}</td>
       <td>{liftInfo.id}</td>
-      <td className='mdl-data-table__cell--non-numeric'>{liftInfo.date}</td>
+      <td className='mdl-data-table__cell--non-numeric'>{getAdoptedDateString(liftInfo.date)}</td>
     </tr>
   ));
 }
