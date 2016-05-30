@@ -68,6 +68,7 @@ function getIndexTemplate() {
       .readFile(path.resolve(staticFolder, 'index.html'), 'utf8')
       .then(data => {
         indexTemplate = handlebars.compile(data);
+        return indexTemplate;
       });
   } else {
     return Promise.resolve(indexTemplate);

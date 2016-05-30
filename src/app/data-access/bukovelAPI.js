@@ -1,5 +1,5 @@
 import isNil from 'lodash.isnil';
-import fetch from '../core/fetch';
+import fetch from 'isomorphic-fetch';
 
 const url = 'https://buka-server.herokuapp.com';
 
