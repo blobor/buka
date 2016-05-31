@@ -9,7 +9,9 @@ const SkipassInfo = (props) => (
       <tbody>
         <tr>
           <td>Сard Number</td>
-          <td>{props.skipass.cardNumber}</td>
+          <td className='mdl-data-table__cell--non-numeric'>
+            {props.skipass.cardNumber}
+          </td>
         </tr>
         <tr>
           <td>Purchase Date</td>
@@ -19,15 +21,21 @@ const SkipassInfo = (props) => (
         </tr>
         <tr>
           <td>Used Days</td>
-          <td>{props.skipass.usedDays}</td>
+          <td className='mdl-data-table__cell--non-numeric'>
+            {props.skipass.usedDays}
+          </td>
         </tr>
         <tr>
           <td>Total Downhills</td>
-          <td>{props.skipass.totalDownhills}</td>
+          <td className='mdl-data-table__cell--non-numeric'>
+            {props.skipass.totalDownhills}
+          </td>
         </tr>
         <tr>
           <td>Daily Downhills (avg.)</td>
-          <td>{props.skipass.dailyAverageDownhills}</td>
+          <td className='mdl-data-table__cell--non-numeric'>
+            {props.skipass.dailyAverageDownhills}
+          </td>
         </tr>
       </tbody>
     </table>
