@@ -4,7 +4,7 @@
   "license": "MIT",
   "description": "",
   "author": "Bogdan Lobor <b.lobor@outlook.com>",
-  "main": "src/server.babel.js",
+  "main": "src/server.js",
   "scripts": {
     "prebuild": "rm -rf dist && rm -rf dist-server && mkdir dist && mkdir dist-server",
     "build": "gulp build && webpack -p --config ./config/webpack.config.prod.js --progress",
