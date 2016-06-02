@@ -7,7 +7,11 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
 import App from './App';
+
+const store = configureStore();
 
 //Needed for onTouchTap
 //Can go away when react 1.0 release
@@ -15,4 +19,9 @@ import App from './App';
 //https://github.com/zilverline/react-tap-event-plugin
 injectTapEventPlugin();
 
-ReactDOM.render(<App/>, document.getElementById('buka-app'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('buka-app')
+);
