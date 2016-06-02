@@ -68,14 +68,16 @@ class App extends React.Component {
             <AppBar title='Buka' />
           </header>
           <main className='buka__container'>
-            <div className='buka-cardnumber__container'>
+            <form className='buka-cardnumber__form' method='GET'>
               <CardNumberInput
                 id='cardnumber'
+                name='cardNumber'
                 className='buka-cardnumber__input'
+                autoComplete='off'
                 onChange={this.handleCardNumberChange}
                 value={this.state.cardNumber} />
               <TestCardNumber onChange={this.testCardNumberChange} />
-            </div>
+            </form>
             {this.renderTable()}
           </main>
           <footer>
