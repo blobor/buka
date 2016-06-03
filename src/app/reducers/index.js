@@ -1,13 +1,8 @@
 import { combineReducers } from 'redux';
+import skipass from './skipass';
 
 const rootReducer = combineReducers({
-  // ToDo: add reducers
-  test: function (state, action) {
-    return {
-      state,
-      action
-    };
-  }
+  skipass
 });
 
 export default rootReducer;

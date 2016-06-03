@@ -11,10 +11,15 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props, context) {
+    super(props, context);
 
     this.muiTheme = getMuiTheme();
+    this.store = context.store;
+
+    this.store.subscribe(() => {
+      this.setState(this.store.getState().skipass);
+    });
 
     this.state = {
       skipass: {
@@ -28,7 +33,8 @@ class App extends React.Component {
   }
 
   testCardNumberChange(event, value) {
-    this.setState({
+    this.store.dispatch({
+      type: 'CARD_NUMBER_CHANGE',
       cardNumber: value
     });
   }
@@ -87,5 +93,7 @@ class App extends React.Component {
     );
   }
 }
+
+App.contextTypes = { store: React.PropTypes.object };
 
 export default App;
