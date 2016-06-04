@@ -10,9 +10,11 @@ import isNil from 'lodash.isnil';
 import handlebars from 'handlebars';
 
 import React from 'react';
+import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
 
 import App from './app/App.js';
+import configureStore from './app/store/configureStore';
 
 const fsPromisify = pify(fs);
 
@@ -47,8 +49,15 @@ app.get('/', (req, res) => {
   getIndexTemplate()
     .then(template => {
       global.navigator.userAgent = req.headers['user-agent'];
+      const store = configureStore({
+        skipass: req.query
+      });
       const data = {
-        content: renderToString(<App/>)
+        content: renderToString(
+          <Provider store={store}>
+            <App />
+          </Provider>
+        )
       };
       res.send(template(data));
     });
