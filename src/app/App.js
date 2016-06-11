@@ -2,6 +2,7 @@ import React from 'react';
 import isEmpty from 'lodash.isempty';
 import bukovelAPI from './data-access/bukovelAPI';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import CardNumberInput from './components/CardNumberInput';
 import TestCardNumber from './components/TestCardNumber';
 import SkipassInfo from './components/SkipassInfo';
@@ -84,8 +85,7 @@ class App extends React.Component {
             </form>
             {this.renderTable()}
           </main>
-          <footer>
-          </footer>
+          <Footer />
         </div>
       </MuiThemeProvider>
     );
