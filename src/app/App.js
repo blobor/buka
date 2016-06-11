@@ -1,9 +1,9 @@
 import React from 'react';
 import isEmpty from 'lodash.isempty';
-import bukovelAPI from './data-access/bukovelAPI';
+import { fetchSkipassData } from './actions/skipass';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import CardNumberInput from './components/CardNumberInput';
+import CardNumberInput from './containers/CardNumberInputContainer';
 import TestCardNumber from './components/TestCardNumber';
 import SkipassInfo from './components/SkipassInfo';
 import CircularProgress from 'material-ui/CircularProgress';
@@ -24,48 +24,22 @@ class App extends React.Component {
       this.setState(this.store.getState().skipass);
     });
 
-    this.state = {
-      skipass: {
-        lifts: []
-      },
-      cardNumber: '',
-      isDataLoads: false
-    };
-    this.handleCardNumberChange = this.handleCardNumberChange.bind(this);
     this.testCardNumberChange = this.testCardNumberChange.bind(this);
   }
 
-  testCardNumberChange(event, value) {
-    this.store.dispatch({
-      type: 'CARD_NUMBER_CHANGE',
-      cardNumber: value
-    });
+  componentWillMount() {
+    this.setState(this.store.getState().skipass);
   }
 
-  handleCardNumberChange(event) {
-    if (event.isValid) {
-      let spinnerTimeOut = setTimeout(() => {
-        this.setState({
-          isDataLoads: true
-        });
-      }, 100);
-      bukovelAPI
-        .getCardBalance(event.text)
-        .then(data => {
-          clearTimeout(spinnerTimeOut);
-          this.setState({
-            isDataLoads: false,
-            skipass: data
-          });
-        });
-    }
+  testCardNumberChange(event, value) {
+    this.store.dispatch(fetchSkipassData(value));
   }
 
   renderTable() {
-    if (this.state.isDataLoads) {
+    if (this.state.isFetching) {
       return <CircularProgress size={1.5} />;
-    } else if (!isEmpty(this.state.skipass.lifts)) {
-      return <SkipassInfo skipass={this.state.skipass} />;
+    } else if (!isEmpty(this.state.lifts)) {
+      return <SkipassInfo skipass={this.state} />;
     }
   }
 
@@ -80,9 +54,7 @@ class App extends React.Component {
                 id='cardnumber'
                 name='cardNumber'
                 className='buka-cardnumber__input'
-                autoComplete='off'
-                onChange={this.handleCardNumberChange}
-                value={this.state.cardNumber} />
+                autoComplete='off' />
               <TestCardNumber onChange={this.testCardNumberChange} />
             </form>
             {this.renderTable()}

@@ -1,13 +1,23 @@
+import { REQUEST_SKIPASS_DATA, RECEIVE_SKIPASS_DATA } from '../actions/skipass';
+
 const initialState = {
-  cardNumber: ''
+  cardNumber: '',
+  isFetching: false,
+  lifts: []
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case 'CARD_NUMBER_CHANGE':
+    case REQUEST_SKIPASS_DATA:
       return {
         ...state,
-        cardNumber: action.cardNumber
+        isFetching: true
+      };
+    case RECEIVE_SKIPASS_DATA:
+      return {
+        ...state,
+        ...action.skipass,
+        isFetching: false
       };
     default:
       return state;
