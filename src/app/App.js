@@ -8,6 +8,8 @@ import TestCardNumber from './components/TestCardNumber';
 import SkipassInfo from './components/SkipassInfo';
 import CircularProgress from 'material-ui/CircularProgress';
 
+import { version } from '../../package.json';
+
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -71,7 +73,7 @@ class App extends React.Component {
     return (
       <MuiThemeProvider muiTheme={this.muiTheme}>
         <div className='buka'>
-          <Header />
+          <Header version={version} />
           <main className='buka__container'>
             <form className='buka-cardnumber__form' method='GET'>
               <CardNumberInput
