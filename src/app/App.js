@@ -1,10 +1,10 @@
 import React from 'react';
 import isEmpty from 'lodash.isempty';
 import bukovelAPI from './data-access/bukovelAPI';
+import Header from './components/Header';
 import CardNumberInput from './components/CardNumberInput';
 import TestCardNumber from './components/TestCardNumber';
 import SkipassInfo from './components/SkipassInfo';
-import AppBar from 'material-ui/AppBar';
 import CircularProgress from 'material-ui/CircularProgress';
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -70,9 +70,7 @@ class App extends React.Component {
     return (
       <MuiThemeProvider muiTheme={this.muiTheme}>
         <div className='buka'>
-          <header className='buka__header'>
-            <AppBar title='Buka' />
-          </header>
+          <Header />
           <main className='buka__container'>
             <form className='buka-cardnumber__form' method='GET'>
               <CardNumberInput
