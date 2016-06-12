@@ -53,7 +53,7 @@ class CardNumberInput extends React.Component {
       this.setState({
         text: value,
         isValid: isValidValue(value, this.mask)
-      });
+      }, () => triggerOnchange(this.state, this.props));
     }
   }
 

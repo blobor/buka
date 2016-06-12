@@ -1,7 +1,15 @@
 import bukovelAPI from '../data-access/bukovelAPI';
 
+export const CHANGE_CARD_NUMBER = 'CHANGE_CARD_NUMBER';
 export const REQUEST_SKIPASS_DATA = 'REQUEST_SKIPASS_DATA';
 export const RECEIVE_SKIPASS_DATA = 'RECEIVE_SKIPASS_DATA';
+
+const changeCardNumber = (cardNumber) => {
+  return {
+    type: CHANGE_CARD_NUMBER,
+    cardNumber: cardNumber
+  };
+};
 
 const requestSkipassData = () => {
   return {
@@ -28,6 +36,7 @@ const fetchSkipassData = value => {
 };
 
 export {
+  changeCardNumber,
   requestSkipassData,
   receiveSkipassdata,
   fetchSkipassData

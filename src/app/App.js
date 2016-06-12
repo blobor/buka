@@ -1,6 +1,6 @@
 import React from 'react';
 import isEmpty from 'lodash.isempty';
-import { fetchSkipassData } from './actions/skipass';
+import { changeCardNumber } from './actions/skipass';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CardNumberInput from './containers/CardNumberInputContainer';
@@ -32,7 +32,7 @@ class App extends React.Component {
   }
 
   testCardNumberChange(event, value) {
-    this.store.dispatch(fetchSkipassData(value));
+    this.store.dispatch(changeCardNumber(value));
   }
 
   renderTable() {
