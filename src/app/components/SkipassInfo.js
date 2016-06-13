@@ -15,7 +15,7 @@ const SkipassInfo = (props) => (
         </tr>
         <tr>
           <td>Purchase Date</td>
-          <td>
+          <td className='mdl-data-table__cell--non-numeric'>
             {getAdoptedDateString(props.skipass.purchaseDate)}
           </td>
         </tr>
