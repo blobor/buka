@@ -6,7 +6,7 @@ const Header = ( { version } ) => {
 
   return (
     <header className='buka__header'>
-      <AppBar title={headerTitle} />
+      <AppBar title={headerTitle} className='buka__header-appbar' />
     </header>
   );
 };
