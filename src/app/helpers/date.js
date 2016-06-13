@@ -1,5 +1,9 @@
-import moment from 'moment';
+import moment from 'moment'
 
-export function getAdoptedDateString(date) {
-  return moment(date).format('L LTS');
+const getAdoptedDateString = date => {
+  return moment(date).format('L LTS')
+}
+
+export {
+  getAdoptedDateString
 }

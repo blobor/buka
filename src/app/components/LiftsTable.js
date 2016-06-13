@@ -1,7 +1,17 @@
-import React from 'react';
-import { getAdoptedDateString } from '../helpers/date';
+import React from 'react'
+import { getAdoptedDateString } from '../helpers/date'
 
-const LiftsTable = (props) => (
+const getLiftsRows = lifts => {
+  return lifts.map((liftInfo, index) => (
+    <tr key={index}>
+      <td>{++index}</td>
+      <td>{liftInfo.id}</td>
+      <td className='mdl-data-table__cell--non-numeric'>{getAdoptedDateString(liftInfo.date)}</td>
+    </tr>
+  ))
+}
+
+const LiftsTable = ({ lifts }) => (
   <table className='mdl-data-table lifts-table mdl-shadow--2dp'>
     <thead>
       <tr>
@@ -11,23 +21,9 @@ const LiftsTable = (props) => (
       </tr>
     </thead>
     <tbody>
-      {getLiftsRows(props.lifts)}
+      {getLiftsRows(lifts)}
     </tbody>
   </table>
-);
+)
 
-LiftsTable.propTypes = {
-  lifts: React.PropTypes.arrayOf(React.PropTypes.object)
-};
-
-function getLiftsRows(lifts) {
-  return lifts.map((liftInfo, index) => (
-    <tr key={index}>
-      <td>{++index}</td>
-      <td>{liftInfo.id}</td>
-      <td className='mdl-data-table__cell--non-numeric'>{getAdoptedDateString(liftInfo.date)}</td>
-    </tr>
-  ));
-}
-
-export default LiftsTable;
+export default LiftsTable

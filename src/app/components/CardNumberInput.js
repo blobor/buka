@@ -1,32 +1,32 @@
-import React from 'react';
-import times from 'lodash.times';
-import { getSelection, setSelection } from 'react/lib/ReactInputSelection';
-import InputMask from 'inputmask-core';
-import TextField from 'material-ui/TextField';
+import React, { Component } from 'react'
+import times from 'lodash.times'
+import { getSelection, setSelection } from 'react/lib/ReactInputSelection'
+import InputMask from 'inputmask-core'
+import TextField from 'material-ui/TextField'
 
-const ENTER_KEY = 'Enter';
-const BACKSPACE_KEY = 'Backspace';
-const KEYCODE_Y = 89;
-const KEYCODE_Z = 90;
-const PATTERN = '11-1111-11-11111';
+const ENTER_KEY = 'Enter'
+const BACKSPACE_KEY = 'Backspace'
+const KEYCODE_Y = 89
+const KEYCODE_Z = 90
+const PATTERN = '11-1111-11-11111'
 
-class CardNumberInput extends React.Component {
-  constructor() {
-    super();
+class CardNumberInput extends Component {
+  constructor () {
+    super()
 
     this.state = {
       isValid: false,
       text: ''
-    };
+    }
 
-    this.handlePaste = this.handlePaste.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleBeforeInput = this.handleBeforeInput.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handlePaste = this.handlePaste.bind(this)
+    this.handleKeyDown = this.handleKeyDown.bind(this)
+    this.handleBeforeInput = this.handleBeforeInput.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  componentWillMount() {
-    const selection = this.props.value ? this.props.value.length : 0;
+  componentWillMount () {
+    const selection = this.props.value ? this.props.value.length : 0
     let options = {
       pattern: PATTERN,
       placeholderChar: ' ',
@@ -35,133 +35,131 @@ class CardNumberInput extends React.Component {
         start: selection,
         end: selection
       }
-    };
-    this.mask = new InputMask(options);
+    }
+    this.mask = new InputMask(options)
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (this.props.value !== nextProps.value) {
-      const selection = nextProps.value ? nextProps.value.length : 0;
+      const selection = nextProps.value ? nextProps.value.length : 0
 
-      this.mask.setValue(nextProps.value);
+      this.mask.setValue(nextProps.value)
       this.mask.setSelection({
         start: selection,
         end: selection
-      });
+      })
 
-      const value = getDisplayMaskValue(this.mask);
+      const value = getDisplayMaskValue(this.mask)
       this.setState({
         text: value,
         isValid: isValidValue(value, this.mask)
-      }, () => triggerOnchange(this.state, this.props));
+      }, () => triggerOnchange(this.state, this.props))
     }
   }
 
-  handleChange(event) {
-    const maskValue = getDisplayMaskValue(this.mask);
-    const elementValue = event.target.value;
+  handleChange (event) {
+    const maskValue = getDisplayMaskValue(this.mask)
+    const elementValue = event.target.value
 
     if (elementValue !== maskValue) {
-      const sizeDiff = Math.abs(maskValue.length - elementValue.length);
+      const sizeDiff = Math.abs(maskValue.length - elementValue.length)
 
       // Cut, delete operations will have shortened the value
       // or if browser don't support 'KeyboardEvent.key' property
       if (elementValue.length < maskValue.length) {
-        this.mask.setSelection(getSelection(event.target));
-        this.mask.selection.end = this.mask.selection.start + sizeDiff;
-        this.mask.backspace();
-      }
-
+        this.mask.setSelection(getSelection(event.target))
+        this.mask.selection.end = this.mask.selection.start + sizeDiff
+        this.mask.backspace()
       // in case browser don't support 'beforeInput' event
-      else if (elementValue.length > maskValue.length) {
-        times(sizeDiff, (i) => {
-          this.mask.input(elementValue[elementValue.length - sizeDiff - i]);
-        });
+      } else if (elementValue.length > maskValue.length) {
+        times(sizeDiff, i => {
+          this.mask.input(elementValue[elementValue.length - sizeDiff - i])
+        })
       }
 
-      const value = getDisplayMaskValue(this.mask);
+      const value = getDisplayMaskValue(this.mask)
       this.setState({
         text: value,
         isValid: isValidValue(value, this.mask)
-      }, () => triggerOnchange(this.state, this.props));
+      }, () => triggerOnchange(this.state, this.props))
     }
   }
 
-  handlePaste(event) {
-    event.preventDefault();
+  handlePaste (event) {
+    event.preventDefault()
 
-    this.mask.setSelection(getSelection(event.target));
-    let pastedValue = getTextFromClipboardData(event);
+    this.mask.setSelection(getSelection(event.target))
+    let pastedValue = getTextFromClipboardData(event)
 
     if (this.mask.paste(pastedValue)) {
-      const value = getDisplayMaskValue(this.mask);
+      const value = getDisplayMaskValue(this.mask)
       this.setState({
         text: value,
         isValid: isValidValue(value, this.mask)
-      }, () => triggerOnchange(this.state, this.props));
+      }, () => triggerOnchange(this.state, this.props))
     }
   }
 
-  handleKeyDown(event) {
+  handleKeyDown (event) {
     if (isUndoEvent(event)) {
-      event.preventDefault();
+      event.preventDefault()
 
       if (this.mask.undo()) {
-        const value = getDisplayMaskValue(this.mask);
+        const value = getDisplayMaskValue(this.mask)
         this.setState({
           text: value,
           isValid: isValidValue(value, this.mask)
-        }, () => triggerOnchange(this.state, this.props));
+        }, () => triggerOnchange(this.state, this.props))
       }
-      return;
+      return
     } else if (isRedoEvent(event)) {
-      event.preventDefault();
+      event.preventDefault()
 
       if (this.mask.redo()) {
-        const value = getDisplayMaskValue(this.mask);
+        const value = getDisplayMaskValue(this.mask)
         this.setState({
           text: value,
           isValid: isValidValue(value, this.mask)
-        }, () => triggerOnchange(this.state, this.props));
+        }, () => triggerOnchange(this.state, this.props))
       }
-      return;
+      return
     }
 
     if (event.key === BACKSPACE_KEY) {
-      event.preventDefault();
+      event.preventDefault()
 
-      this.mask.setSelection(getSelection(event.target));
+      this.mask.setSelection(getSelection(event.target))
       if (this.mask.backspace()) {
-        const value = getDisplayMaskValue(this.mask);
+        const value = getDisplayMaskValue(this.mask)
         this.setState({
           text: value,
           isValid: isValidValue(value, this.mask)
-        }, () => triggerOnchange(this.state, this.props));
+        }, () => triggerOnchange(this.state, this.props))
       }
     }
   }
 
-  handleBeforeInput(event) {
+  handleBeforeInput (event) {
     if (event.metaKey || event.altKey || event.ctrlKey || event.key === ENTER_KEY) {
-      return;
+      return
     }
 
-    event.preventDefault();
+    event.preventDefault()
 
-    this.mask.setSelection(getSelection(event.target));
+    this.mask.setSelection(getSelection(event.target))
     if (this.mask.input(event.data)) {
-      const value = getDisplayMaskValue(this.mask);
+      const value = getDisplayMaskValue(this.mask)
       this.setState({
         text: value,
         isValid: isValidValue(value, this.mask)
       }, () => {
-        setSelection(this.refs.textField.input, this.mask.selection);
-        triggerOnchange(this.state, this.props);
-      });
+        setSelection(this.refs.textField.input, this.mask.selection)
+        triggerOnchange(this.state, this.props)
+      })
     }
   }
 
-  render() {
+  render () {
     return <TextField type='text'
       {...this.props}
       ref='textField'
@@ -173,59 +171,59 @@ class CardNumberInput extends React.Component {
       onPaste={this.handlePaste}
       onKeyDown={this.handleKeyDown}
       onBeforeInput={this.handleBeforeInput}
-      value={this.state.text} />;
+      value={this.state.text} />
   }
 }
 
 CardNumberInput.propTypes = {
   value: React.PropTypes.string,
   onChange: React.PropTypes.func
-};
+}
 
-function getDisplayMaskValue(mask) {
+function getDisplayMaskValue (mask) {
   if (!mask.value.includes(mask.pattern.placeholderChar)) {
-    return mask.getValue();
+    return mask.getValue()
   }
 
   return mask
     .getValue()
-    .slice(0, mask.selection.end);
+    .slice(0, mask.selection.end)
 }
 
-function isValidValue(value, mask) {
+function isValidValue (value, mask) {
   return value &&
     value !== mask.emptyValue &&
-    value.length === mask.pattern.length;
+    value.length === mask.pattern.length
 }
 
-function triggerOnchange(state, props) {
+function triggerOnchange (state, props) {
   if (props.onChange) {
     props.onChange({
       text: state.text,
       isValid: state.isValid
-    });
+    })
   }
 }
 
-function isUndoEvent(event) {
-  return (event.ctrlKey || event.metaKey) && event.keyCode === (event.shiftKey ? KEYCODE_Y : KEYCODE_Z);
+function isUndoEvent (event) {
+  return (event.ctrlKey || event.metaKey) && event.keyCode === (event.shiftKey ? KEYCODE_Y : KEYCODE_Z)
 }
 
-function isRedoEvent(event) {
-  return (event.ctrlKey || event.metaKey) && event.keyCode === (event.shiftKey ? KEYCODE_Z : KEYCODE_Y);
+function isRedoEvent (event) {
+  return (event.ctrlKey || event.metaKey) && event.keyCode === (event.shiftKey ? KEYCODE_Z : KEYCODE_Y)
 }
 
-function getTextFromClipboardData(event) {
-  let result;
+function getTextFromClipboardData (event) {
+  let result
 
   // IE
   if (window.clipboardData) {
-    result = window.clipboardData.getData('Text');
+    result = window.clipboardData.getData('Text')
   } else {
-    result = (event.originalEvent || event).clipboardData.getData('text/plain');
+    result = (event.originalEvent || event).clipboardData.getData('text/plain')
   }
 
-  return result;
+  return result
 }
 
-export default CardNumberInput;
+export default CardNumberInput

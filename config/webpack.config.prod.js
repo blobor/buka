@@ -1,16 +1,16 @@
-'use strict';
+'use strict'
 
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const autoprefixer = require('autoprefixer');
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const autoprefixer = require('autoprefixer')
 
-const commonConfig = require('./webpack.config.common');
+const commonConfig = require('./webpack.config.common')
 
 const sassLoaders = [
   'css',
   'postcss',
   'sass'
-];
+]
 
 let config = {
   output: {
@@ -44,7 +44,7 @@ let config = {
       autoprefixer({
         browsers: ['last 2 versions']
       })
-    ];
+    ]
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
@@ -64,6 +64,6 @@ let config = {
     }),
     new ExtractTextPlugin('bundle.css')
   ]
-};
+}
 
-module.exports = Object.assign({}, commonConfig, config);
+module.exports = Object.assign({}, commonConfig, config)

@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
-import skipass from './skipass';
+import { combineReducers } from 'redux'
+import skipass from './skipass'
 
 const rootReducer = combineReducers({
   skipass
-});
+})
 
-export default rootReducer;
+export default rootReducer

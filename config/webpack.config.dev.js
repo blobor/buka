@@ -1,16 +1,16 @@
-'use strict';
+'use strict'
 
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
+const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
 
-const commonConfig = require('./webpack.config.common');
+const commonConfig = require('./webpack.config.common')
 
 const sassLoaders = [
   'style',
   'css',
   'postcss',
   'sass'
-];
+]
 
 let config = {
   output: {
@@ -53,13 +53,13 @@ let config = {
       autoprefixer({
         browsers: ['last 2 versions']
       })
-    ];
+    ]
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin()
   ]
-};
+}
 
-module.exports = Object.assign({}, commonConfig, config);
+module.exports = Object.assign({}, commonConfig, config)

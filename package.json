@@ -9,7 +9,7 @@
     "prebuild": "rm -rf dist && rm -rf dist-server && mkdir dist && mkdir dist-server",
     "build": "gulp build && webpack -p --config ./config/webpack.config.prod.js --progress",
     "start": "node dist-server/server.js",
-    "test": "gulp lint",
+    "test": "standard --verbose | snazzy",
     "webpack": "webpack-dev-server --config ./config/webpack.config.dev.js --content-base src/ --progress",
     "heroku-postbuild": "npm run build",
     "precommit": "npm test"
@@ -27,13 +27,11 @@
     "babel-preset-react": "^6.5.0",
     "compression": "^1.6.2",
     "css-loader": "^0.23.1",
-    "eslint-plugin-react": "^5.0.1",
     "express": "^4.13.4",
     "express-sslify": "^1.0.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-babel": "^6.1.2",
-    "gulp-eslint": "^2.0.0",
     "gulp-htmlmin": "^2.0.0",
     "handlebars": "^4.0.5",
     "helmet": "^2.1.0",
@@ -63,6 +61,8 @@
   },
   "devDependencies": {
     "husky": "^0.11.4",
+    "snazzy": "^4.0.0",
+    "standard": "^7.1.2",
     "webpack-dev-server": "^1.14.1"
   }
 }

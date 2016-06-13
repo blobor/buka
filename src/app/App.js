@@ -1,20 +1,20 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 
-import { changeCardNumber } from './actions/skipass';
-import Header from './components/Header';
+import { changeCardNumber } from './actions/skipass'
+import Header from './components/Header'
 
-import Footer from './components/Footer';
-import CardNumberInput from './containers/CardNumberInputContainer';
-import TestCardNumber from './components/TestCardNumber';
-import Skipass from './components/Skipass';
+import Footer from './components/Footer'
+import CardNumberInput from './containers/CardNumberInputContainer'
+import TestCardNumber from './components/TestCardNumber'
+import Skipass from './components/Skipass'
 
-import { version } from '../../package.json';
+import { version } from '../../package.json'
 
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-const muiTheme = getMuiTheme();
+const muiTheme = getMuiTheme()
 
 const App = ({ skipass, testCardNumberChange }) => {
   return (
@@ -35,28 +35,23 @@ const App = ({ skipass, testCardNumberChange }) => {
         <Footer />
       </div>
     </MuiThemeProvider>
-  );
-};
-
-App.propTypes = {
-  skipass: PropTypes.object,
-  testCardNumberChange: PropTypes.func
-};
+  )
+}
 
 const mapStateToProps = state => {
   return {
     skipass: {
       ...state.skipass
     }
-  };
-};
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
     testCardNumberChange: (event, value) => {
-      dispatch(changeCardNumber(value));
+      dispatch(changeCardNumber(value))
     }
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App)

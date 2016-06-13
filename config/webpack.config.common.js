@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = {
   entry: {
@@ -11,4 +11,4 @@ module.exports = {
       'inputmask-core'
     ]
   }
-};
+}

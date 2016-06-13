@@ -1,11 +1,6 @@
-'use strict';
+'use strict'
 
 module.exports = {
-  allJS: [
-    '*.js',
-    'config/**/*.js',
-    'src/**/*.js'
-  ],
   index: './src/index.html',
   htmlMinOptions: {
     removeComments: true,
@@ -15,4 +10,4 @@ module.exports = {
     removeEmptyAttributes: true,
     minifyJS: true
   }
-};
+}
