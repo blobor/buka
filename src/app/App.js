@@ -1,71 +1,71 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import isEmpty from 'lodash.isempty';
+
 import { changeCardNumber } from './actions/skipass';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CardNumberInput from './containers/CardNumberInputContainer';
 import TestCardNumber from './components/TestCardNumber';
 import SkipassInfo from './components/SkipassInfo';
-import CircularProgress from 'material-ui/CircularProgress';
 
 import { version } from '../../package.json';
 
+import CircularProgress from 'material-ui/CircularProgress';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-class App extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+const muiTheme = getMuiTheme();
 
-    this.muiTheme = getMuiTheme();
-    this.store = context.store;
-
-    this.store.subscribe(() => {
-      this.setState(this.store.getState().skipass);
-    });
-
-    this.testCardNumberChange = this.testCardNumberChange.bind(this);
+const renderTable = (skipass) => {
+  if (skipass.isFetching) {
+    return <CircularProgress size={1.5} />;
+  } else if (!isEmpty(skipass.lifts)) {
+    return <SkipassInfo skipass={skipass} />;
   }
+};
 
-  componentWillMount() {
-    this.setState(this.store.getState().skipass);
-  }
+const App = ({ skipass, testCardNumberChange }) => {
+  return (
+    <MuiThemeProvider muiTheme={muiTheme}>
+      <div className='buka'>
+        <Header version={version} />
+        <main className='buka__container'>
+          <form className='buka-cardnumber__form' method='GET'>
+            <CardNumberInput
+              id='cardnumber'
+              name='cardNumber'
+              className='buka-cardnumber__input'
+              autoComplete='off' />
+            <TestCardNumber onChange={testCardNumberChange} />
+          </form>
+          {renderTable(skipass)}
+        </main>
+        <Footer />
+      </div>
+    </MuiThemeProvider>
+  );
+};
 
-  testCardNumberChange(event, value) {
-    this.store.dispatch(changeCardNumber(value));
-  }
+App.propTypes = {
+  skipass: React.PropTypes.object,
+  testCardNumberChange: React.PropTypes.func
+};
 
-  renderTable() {
-    if (this.state.isFetching) {
-      return <CircularProgress size={1.5} />;
-    } else if (!isEmpty(this.state.lifts)) {
-      return <SkipassInfo skipass={this.state} />;
+const mapStateToProps = state => {
+  return {
+    skipass: {
+      ...state.skipass
     }
-  }
+  };
+};
 
-  render() {
-    return (
-      <MuiThemeProvider muiTheme={this.muiTheme}>
-        <div className='buka'>
-          <Header version={version} />
-          <main className='buka__container'>
-            <form className='buka-cardnumber__form' method='GET'>
-              <CardNumberInput
-                id='cardnumber'
-                name='cardNumber'
-                className='buka-cardnumber__input'
-                autoComplete='off' />
-              <TestCardNumber onChange={this.testCardNumberChange} />
-            </form>
-            {this.renderTable()}
-          </main>
-          <Footer />
-        </div>
-      </MuiThemeProvider>
-    );
-  }
-}
+const mapDispatchToProps = dispatch => {
+  return {
+    testCardNumberChange: (event, value) => {
+      dispatch(changeCardNumber(value));
+    }
+  };
+};
 
-App.contextTypes = { store: React.PropTypes.object };
-
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

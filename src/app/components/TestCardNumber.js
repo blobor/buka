@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { faintBlack, cyan500 } from 'material-ui/styles/colors';
 import MenuItem from 'material-ui/MenuItem';
 import IconMenu from 'material-ui/IconMenu';
@@ -11,33 +11,23 @@ const TEST_CARD_NUMBERS = [
   '29-2167-26-31433'
 ];
 
-class TestCardNumber extends Component {
+const renredCardNumbers = () => {
+  return TEST_CARD_NUMBERS
+    .map((number, index) => <MenuItem key={index} value={number} primaryText={number} />);
+};
 
-  constructor() {
-    super();
-
-    this.state = {
-      cardNumber: ''
-    };
-  }
-
-  renredCardNumbers() {
-    return TEST_CARD_NUMBERS.map((number, index) => <MenuItem key={index} value={number} primaryText={number} />);
-  }
-
-  render() {
-    return (
-        <IconMenu
-          className='buka-cardnumber__help'
-          onChange={this.props.onChange}
-          iconButtonElement={<IconButton><ActionHelpOutline color={faintBlack} hoverColor={cyan500} /></IconButton>}
-          anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-          targetOrigin={{horizontal: 'left', vertical: 'top'}}>
-          {this.renredCardNumbers()}
-        </IconMenu>
-    );
-  }
-}
+const TestCardNumber = ({ onChange }) => {
+  return (
+    <IconMenu
+      className='buka-cardnumber__help'
+      onChange={onChange}
+      iconButtonElement={<IconButton><ActionHelpOutline color={faintBlack} hoverColor={cyan500} /></IconButton>}
+      anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+      targetOrigin={{horizontal: 'left', vertical: 'top'}}>
+        {renredCardNumbers()}
+      </IconMenu>
+  );
+};
 
 TestCardNumber.propTypes = {
   onChange: React.PropTypes.func
