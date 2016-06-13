@@ -1,29 +1,20 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import isEmpty from 'lodash.isempty';
 
 import { changeCardNumber } from './actions/skipass';
 import Header from './components/Header';
+
 import Footer from './components/Footer';
 import CardNumberInput from './containers/CardNumberInputContainer';
 import TestCardNumber from './components/TestCardNumber';
-import SkipassInfo from './components/SkipassInfo';
+import Skipass from './components/Skipass';
 
 import { version } from '../../package.json';
 
-import CircularProgress from 'material-ui/CircularProgress';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const muiTheme = getMuiTheme();
-
-const renderTable = (skipass) => {
-  if (skipass.isFetching) {
-    return <CircularProgress size={1.5} />;
-  } else if (!isEmpty(skipass.lifts)) {
-    return <SkipassInfo skipass={skipass} />;
-  }
-};
 
 const App = ({ skipass, testCardNumberChange }) => {
   return (
@@ -39,7 +30,7 @@ const App = ({ skipass, testCardNumberChange }) => {
               autoComplete='off' />
             <TestCardNumber onChange={testCardNumberChange} />
           </form>
-          {renderTable(skipass)}
+          <Skipass skipass={skipass} />
         </main>
         <Footer />
       </div>
@@ -48,8 +39,8 @@ const App = ({ skipass, testCardNumberChange }) => {
 };
 
 App.propTypes = {
-  skipass: React.PropTypes.object,
-  testCardNumberChange: React.PropTypes.func
+  skipass: PropTypes.object,
+  testCardNumberChange: PropTypes.func
 };
 
 const mapStateToProps = state => {
