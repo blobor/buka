@@ -26,9 +26,9 @@ if (process.env.NODE_ENV === 'production') {
     // app is behind Heroku load balancer
     trustProtoHeader: true
   }))
+  app.use(helmet())
+  app.use(compression())
 }
-app.use(helmet())
-app.use(compression())
 
 // cache compiled index page
 let indexTemplate = null
