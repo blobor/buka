@@ -33,13 +33,6 @@ if (process.env.NODE_ENV === 'production') {
 // cache compiled index page
 let indexTemplate = null
 
-//
-// Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the
-// user agent is not known.
-// -----------------------------------------------------------------------------
-global.navigator = global.navigator || {}
-global.navigator.userAgent = global.navigator.userAgent || 'all'
-
 const ROOT = '../'
 
 const port = process.env.PORT || 3333
@@ -48,14 +41,13 @@ const staticFolder = path.resolve(__dirname, ROOT, 'dist')
 app.get('/', (req, res) => {
   getIndexTemplate()
     .then(template => {
-      global.navigator.userAgent = req.headers['user-agent']
       const store = configureStore({
         skipass: req.query
       })
       const data = {
         content: renderToString(
           <Provider store={store}>
-            <App />
+            <App userAgent={req.headers['user-agent']} />
           </Provider>
         )
       }

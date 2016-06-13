@@ -14,9 +14,11 @@ import { version } from '../../package.json'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-const muiTheme = getMuiTheme()
+const App = ({ skipass, userAgent, testCardNumberChange }) => {
+  const muiTheme = getMuiTheme({
+    userAgent: userAgent
+  })
 
-const App = ({ skipass, testCardNumberChange }) => {
   return (
     <MuiThemeProvider muiTheme={muiTheme}>
       <div className='buka'>
