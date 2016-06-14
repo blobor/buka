@@ -24,7 +24,7 @@ const receiveSkipassdata = (skipass) => {
 const fetchSkipassData = value => {
   return async dispatch => {
     dispatch(requestSkipassData())
-    const skipass = await bukovelAPI.getCardBalance(value)
+    const skipass = await bukovelAPI.getSkipass(value)
     dispatch(receiveSkipassdata(skipass))
   }
 }
