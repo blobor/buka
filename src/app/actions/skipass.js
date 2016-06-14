@@ -1,7 +1,7 @@
 import bukovelAPI from '../data-access/bukovelAPI'
 import * as actionTypes from './actionTypes'
 
-const changeCardNumber = (cardNumber) => {
+const changeCardNumber = cardNumber => {
   return {
     type: actionTypes.CHANGE_CARD_NUMBER,
     cardNumber: cardNumber
@@ -22,13 +22,10 @@ const receiveSkipassdata = (skipass) => {
 }
 
 const fetchSkipassData = value => {
-  return dispatch => {
+  return async dispatch => {
     dispatch(requestSkipassData())
-    bukovelAPI
-      .getCardBalance(value)
-      .then(data => {
-        dispatch(receiveSkipassdata(data))
-      })
+    const skipass = await bukovelAPI.getCardBalance(value)
+    dispatch(receiveSkipassdata(skipass))
   }
 }
 
