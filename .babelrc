@@ -1,9 +1,10 @@
 {
   "presets": [
     "react",
-    "babel-preset-es2015"
+    "es2015"
   ],
    "plugins": [
-     "transform-object-rest-spread"
+     "transform-object-rest-spread",
+     "babel-plugin-transform-async-to-generator"
    ]
 }

@@ -14,7 +14,17 @@ gulp.task('build:html', () => {
 gulp.task('build:server', () => {
   return gulp
     .src('src/**/*.js')
-    .pipe(babel())
+    .pipe(babel({
+      babelrc: false,
+      presets: [
+        'react',
+        'es2015-node'
+      ],
+      plugins: [
+        'transform-object-rest-spread',
+        'babel-plugin-transform-async-to-generator'
+      ]
+    }))
     .pipe(gulp.dest('dist-server'))
 })
 

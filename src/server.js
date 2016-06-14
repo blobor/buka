@@ -38,21 +38,20 @@ const ROOT = '../'
 const port = process.env.PORT || 3333
 const staticFolder = path.resolve(__dirname, ROOT, 'dist')
 
-app.get('/', (req, res) => {
-  getIndexTemplate()
-    .then(template => {
-      const store = configureStore({
-        skipass: req.query
-      })
-      const data = {
-        content: renderToString(
-          <Provider store={store}>
-            <App userAgent={req.headers['user-agent']} />
-          </Provider>
-        )
-      }
-      res.send(template(data))
-    })
+app.get('/', async (req, res) => {
+  const template = await getIndexTemplate()
+  const store = configureStore({
+    skipass: req.query
+  })
+  const data = {
+    content: renderToString(
+      <Provider store={store}>
+        <App userAgent={req.headers['user-agent']} />
+      </Provider>
+    )
+  }
+
+  res.send(template(data))
 })
 app.use(express.static(staticFolder))
 
@@ -63,15 +62,10 @@ app.listen(port, () => {
   console.log(`staticFolder = ${staticFolder}`)
 })
 
-function getIndexTemplate () {
+async function getIndexTemplate () {
   if (isNil(indexTemplate)) {
-    return fsPromisify
-      .readFile(path.resolve(staticFolder, 'index.html'), 'utf8')
-      .then(data => {
-        indexTemplate = handlebars.compile(data)
-        return indexTemplate
-      })
-  } else {
-    return Promise.resolve(indexTemplate)
+    const index = await fsPromisify.readFile(path.resolve(staticFolder, 'index.html'), 'utf8')
+    indexTemplate = handlebars.compile(index)
   }
+  return indexTemplate
 }
