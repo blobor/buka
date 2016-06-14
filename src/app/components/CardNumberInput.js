@@ -40,7 +40,7 @@ class CardNumberInput extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    if (this.props.value !== nextProps.value) {
+    if (this.state.text !== nextProps.value) {
       const selection = nextProps.value ? nextProps.value.length : 0
 
       this.mask.setValue(nextProps.value)
