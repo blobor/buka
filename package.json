@@ -15,7 +15,7 @@
     "precommit": "npm test"
   },
   "engines": {
-    "node": "5.10"
+    "node": ">=6.0"
   },
   "dependencies": {
     "autoprefixer": "^6.3.6",
