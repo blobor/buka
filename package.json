@@ -9,8 +9,8 @@
     "prebuild": "rm -rf dist && rm -rf dist-server && mkdir dist && mkdir dist-server",
     "build": "gulp build && webpack -p --config ./config/webpack.config.prod.js --progress",
     "start": "node dist-server/server.js",
+    "start:dev": "nodemon src/server.js --exec babel-node",
     "test": "standard --verbose | snazzy",
-    "webpack": "webpack-dev-server --config ./config/webpack.config.dev.js --content-base src/ --progress",
     "heroku-postbuild": "npm run build",
     "precommit": "npm test"
   },
@@ -62,11 +62,13 @@
     "webpack": "^1.12.14"
   },
   "devDependencies": {
+    "babel-cli": "^6.10.1",
     "babel-eslint": "^6.0.4",
     "husky": "^0.11.4",
+    "nodemon": "^1.9.2",
     "snazzy": "^4.0.0",
     "standard": "^7.1.2",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-middleware": "^1.6.1"
   },
   "standard": {
     "parser": "babel-eslint"
