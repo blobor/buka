@@ -11,7 +11,7 @@ import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
 import App from './App'
 
-const store = configureStore()
+const store = configureStore(window.__PRELOADED_STATE__)
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release

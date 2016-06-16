@@ -59,18 +59,24 @@ const staticFolder = path.resolve(__dirname, ROOT, statisFolderName)
 
 app.get('/', async (req, res) => {
   const template = await getIndexTemplate()
-  const store = configureStore({
+
+  const preloadedState = {
     skipass: req.query
-  })
-  const data = {
-    content: renderToString(
-      <Provider store={store}>
-        <App userAgent={req.headers['user-agent']} />
-      </Provider>
-    )
+  }
+  const store = configureStore(preloadedState)
+  const html = renderToString(
+    <Provider store={store}>
+      <App userAgent={req.headers['user-agent']} />
+    </Provider>
+  )
+  const finalState = store.getState()
+
+  const templateData = {
+    content: html,
+    preloadedState: JSON.stringify(finalState)
   }
 
-  res.send(template(data))
+  res.send(template(templateData))
 })
 app.use(express.static(staticFolder))
 

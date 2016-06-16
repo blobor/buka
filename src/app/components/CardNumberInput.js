@@ -37,6 +37,12 @@ class CardNumberInput extends Component {
       }
     }
     this.mask = new InputMask(options)
+
+    const value = getDisplayMaskValue(this.mask)
+    this.setState({
+      text: value,
+      isValid: isValidValue(value, this.mask)
+    }, () => triggerOnchange(this.state, this.props))
   }
 
   componentWillReceiveProps (nextProps) {
