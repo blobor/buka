@@ -29,7 +29,7 @@ const isDeveloping = process.env.NODE_ENV !== 'production'
 // cache compiled index page
 let indexTemplate = null
 
-let statisFolderName = isDeveloping ? 'src' : 'dist'
+const statisFolderName = isDeveloping ? 'src' : 'dist'
 
 // configure middlewares
 if (isDeveloping) {
