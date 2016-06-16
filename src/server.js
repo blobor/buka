@@ -6,6 +6,7 @@ import express from 'express'
 import helmet from 'helmet'
 import compression from 'compression'
 import enforce from 'express-sslify'
+import has from 'lodash.has'
 import isNil from 'lodash.isnil'
 import handlebars from 'handlebars'
 
@@ -19,6 +20,7 @@ import { renderToString } from 'react-dom/server'
 
 import App from './app/App.js'
 import configureStore from './app/store/configureStore'
+import bukovelAPI from './app/data-access/bukovelAPI'
 
 const fsPromisify = pify(fs)
 
@@ -58,10 +60,16 @@ const ROOT = '../'
 const staticFolder = path.resolve(__dirname, ROOT, statisFolderName)
 
 app.get('/', async (req, res) => {
-  const template = await getIndexTemplate()
+  const tasks = [
+    getIndexTemplate()
+  ]
+  if (has(req.query, 'cardNumber')) {
+    tasks.push(bukovelAPI.getSkipass(req.query.cardNumber))
+  }
+  const [template, skipass] = await Promise.all(tasks)
 
   const preloadedState = {
-    skipass: req.query
+    skipass: skipass
   }
   const store = configureStore(preloadedState)
   const html = renderToString(
