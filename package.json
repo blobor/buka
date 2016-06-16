@@ -59,7 +59,8 @@
     "redux-thunk": "^2.1.0",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.14",
+    "webpack-dev-middleware": "^1.6.1"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
@@ -67,8 +68,7 @@
     "husky": "^0.11.4",
     "nodemon": "^1.9.2",
     "snazzy": "^4.0.0",
-    "standard": "^7.1.2",
-    "webpack-dev-middleware": "^1.6.1"
+    "standard": "^7.1.2"
   },
   "standard": {
     "parser": "babel-eslint"
