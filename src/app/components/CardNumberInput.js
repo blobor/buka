@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import times from 'lodash.times'
+import isNil from 'lodash.isnil'
 import { getSelection, setSelection } from 'react/lib/ReactInputSelection'
 import InputMask from 'inputmask-core'
 import TextField from 'material-ui/TextField'
@@ -8,7 +9,8 @@ const ENTER_KEY = 'Enter'
 const BACKSPACE_KEY = 'Backspace'
 const KEYCODE_Y = 89
 const KEYCODE_Z = 90
-const PATTERN = '11-1111-11-11111'
+const PATTERN = '11-1111-11-11111##'
+const OPTIONAL_CHAR = '#'
 
 class CardNumberInput extends Component {
   constructor () {
@@ -19,6 +21,9 @@ class CardNumberInput extends Component {
       text: ''
     }
 
+    this.mask = null
+    this.minLength = 0
+    this.maxLength = Number.MAX_SAFE_INTEGER
     this.handlePaste = this.handlePaste.bind(this)
     this.handleKeyDown = this.handleKeyDown.bind(this)
     this.handleBeforeInput = this.handleBeforeInput.bind(this)
@@ -34,14 +39,21 @@ class CardNumberInput extends Component {
       selection: {
         start: selection,
         end: selection
+      },
+      formatCharacters: {
+        OPTIONAL_CHAR: {
+          validate: char => isNil(char) || /[\s\d]/.test(char)
+        }
       }
     }
     this.mask = new InputMask(options)
+    this.minLength = this.mask.pattern.pattern.filter(char => char !== OPTIONAL_CHAR).length
+    this.maxLength = this.mask.pattern.pattern.length
 
     const value = getDisplayMaskValue(this.mask)
     this.setState({
       text: value,
-      isValid: isValidValue(value, this.mask)
+      isValid: this.isValidValue(value)
     })
   }
 
@@ -58,9 +70,15 @@ class CardNumberInput extends Component {
       const value = getDisplayMaskValue(this.mask)
       this.setState({
         text: value,
-        isValid: isValidValue(value, this.mask)
+        isValid: this.isValidValue(value)
       }, () => triggerOnchange(this.state, this.props))
     }
+  }
+
+  isValidValue (value) {
+    return !isNil(value) &&
+      value !== this.mask.emptyValue &&
+      (this.minLength <= value.length && this.maxLength >= value.length)
   }
 
   handleChange (event) {
@@ -86,7 +104,7 @@ class CardNumberInput extends Component {
       const value = getDisplayMaskValue(this.mask)
       this.setState({
         text: value,
-        isValid: isValidValue(value, this.mask)
+        isValid: this.isValidValue(value)
       }, () => triggerOnchange(this.state, this.props))
     }
   }
@@ -101,7 +119,7 @@ class CardNumberInput extends Component {
       const value = getDisplayMaskValue(this.mask)
       this.setState({
         text: value,
-        isValid: isValidValue(value, this.mask)
+        isValid: this.isValidValue(value)
       }, () => triggerOnchange(this.state, this.props))
     }
   }
@@ -114,7 +132,7 @@ class CardNumberInput extends Component {
         const value = getDisplayMaskValue(this.mask)
         this.setState({
           text: value,
-          isValid: isValidValue(value, this.mask)
+          isValid: this.isValidValue(value)
         }, () => triggerOnchange(this.state, this.props))
       }
       return
@@ -125,7 +143,7 @@ class CardNumberInput extends Component {
         const value = getDisplayMaskValue(this.mask)
         this.setState({
           text: value,
-          isValid: isValidValue(value, this.mask)
+          isValid: this.isValidValue(value)
         }, () => triggerOnchange(this.state, this.props))
       }
       return
@@ -139,7 +157,7 @@ class CardNumberInput extends Component {
         const value = getDisplayMaskValue(this.mask)
         this.setState({
           text: value,
-          isValid: isValidValue(value, this.mask)
+          isValid: this.isValidValue(value)
         }, () => triggerOnchange(this.state, this.props))
       }
     }
@@ -157,7 +175,7 @@ class CardNumberInput extends Component {
       const value = getDisplayMaskValue(this.mask)
       this.setState({
         text: value,
-        isValid: isValidValue(value, this.mask)
+        isValid: this.isValidValue(value)
       }, () => {
         setSelection(this.refs.textField.input, this.mask.selection)
         triggerOnchange(this.state, this.props)
@@ -170,7 +188,7 @@ class CardNumberInput extends Component {
       {...this.props}
       ref='textField'
       floatingLabelText='Card Number'
-      hintText={PATTERN.replace(/1/g, 'X')}
+      hintText={PATTERN.replace(/[1#]/g, 'X')}
       size={this.mask.pattern.length}
       maxLength={this.mask.pattern.length}
       onChange={this.handleChange}
@@ -194,12 +212,6 @@ function getDisplayMaskValue (mask) {
   return mask
     .getValue()
     .slice(0, mask.selection.end)
-}
-
-function isValidValue (value, mask) {
-  return value &&
-    value !== mask.emptyValue &&
-    value.length === mask.pattern.length
 }
 
 function triggerOnchange (state, props) {
