@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import times from 'lodash.times'
 import isNil from 'lodash.isnil'
+import isEmpty from 'lodash.isempty'
 import { getSelection, setSelection } from 'react/lib/ReactInputSelection'
 import InputMask from 'inputmask-core'
 import TextField from 'material-ui/TextField'
@@ -79,6 +80,10 @@ class CardNumberInput extends Component {
     return !isNil(value) &&
       value !== this.mask.emptyValue &&
       (this.minLength <= value.length && this.maxLength >= value.length)
+  }
+
+  getErrorText () {
+    return this.state.isValid || isEmpty(this.state.text) ? null : ' '
   }
 
   handleChange (event) {
@@ -195,6 +200,7 @@ class CardNumberInput extends Component {
       onPaste={this.handlePaste}
       onKeyDown={this.handleKeyDown}
       onBeforeInput={this.handleBeforeInput}
+      errorText={this.getErrorText()}
       value={this.state.text} />
   }
 }
