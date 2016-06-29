@@ -1,4 +1,5 @@
 import React from 'react'
+import { fullWhite } from 'material-ui/styles/colors'
 import MenuItem from 'material-ui/MenuItem'
 import IconMenu from 'material-ui/IconMenu'
 import IconButton from 'material-ui/IconButton/IconButton'
@@ -21,7 +22,7 @@ const TestCardNumber = ({ onChange }) => {
       onChange={onChange}
       iconButtonElement={
         <IconButton>
-          <MoreVertIcon />
+          <MoreVertIcon color={fullWhite} />
         </IconButton>
       }
       anchorOrigin={{horizontal: 'right', vertical: 'top'}}
