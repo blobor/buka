@@ -1,9 +1,8 @@
 import React from 'react'
-import { faintBlack, cyan500 } from 'material-ui/styles/colors'
 import MenuItem from 'material-ui/MenuItem'
 import IconMenu from 'material-ui/IconMenu'
 import IconButton from 'material-ui/IconButton/IconButton'
-import ActionHelpOutline from 'material-ui/svg-icons/action/help-outline'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 
 const TEST_CARD_NUMBERS = [
   '01-2167-30-92545',
@@ -19,11 +18,14 @@ const renredCardNumbers = () => {
 const TestCardNumber = ({ onChange }) => {
   return (
     <IconMenu
-      className='buka-cardnumber__help'
       onChange={onChange}
-      iconButtonElement={<IconButton><ActionHelpOutline color={faintBlack} hoverColor={cyan500} /></IconButton>}
-      anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-      targetOrigin={{horizontal: 'left', vertical: 'top'}}>
+      iconButtonElement={
+        <IconButton>
+          <MoreVertIcon />
+        </IconButton>
+      }
+      anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+      targetOrigin={{horizontal: 'right', vertical: 'top'}}>
         {renredCardNumbers()}
     </IconMenu>
   )

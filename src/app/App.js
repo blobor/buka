@@ -1,43 +1,49 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { changeCardNumber } from './actions/skipass'
-import Header from './components/Header'
-
+import Header from './containers/HeaderContainer'
 import Footer from './components/Footer'
 import CardNumberInput from './containers/CardNumberInputContainer'
-import TestCardNumber from './components/TestCardNumber'
 import Skipass from './components/Skipass'
-
-import { version } from '../../package.json'
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-const App = ({ skipass, userAgent, testCardNumberChange }) => {
-  const muiTheme = getMuiTheme({
-    userAgent: userAgent
-  })
+class App extends Component {
 
-  return (
-    <MuiThemeProvider muiTheme={muiTheme}>
-      <div className='buka'>
-        <Header version={version} />
-        <main className='buka__container'>
-          <form className='buka-cardnumber__form' method='GET'>
-            <CardNumberInput
-              id='cardnumber'
-              name='cardNumber'
-              className='buka-cardnumber__input'
-              autoComplete='off' />
-            <TestCardNumber onChange={testCardNumberChange} />
-          </form>
-          <Skipass skipass={skipass} />
-        </main>
-        <Footer />
-      </div>
-    </MuiThemeProvider>
-  )
+  constructor () {
+    super()
+
+    this.muiTheme = null
+  }
+
+  componentWillMount () {
+    this.muiTheme = getMuiTheme({
+      userAgent: this.props.userAgent
+    })
+  }
+
+  render () {
+    return (
+      <MuiThemeProvider muiTheme={this.muiTheme}>
+        <div className='buka'>
+          <Header />
+          <main className='buka__container'>
+            <form className='buka-cardnumber__form' method='GET'>
+              <CardNumberInput
+                required
+                id='cardnumber'
+                name='cardNumber'
+                className='buka-cardnumber__input'
+                autoComplete='off' />
+            </form>
+            <Skipass skipass={this.props.skipass} />
+          </main>
+          <Footer />
+        </div>
+      </MuiThemeProvider>
+    )
+  }
 }
 
 const mapStateToProps = state => {
@@ -48,12 +54,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    testCardNumberChange: (event, value) => {
-      dispatch(changeCardNumber(value))
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps)(App)
