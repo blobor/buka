@@ -1,4 +1,3 @@
-import 'normalize.css'
 import 'material-design-lite/material.css'
 import '../styles/app.scss'
 
