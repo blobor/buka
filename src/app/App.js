@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import Header from './containers/HeaderContainer'
 import Footer from './components/Footer'
-import CardNumberInput from './containers/CardNumberInputContainer'
+import CardNumberForm from './containers/CardNumberForm'
 import Skipass from './components/Skipass'
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
@@ -24,20 +24,15 @@ class App extends Component {
   }
 
   render () {
+    const { skipass } = this.props
+
     return (
       <MuiThemeProvider muiTheme={this.muiTheme}>
         <div className='buka'>
           <Header />
           <main className='buka__container'>
-            <form className='buka-cardnumber__form' method='GET'>
-              <CardNumberInput
-                required
-                id='cardnumber'
-                name='cardNumber'
-                className='buka-cardnumber__input'
-                autoComplete='off' />
-            </form>
-            <Skipass skipass={this.props.skipass} />
+            <CardNumberForm />
+            <Skipass skipass={skipass} />
           </main>
           <Footer />
         </div>
