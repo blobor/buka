@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     testCardNumberChange: (event, value) => {
-      dispatch(changeCardNumber(value, true))
+      dispatch(changeCardNumber(value))
     }
   }
 }
