@@ -40,7 +40,7 @@ class CardNumberInput extends Component {
         end: selection
       },
       formatCharacters: {
-        OPTIONAL_CHAR: {
+        [OPTIONAL_CHAR]: {
           validate: char => isNil(char) || /[\s\d]/.test(char)
         }
       }
