@@ -39,7 +39,6 @@ const SkipassInfo = ({ skipass }) => (
         </tr>
       </tbody>
     </table>
-    <br />
     <LiftsTable lifts={skipass.lifts} />
   </section>
 )
