@@ -6,17 +6,24 @@ html, body {
 
 .buka {
     display: flex;
-}
-
-.buka__container {
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
-    margin: 0 auto;
-    width: 100vw;
-    padding: $header-height 1em 0;
-    max-width: 980px;
+
+  &__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 0 1em;
+      margin: $header-height auto 5pt;
+      width: 100%;
+      min-height: calc(100vh - 5pt - #{$header-height} - #{$footer-height});
+      max-width: 980px;
+  }
+
+  &__footer {
+    height: $footer-height;
+    background-color: #424242;
+  }
 }
 
 .buka-cardnumber__form {
