@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer></footer>
+    <footer className='buka__footer' ></footer>
   )
 }
 

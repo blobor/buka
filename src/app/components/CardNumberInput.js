@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import times from 'lodash.times'
 import isNil from 'lodash.isnil'
-import isEmpty from 'lodash.isempty'
 import { getSelection, setSelection } from 'react/lib/ReactInputSelection'
 import InputMask from 'inputmask-core'
 import TextField from 'material-ui/TextField'
@@ -18,7 +17,6 @@ class CardNumberInput extends Component {
     super()
 
     this.state = {
-      isValid: false,
       text: ''
     }
 
@@ -33,7 +31,7 @@ class CardNumberInput extends Component {
 
   componentWillMount () {
     const selection = this.props.value ? this.props.value.length : 0
-    let options = {
+    const options = {
       pattern: PATTERN,
       placeholderChar: ' ',
       value: this.props.value,
@@ -42,7 +40,7 @@ class CardNumberInput extends Component {
         end: selection
       },
       formatCharacters: {
-        OPTIONAL_CHAR: {
+        [OPTIONAL_CHAR]: {
           validate: char => isNil(char) || /[\s\d]/.test(char)
         }
       }
@@ -53,8 +51,7 @@ class CardNumberInput extends Component {
 
     const value = getDisplayMaskValue(this.mask)
     this.setState({
-      text: value,
-      isValid: this.isValidValue(value)
+      text: value
     })
   }
 
@@ -70,20 +67,13 @@ class CardNumberInput extends Component {
 
       const value = getDisplayMaskValue(this.mask)
       this.setState({
-        text: value,
-        isValid: this.isValidValue(value)
-      }, () => triggerOnchange(this.state, this.props))
+        text: value
+      })
     }
   }
 
-  isValidValue (value) {
-    return !isNil(value) &&
-      value !== this.mask.emptyValue &&
-      (this.minLength <= value.length && this.maxLength >= value.length)
-  }
-
   getErrorText () {
-    return this.state.isValid || isEmpty(this.state.text) ? null : ' '
+    return this.props.isValid ? null : ' '
   }
 
   handleChange (event) {
@@ -108,8 +98,7 @@ class CardNumberInput extends Component {
 
       const value = getDisplayMaskValue(this.mask)
       this.setState({
-        text: value,
-        isValid: this.isValidValue(value)
+        text: value
       }, () => triggerOnchange(this.state, this.props))
     }
   }
@@ -123,8 +112,7 @@ class CardNumberInput extends Component {
     if (this.mask.paste(pastedValue)) {
       const value = getDisplayMaskValue(this.mask)
       this.setState({
-        text: value,
-        isValid: this.isValidValue(value)
+        text: value
       }, () => triggerOnchange(this.state, this.props))
     }
   }
@@ -136,8 +124,7 @@ class CardNumberInput extends Component {
       if (this.mask.undo()) {
         const value = getDisplayMaskValue(this.mask)
         this.setState({
-          text: value,
-          isValid: this.isValidValue(value)
+          text: value
         }, () => triggerOnchange(this.state, this.props))
       }
       return
@@ -147,8 +134,7 @@ class CardNumberInput extends Component {
       if (this.mask.redo()) {
         const value = getDisplayMaskValue(this.mask)
         this.setState({
-          text: value,
-          isValid: this.isValidValue(value)
+          text: value
         }, () => triggerOnchange(this.state, this.props))
       }
       return
@@ -161,8 +147,7 @@ class CardNumberInput extends Component {
       if (this.mask.backspace()) {
         const value = getDisplayMaskValue(this.mask)
         this.setState({
-          text: value,
-          isValid: this.isValidValue(value)
+          text: value
         }, () => triggerOnchange(this.state, this.props))
       }
     }
@@ -179,8 +164,7 @@ class CardNumberInput extends Component {
     if (this.mask.input(event.data)) {
       const value = getDisplayMaskValue(this.mask)
       this.setState({
-        text: value,
-        isValid: this.isValidValue(value)
+        text: value
       }, () => {
         setSelection(this.refs.textField.input, this.mask.selection)
         triggerOnchange(this.state, this.props)
@@ -223,8 +207,7 @@ function getDisplayMaskValue (mask) {
 function triggerOnchange (state, props) {
   if (props.onChange) {
     props.onChange({
-      text: state.text,
-      isValid: state.isValid
+      text: state.text
     })
   }
 }

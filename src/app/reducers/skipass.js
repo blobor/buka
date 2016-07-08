@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes'
+import { validate } from '../helpers/cardNumberValidator'
 
 const initialState = {
   cardNumber: '',
@@ -11,7 +12,8 @@ export default function (state = initialState, action) {
     case actionTypes.CHANGE_CARD_NUMBER:
       return {
         ...state,
-        cardNumber: action.cardNumber
+        cardNumber: action.cardNumber,
+        isValid: validate(action.cardNumber)
       }
     case actionTypes.REQUEST_SKIPASS_DATA:
       return {
