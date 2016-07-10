@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import times from 'lodash.times'
 import isNil from 'lodash.isnil'
+import omit from 'lodash.omit'
 import { getSelection, setSelection } from 'react/lib/ReactInputSelection'
 import InputMask from 'inputmask-core'
 import TextField from 'material-ui/TextField'
@@ -173,8 +174,10 @@ class CardNumberInput extends Component {
   }
 
   render () {
+    const fieldProps = omit(this.props, 'isValid')
+
     return <TextField type='text'
-      {...this.props}
+      {...fieldProps}
       ref='textField'
       floatingLabelText='Card Number'
       hintText={PATTERN.replace(/[1#]/g, 'X')}
