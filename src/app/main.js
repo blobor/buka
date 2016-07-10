@@ -1,7 +1,6 @@
 import 'material-design-lite/material.css'
 import '../styles/app.scss'
 
-import 'babel-polyfill'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import React from 'react'
