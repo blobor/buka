@@ -3,7 +3,7 @@ import 'babel-polyfill'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import Header from './containers/HeaderContainer'
+import Header from './containers/Header'
 import Footer from './components/Footer'
 import CardNumberForm from './containers/CardNumberForm'
 import Skipass from './components/Skipass'
