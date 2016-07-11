@@ -1,13 +1,11 @@
 import { connect } from 'react-redux'
 
-import { version } from '../../../package.json'
-
 import { changeCardNumber } from '../actions/skipass'
 import Header from '../components/Header'
 
 const mapStateToProps = state => {
   return {
-    version: version
+    appName: state.app.name
   }
 }
 
