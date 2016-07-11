@@ -1,6 +1,10 @@
 const gulp = require('gulp')
 const babel = require('gulp-babel')
 const htmlmin = require('gulp-htmlmin')
+const rollup = require('gulp-rollup')
+const babelRollup = require('rollup-plugin-babel')
+const json = require('rollup-plugin-json')
+const commonjs = require('rollup-plugin-commonjs')
 
 const config = require('./config/gulp.config')
 
@@ -12,18 +16,37 @@ gulp.task('build:html', () => {
 })
 
 gulp.task('build:server', () => {
+  const babelPlugins = [
+    'transform-object-rest-spread',
+    'babel-plugin-transform-async-to-generator'
+  ]
+
   return gulp
     .src('src/**/*.js')
+    .pipe(rollup({
+      allowRealFiles: true,
+      entry: 'src/server.js',
+      plugins: [
+        json(),
+        commonjs(),
+        babelRollup({
+          babelrc: false,
+          presets: [
+            'react'
+          ],
+          plugins: [
+            'external-helpers',
+            ...babelPlugins
+          ]
+        })
+      ]
+    }))
     .pipe(babel({
       babelrc: false,
       presets: [
-        'react',
         'es2015-node'
       ],
-      plugins: [
-        'transform-object-rest-spread',
-        'babel-plugin-transform-async-to-generator'
-      ]
+      plugins: babelPlugins
     }))
     .pipe(gulp.dest('dist-server'))
 })
