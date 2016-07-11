@@ -36,6 +36,7 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-babel": "6.1.2",
     "gulp-htmlmin": "2.0.0",
+    "gulp-rollup": "2.2.0",
     "handlebars": "4.0.5",
     "helmet": "2.1.1",
     "inputmask-core": "2.1.1",
@@ -59,14 +60,14 @@
     "redux": "3.5.2",
     "redux-logger": "2.6.1",
     "redux-thunk": "2.1.0",
-    "sass-loader": "4.0.0",
-    "style-loader": "0.13.1",
-    "webpack": "1.13.1",
-    "webpack-dev-middleware": "1.6.1",
     "rollup-plugin-babel": "2.6.1",
     "rollup-plugin-commonjs": "3.1.0",
     "rollup-plugin-json": "2.0.1",
-    "rollup-plugin-node-resolve": "1.7.1"
+    "rollup-plugin-node-resolve": "1.7.1",
+    "sass-loader": "4.0.0",
+    "style-loader": "0.13.1",
+    "webpack": "1.13.1",
+    "webpack-dev-middleware": "1.6.1"
   },
   "devDependencies": {
     "ava": "0.15.2",
