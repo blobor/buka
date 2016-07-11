@@ -3,11 +3,7 @@ import { connect } from 'react-redux'
 import { changeCardNumber } from '../actions/skipass'
 import Header from '../components/Header'
 
-const mapStateToProps = state => {
-  return {
-    appName: state.app.name
-  }
-}
+const mapStateToProps = null
 
 const mapDispatchToProps = dispatch => {
   return {
