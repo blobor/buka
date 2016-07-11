@@ -6,6 +6,7 @@
     width: 100%;
     height: $header-height;
     position: fixed;
+    flex-shrink: 0;
 }
 
 .buka__header-appbar {
