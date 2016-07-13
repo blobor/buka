@@ -1,10 +1,10 @@
 import bukovelAPI from '../data-access/bukovelAPI'
 import * as actionTypes from './actionTypes'
 
-const changeCardNumber = cardNumber => {
+const changeSearchSkipassNumber = skipassNumber => {
   return {
-    type: actionTypes.CHANGE_CARD_NUMBER,
-    cardNumber: cardNumber
+    type: actionTypes.CHANGE_SEARCH_SKIPASS_NUMBER,
+    skipassNumber: skipassNumber
   }
 }
 
@@ -30,7 +30,7 @@ const fetchSkipassData = value => {
 }
 
 export {
-  changeCardNumber,
+  changeSearchSkipassNumber,
   requestSkipassData,
   receiveSkipassdata,
   fetchSkipassData

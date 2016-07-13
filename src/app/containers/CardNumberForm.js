@@ -5,15 +5,15 @@ import { fetchSkipassData } from '../actions/skipass'
 
 const mapStateToProps = state => {
   return {
-    isValid: state.skipass.isValid,
-    cardNumber: state.skipass.cardNumber
+    isValid: state.searchSkipass.isValid,
+    cardNumber: state.searchSkipass.skipassNumber
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFormSubmit: (cardNumber) => {
-      dispatch(fetchSkipassData(cardNumber))
+    onFormSubmit: (skipassNumber) => {
+      dispatch(fetchSkipassData(skipassNumber))
     }
   }
 }

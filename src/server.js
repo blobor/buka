@@ -7,6 +7,7 @@ import helmet from 'helmet'
 import compression from 'compression'
 import enforce from 'express-sslify'
 import has from 'lodash.has'
+import get from 'lodash.get'
 import isNil from 'lodash.isnil'
 import handlebars from 'handlebars'
 
@@ -63,13 +64,17 @@ app.get('/', async (req, res) => {
   const tasks = [
     getIndexTemplate()
   ]
-  if (has(req.query, 'cardNumber')) {
-    tasks.push(bukovelAPI.getSkipass(req.query.cardNumber))
+  if (has(req.query, 'skipassNumber')) {
+    tasks.push(bukovelAPI.getSkipass(req.query.skipassNumber))
   }
   const [template, skipass] = await Promise.all(tasks)
 
   const preloadedState = {
-    skipass: skipass
+    searchSkipass: {
+      skipass: skipass,
+      isValid: true,
+      skipassNumber: get(skipass, 'cardNumber', '')
+    }
   }
   const store = configureStore(preloadedState)
   const html = renderToString(

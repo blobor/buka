@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { changeCardNumber } from '../actions/skipass'
+import { changeSearchSkipassNumber } from '../actions/skipass'
 import Header from '../components/Header'
 
 const mapStateToProps = null
@@ -8,7 +8,7 @@ const mapStateToProps = null
 const mapDispatchToProps = dispatch => {
   return {
     testCardNumberChange: (event, value) => {
-      dispatch(changeCardNumber(value))
+      dispatch(changeSearchSkipassNumber(value))
     }
   }
 }

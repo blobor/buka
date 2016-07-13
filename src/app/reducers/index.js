@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import app from './app'
-import skipass from './skipass'
+import searchSkipass from './searchSkipass'
 
 const rootReducer = combineReducers({
   app,
-  skipass
+  searchSkipass
 })
 
 export default rootReducer

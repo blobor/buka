@@ -46,7 +46,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     skipass: {
-      ...state.skipass
+      ...state.searchSkipass.skipass
     }
   }
 }

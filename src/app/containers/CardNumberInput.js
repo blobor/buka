@@ -1,19 +1,19 @@
 import { connect } from 'react-redux'
 
-import { changeCardNumber } from '../actions/skipass'
+import { changeSearchSkipassNumber } from '../actions/skipass'
 import CardNumberInput from '../components/CardNumberInput'
 
 const mapStateToProps = state => {
   return {
-    isValid: state.skipass.isValid,
-    value: state.skipass.cardNumber
+    isValid: state.searchSkipass.isValid,
+    value: state.searchSkipass.skipassNumber
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     onChange: (event) => {
-      dispatch(changeCardNumber(event.text))
+      dispatch(changeSearchSkipassNumber(event.text))
     }
   }
 }
