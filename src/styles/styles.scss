@@ -36,8 +36,15 @@ html, body {
     flex-wrap: wrap;
 }
 
-.buka-skipass-number__input input::-ms-clear {
+.buka-skipass-number__input input {
+
+  &::-ms-clear {
     display: none;
+  }
+
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
 }
 
 .app-info {

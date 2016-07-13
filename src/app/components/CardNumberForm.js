@@ -30,6 +30,7 @@ export default class CardNumberForm extends Component {
           pattern={CARD_NUMBER_REGEX}
           id='skipassnumber'
           name='skipassNumber'
+          type='search'
           className='buka-skipass-number__input'
           autoComplete='off' />
         <RaisedButton type='submit' label='Search' primary disabled={!isValid} onClick={this.handleFormSubmit} />
