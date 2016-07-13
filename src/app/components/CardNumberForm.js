@@ -24,13 +24,13 @@ export default class CardNumberForm extends Component {
     const { isValid } = this.props
 
     return (
-      <form className='buka-cardnumber__form' method='GET'>
+      <form className='buka-skipass-number__form' method='GET'>
         <CardNumberInput
           required
           pattern={CARD_NUMBER_REGEX}
-          id='cardnumber'
-          name='cardNumber'
-          className='buka-cardnumber__input'
+          id='skipassnumber'
+          name='skipassNumber'
+          className='buka-skipass-number__input'
           autoComplete='off' />
         <RaisedButton type='submit' label='Search' primary disabled={!isValid} onClick={this.handleFormSubmit} />
       </form>
