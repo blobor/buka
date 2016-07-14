@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 
 import CardNumberInput from '../containers/CardNumberInput'
-import { CARD_NUMBER_REGEX } from '../helpers/cardNumberValidator'
+import { CARD_NUMBER_PATTERN } from '../helpers/cardNumberValidator'
 
 export default class CardNumberForm extends Component {
 
@@ -27,7 +27,7 @@ export default class CardNumberForm extends Component {
       <form className='buka-skipass-number__form' method='GET'>
         <CardNumberInput
           required
-          pattern={CARD_NUMBER_REGEX}
+          pattern={CARD_NUMBER_PATTERN}
           id='skipassnumber'
           name='skipassNumber'
           type='search'
