@@ -10,30 +10,39 @@ const changeSearchSkipassNumber = skipassNumber => {
   }
 }
 
-const requestSkipassData = () => {
+const fetchSkipassRequest = () => {
   return {
-    type: actionTypes.REQUEST_SKIPASS_DATA
+    type: actionTypes.FETCH_SKIPASS_REQUEST
   }
 }
 
-const receiveSkipassdata = (skipass) => {
+const fetchSkipassSuccess = skipass => {
   return {
-    type: actionTypes.RECEIVE_SKIPASS_DATA,
+    type: actionTypes.FETCH_SKIPASS_SUCCESS,
     skipass: skipass
+  }
+}
+
+const fetchSkipassFailure = error => {
+  return {
+    type: actionTypes.FETCH_SKIPASS_FAILURE,
+    error: error
   }
 }
 
 const fetchSkipassData = value => {
   return async dispatch => {
-    dispatch(requestSkipassData())
-    const skipass = await bukovelAPI.getSkipass(value)
-    dispatch(receiveSkipassdata(skipass))
+    dispatch(fetchSkipassRequest())
+    try {
+      const skipass = await bukovelAPI.getSkipass(value)
+      dispatch(fetchSkipassSuccess(skipass))
+    } catch (e) {
+      dispatch(fetchSkipassFailure(e))
+    }
   }
 }
 
 export {
-  changeSearchSkipassNumber,
-  requestSkipassData,
-  receiveSkipassdata,
-  fetchSkipassData
+  fetchSkipassData,
+  changeSearchSkipassNumber
 }

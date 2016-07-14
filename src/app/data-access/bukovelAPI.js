@@ -1,15 +1,30 @@
+import has from 'lodash.has'
 import isNil from 'lodash.isnil'
 import fetch from 'isomorphic-fetch'
 
 const url = 'https://buka-server.herokuapp.com'
+const mapResponse = response => {
+  return response.json().then(json => ({ skipass: json, response }))
+}
 
 class BukovelAPI {
   static async getSkipass (id) {
     if (isNil(id)) {
       throw new Error('Card Number is nill')
     }
-    const response = await fetch(`${url}/skipass/${id}`)
-    return await response.json()
+    return await fetch(`${url}/skipass/${id}`)
+      .then(mapResponse)
+      .then(({ skipass, response }) => {
+        if (!response.ok) {
+          return Promise.reject(response)
+        }
+
+        if (has(skipass, 'errors')) {
+          return Promise.reject(skipass.errors)
+        }
+
+        return skipass
+      })
   }
 }
 
