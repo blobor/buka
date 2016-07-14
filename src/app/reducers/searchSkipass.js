@@ -1,5 +1,4 @@
 import * as actionTypes from '../actions/actionTypes'
-import { validate } from '../helpers/cardNumberValidator'
 
 const initialState = {
   isValid: true,
@@ -13,7 +12,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         skipassNumber: action.skipassNumber,
-        isValid: validate(action.skipassNumber)
+        isValid: action.isValid
       }
     case actionTypes.REQUEST_SKIPASS_DATA:
       return {

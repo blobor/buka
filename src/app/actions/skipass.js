@@ -1,10 +1,12 @@
 import bukovelAPI from '../data-access/bukovelAPI'
 import * as actionTypes from './actionTypes'
+import { validate } from '../helpers/cardNumberValidator'
 
 const changeSearchSkipassNumber = skipassNumber => {
   return {
     type: actionTypes.CHANGE_SEARCH_SKIPASS_NUMBER,
-    skipassNumber: skipassNumber
+    skipassNumber: skipassNumber,
+    isValid: validate(skipassNumber)
   }
 }
 
