@@ -44,9 +44,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    ...state.searchSkipass
-  }
+  return state.searchSkipass
 }
 
 export default connect(mapStateToProps)(App)

@@ -17,7 +17,6 @@ gulp.task('build:html', () => {
 
 gulp.task('build:server', () => {
   const babelPlugins = [
-    'transform-object-rest-spread',
     'babel-plugin-transform-async-to-generator'
   ]
 
