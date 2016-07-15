@@ -16,11 +16,12 @@ class BukovelAPI {
       .then(mapResponse)
       .then(({ skipass, response }) => {
         if (!response.ok) {
-          return Promise.reject(response)
+          return Promise.reject('Response is not ok')
         }
 
         if (has(skipass, 'errors')) {
-          return Promise.reject(skipass.errors)
+          const reason = skipass.errors.join(', ')
+          return Promise.reject(reason)
         }
 
         return skipass

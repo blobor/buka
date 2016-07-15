@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import Header from './containers/Header'
 import Footer from './containers/Footer'
 import CardNumberForm from './containers/CardNumberForm'
-import Skipass from './components/Skipass'
+import SkipassSearchResult from './components/SkipassSearchResult'
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   render () {
-    const { skipass } = this.props
+    const search = this.props
 
     return (
       <MuiThemeProvider muiTheme={this.muiTheme}>
@@ -34,7 +34,7 @@ class App extends Component {
           <Header />
           <main className='buka__container'>
             <CardNumberForm />
-            <Skipass skipass={skipass} />
+            <SkipassSearchResult search={search} />
           </main>
           <Footer />
         </div>
@@ -45,9 +45,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    skipass: {
-      ...state.searchSkipass.skipass
-    }
+    ...state.searchSkipass
   }
 }
 

@@ -17,24 +17,21 @@ export default (state = initialState, action) => {
     case actionTypes.FETCH_SKIPASS_REQUEST:
       return {
         ...state,
-        skipass: {
-          isFetching: true
-        }
+        isFetching: true
       }
     case actionTypes.FETCH_SKIPASS_SUCCESS:
       return {
         ...state,
+        isFetching: false,
         skipass: {
-          ...action.skipass,
-          isFetching: false
+          ...action.skipass
         }
       }
     case actionTypes.FETCH_SKIPASS_FAILURE:
       return {
         ...state,
-        skipass: {
-          isFetching: false
-        },
+        isFetching: false,
+        skipass: null,
         error: action.error
       }
     default:
