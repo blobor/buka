@@ -1,6 +1,9 @@
 import React from 'react'
+import isEmpty from 'lodash.isempty'
 import LiftsTable from './LiftsTable'
 import { getAdoptedDateString } from '../helpers/date'
+
+const renderLifts = lifts => isEmpty(lifts) ? null : <LiftsTable lifts={lifts} />
 
 const SkipassInfo = ({ skipass }) => (
   <section className='scipass-info'>
@@ -39,6 +42,7 @@ const SkipassInfo = ({ skipass }) => (
         </tr>
       </tbody>
     </table>
+    {renderLifts(skipass.lifts)}
     <LiftsTable lifts={skipass.lifts} />
   </section>
 )
