@@ -43,7 +43,6 @@ const SkipassInfo = ({ skipass }) => (
       </tbody>
     </table>
     {renderLifts(skipass.lifts)}
-    <LiftsTable lifts={skipass.lifts} />
   </section>
 )
 
