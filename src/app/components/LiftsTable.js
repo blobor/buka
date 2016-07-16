@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { getAdoptedDateString } from '../helpers/date'
 
 const getLiftsRows = lifts => {
@@ -25,5 +25,9 @@ const LiftsTable = ({ lifts }) => (
     </tbody>
   </table>
 )
+
+LiftsTable.propTypes = {
+  lifts: PropTypes.arrayOf(PropTypes.object).isRequired
+}
 
 export default LiftsTable
