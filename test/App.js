@@ -7,8 +7,7 @@ import { Provider } from 'react-redux'
 import App from '../src/app/App.js'
 import configureStore from '../src/app/store/configureStore'
 
-// skipping for now, wait for material UI team to fix issue
-test.skip('check if App component log errors', t => {
+test('check if App component log errors', t => {
   const store = configureStore()
 
   const spy = sinon.spy(console, 'error')

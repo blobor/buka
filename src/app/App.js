@@ -1,7 +1,8 @@
 import 'babel-polyfill'
 
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import Header from './containers/Header'
 import Footer from './containers/Footer'
@@ -10,6 +11,12 @@ import SkipassSearchResult from './components/SkipassSearchResult'
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+
+// Needed for onTouchTap
+// Can go away when react 1.0 release
+// Check this repo:
+// https://github.com/zilverline/react-tap-event-plugin
+injectTapEventPlugin()
 
 class App extends Component {
 
@@ -41,6 +48,14 @@ class App extends Component {
       </MuiThemeProvider>
     )
   }
+}
+
+App.propTypes = {
+  userAgent: PropTypes.string.isRequired
+}
+
+App.defaultProps = {
+  userAgent: 'all'
 }
 
 const mapStateToProps = state => {
