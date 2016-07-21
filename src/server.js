@@ -7,7 +7,6 @@ import helmet from 'helmet'
 import compression from 'compression'
 import enforce from 'express-sslify'
 import has from 'lodash.has'
-import get from 'lodash.get'
 import isNil from 'lodash.isnil'
 import handlebars from 'handlebars'
 
@@ -22,6 +21,7 @@ import { renderToString } from 'react-dom/server'
 import App from './app/App.js'
 import configureStore from './app/store/configureStore'
 import bukovelAPI from './app/data-access/bukovelAPI'
+import { validate as validateSkipassNumber } from './app/helpers/cardNumberValidator.js'
 
 const fsPromisify = pify(fs)
 
@@ -64,18 +64,30 @@ app.get('/', async (req, res) => {
   const tasks = [
     getIndexTemplate()
   ]
-  if (has(req.query, 'skipassNumber')) {
-    tasks.push(bukovelAPI.getSkipass(req.query.skipassNumber))
-  }
-  const [template, skipass] = await Promise.all(tasks)
+  const preloadedState = {}
 
-  const preloadedState = {
-    searchSkipass: {
-      skipass: skipass,
-      isValid: true,
-      skipassNumber: get(skipass, 'cardNumber', '')
+  if (has(req.query, 'skipassNumber')) {
+    const searchSkipass = {
+      skipass: null,
+      skipassNumber: req.query.skipassNumber,
+      isValid: validateSkipassNumber(req.query.skipassNumber)
     }
+
+    if (searchSkipass.isValid) {
+      const skipassTask = bukovelAPI
+        .getSkipass(req.query.skipassNumber)
+        .then(skipass => {
+          searchSkipass.skipass = skipass
+        }, error => {
+          searchSkipass.error = error
+        })
+      tasks.push(skipassTask)
+    }
+
+    preloadedState.searchSkipass = searchSkipass
   }
+  const [template] = await Promise.all(tasks)
+
   const store = configureStore(preloadedState)
   const html = renderToString(
     <Provider store={store}>
