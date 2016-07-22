@@ -2,7 +2,7 @@
 
 module.exports = {
   entry: {
-    app: './src/app/main.js',
+    app: './src/client.js',
     vendor: [
       'react',
       'react-dom',
