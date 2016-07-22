@@ -20,6 +20,7 @@ export default (state = initialState, action) => {
     case actionTypes.FETCH_SKIPASS_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
+        error: null,
         skipass: Object.assign({}, action.skipass)
       })
     case actionTypes.FETCH_SKIPASS_FAILURE:
