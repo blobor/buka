@@ -42,6 +42,8 @@ gulp.task('build:server', () => {
     }))
     .pipe(babel({
       babelrc: false,
+      minified: true,
+      comments: false,
       presets: [
         'es2015-node'
       ],
