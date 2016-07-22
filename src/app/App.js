@@ -54,10 +54,6 @@ App.propTypes = {
   userAgent: PropTypes.string.isRequired
 }
 
-App.defaultProps = {
-  userAgent: 'all'
-}
-
 const mapStateToProps = state => {
   return state.searchSkipass
 }

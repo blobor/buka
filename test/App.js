@@ -2,9 +2,8 @@ import test from 'ava'
 import React from 'react'
 import sinon from 'sinon'
 import { render } from 'enzyme'
-import { Provider } from 'react-redux'
 
-import App from '../src/app/App.js'
+import Root from '../src/app/Root.js'
 import configureStore from '../src/app/store/configureStore'
 
 test('check if App component log errors', t => {
@@ -12,11 +11,7 @@ test('check if App component log errors', t => {
 
   const spy = sinon.spy(console, 'error')
 
-  render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  )
+  render(<Root store={store} />)
 
   t.false(spy.called)
 })

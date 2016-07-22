@@ -15,10 +15,9 @@ import webpackMiddleware from 'webpack-dev-middleware'
 import config from '../config/webpack.config.dev.js'
 
 import React from 'react'
-import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
 
-import App from './app/App.js'
+import Root from './app/Root'
 import configureStore from './app/store/configureStore'
 import bukovelAPI from './app/data-access/bukovelAPI'
 import { validate as validateSkipassNumber } from './app/helpers/cardNumberValidator.js'
@@ -90,9 +89,7 @@ app.get('/', async (req, res) => {
 
   const store = configureStore(preloadedState)
   const html = renderToString(
-    <Provider store={store}>
-      <App userAgent={req.headers['user-agent']} />
-    </Provider>
+    <Root store={store} userAgent={req.headers['user-agent']} />
   )
   const finalState = store.getState()
 
