@@ -1,13 +1,11 @@
 import 'babel-polyfill'
 
 import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import Header from './containers/Header'
 import Footer from './containers/Footer'
-import CardNumberForm from './containers/CardNumberForm'
-import SkipassSearchResult from './components/SkipassSearchResult'
+import Search from './containers/Search'
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -33,16 +31,11 @@ class App extends Component {
   }
 
   render () {
-    const search = this.props
-
     return (
       <MuiThemeProvider muiTheme={this.muiTheme}>
         <div className='buka'>
           <Header />
-          <main className='buka__container'>
-            <CardNumberForm />
-            <SkipassSearchResult search={search} />
-          </main>
+          <Search />
           <Footer />
         </div>
       </MuiThemeProvider>
@@ -54,8 +47,4 @@ App.propTypes = {
   userAgent: PropTypes.string.isRequired
 }
 
-const mapStateToProps = state => {
-  return state.searchSkipass
-}
-
-export default connect(mapStateToProps)(App)
+export default App
