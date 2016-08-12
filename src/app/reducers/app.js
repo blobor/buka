@@ -1,7 +1,7 @@
-import { version } from '../../../package.json'
+import { appName, version } from '../../config.js'
 
 const initialState = {
-  name: 'Buka',
+  name: appName,
   version: version
 }
 
