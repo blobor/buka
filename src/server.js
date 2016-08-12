@@ -12,7 +12,7 @@ import handlebars from 'handlebars'
 
 import webpack from 'webpack'
 import webpackMiddleware from 'webpack-dev-middleware'
-import config from '../config/webpack.config.dev.js'
+import webpackConfig from '../config/webpack.config.dev.js'
 
 import React from 'react'
 import { renderToString } from 'react-dom/server'
@@ -21,21 +21,18 @@ import Root from './app/Root'
 import configureStore from './app/store/configureStore'
 import bukovelAPI from './app/data-access/bukovelAPI'
 import { validate as validateSkipassNumber } from './app/helpers/cardNumberValidator.js'
+import * as config from './config.js'
 
 const fsPromisify = pify(fs)
 
 const app = express()
-const port = process.env.PORT || 3333
-const isDeveloping = process.env.NODE_ENV !== 'production'
 
 // cache compiled index page
 let indexTemplate = null
 
-const statisFolderName = isDeveloping ? 'src' : 'dist'
-
 // configure middlewares
-if (isDeveloping) {
-  const compiler = webpack(config)
+if (config.development) {
+  const compiler = webpack(webpackConfig)
   const middleware = webpackMiddleware(compiler, {
     stats: {
       colors: true,
@@ -57,7 +54,7 @@ if (isDeveloping) {
 }
 
 const ROOT = '../'
-const staticFolder = path.resolve(__dirname, ROOT, statisFolderName)
+const staticFolder = path.resolve(__dirname, ROOT, config.development ? 'src' : 'dist')
 
 app.get('/', async (req, res) => {
   const tasks = [
@@ -102,8 +99,8 @@ app.get('/', async (req, res) => {
 })
 app.use(express.static(staticFolder))
 
-app.listen(port, () => {
-  console.log(`Express server listening on port ${port}`)
+app.listen(config.port, () => {
+  console.log(`Express server listening on port ${config.port}`)
   console.log(`env = ${app.get('env')}`)
   console.log(`__dirname = ${__dirname}`)
   console.log(`staticFolder = ${staticFolder}`)
