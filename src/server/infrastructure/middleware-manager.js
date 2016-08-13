@@ -4,6 +4,7 @@ import helmet from 'helmet'
 import compression from 'compression'
 import enforce from 'express-sslify'
 
+import morgan from 'morgan'
 import webpack from 'webpack'
 import webpackMiddleware from 'webpack-dev-middleware'
 import webpackConfig from '../../../config/webpack.config.dev.js'
@@ -32,6 +33,7 @@ class MiddlewareManager extends Manager {
       }
     })
     app.use(middleware)
+    app.use(morgan('dev'))
   }
 
 }
