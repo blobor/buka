@@ -33,7 +33,7 @@
     "express-handlebars": "3.0.0",
     "express-sslify": "1.1.0",
     "extract-text-webpack-plugin": "1.0.1",
-    "gulp": "3.9.1",
+    "gulp": "github:gulpjs/gulp#4.0",
     "gulp-babel": "6.1.2",
     "gulp-htmlmin": "2.0.0",
     "gulp-rollup": "2.3.0",
