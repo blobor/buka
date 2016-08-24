@@ -12,7 +12,6 @@ import webpack from 'webpack'
 import webpackMiddleware from 'webpack-dev-middleware'
 import webpackConfig from '../../../config/webpack.config.dev.js'
 
-const ROOT = '../../../'
 const hbs = exphbs.create({
   extname: '.hbs'
 })
@@ -20,7 +19,7 @@ const hbs = exphbs.create({
 class MiddlewareManager extends Manager {
 
   configureProductionEnv (app) {
-    const staticFolder = path.resolve(__dirname, ROOT, 'dist')
+    const staticFolder = path.resolve(__dirname, '../', 'dist')
     app.use(enforce.HTTPS({
       // app is behind Heroku load balancer
       trustProtoHeader: true
@@ -35,7 +34,7 @@ class MiddlewareManager extends Manager {
   }
 
   configureDevelopmentEnv (app) {
-    const staticFolder = path.resolve(__dirname, ROOT, 'src')
+    const staticFolder = path.resolve(__dirname, '../../../', 'src')
     const compiler = webpack(webpackConfig)
     const middleware = webpackMiddleware(compiler, {
       stats: {
