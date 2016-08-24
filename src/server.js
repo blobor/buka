@@ -1,13 +1,5 @@
-import path from 'path'
-import pify from 'pify'
-import fs from 'fs'
-
 import express from 'express'
-
 import has from 'lodash.has'
-import isNil from 'lodash.isnil'
-import handlebars from 'handlebars'
-
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 
@@ -19,21 +11,12 @@ import { validate as validateSkipassNumber } from './app/helpers/cardNumberValid
 import * as config from './config.js'
 import middlewareManager from './server/infrastructure/middleware-manager.js'
 
-const fsPromisify = pify(fs)
-
 const app = express()
-
-// cache compiled index page
-let indexTemplate = null
 
 middlewareManager.handle(app)
 
-const ROOT = '../'
-const staticFolder = path.resolve(__dirname, ROOT, config.development ? 'src' : 'dist')
-
 app.get('/', async (req, res) => {
   const tasks = [
-    getIndexTemplate()
   ]
   const preloadedState = {}
 
@@ -57,7 +40,8 @@ app.get('/', async (req, res) => {
 
     preloadedState.searchSkipass = searchSkipass
   }
-  const [template] = await Promise.all(tasks)
+
+  await Promise.all(tasks)
 
   const store = configureStore(preloadedState)
   const html = renderToString(
@@ -70,20 +54,11 @@ app.get('/', async (req, res) => {
     preloadedState: JSON.stringify(finalState)
   }
 
-  res.send(template(templateData))
+  res.render('index', templateData)
 })
 
 app.listen(config.port, () => {
   console.log(`Express server listening on port ${config.port}`)
   console.log(`env = ${app.get('env')}`)
   console.log(`__dirname = ${__dirname}`)
-  console.log(`staticFolder = ${staticFolder}`)
 })
-
-async function getIndexTemplate () {
-  if (isNil(indexTemplate)) {
-    const index = await fsPromisify.readFile(path.resolve(staticFolder, 'index.html'), 'utf8')
-    indexTemplate = handlebars.compile(index)
-  }
-  return indexTemplate
-}

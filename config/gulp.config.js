@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = {
-  index: './src/index.html',
+  index: './src/index.hbs',
   htmlMinOptions: {
     removeComments: true,
     collapseWhitespace: true,

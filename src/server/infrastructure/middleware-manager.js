@@ -5,13 +5,17 @@ import express from 'express'
 import helmet from 'helmet'
 import compression from 'compression'
 import enforce from 'express-sslify'
+import exphbs from 'express-handlebars'
 
 import morgan from 'morgan'
 import webpack from 'webpack'
 import webpackMiddleware from 'webpack-dev-middleware'
 import webpackConfig from '../../../config/webpack.config.dev.js'
 
-const ROOT = '../'
+const ROOT = '../../../'
+const hbs = exphbs.create({
+  extname: '.hbs'
+})
 
 class MiddlewareManager extends Manager {
 
@@ -24,6 +28,10 @@ class MiddlewareManager extends Manager {
     app.use(helmet())
     app.use(compression())
     app.use(express.static(staticFolder))
+
+    app.set('views', staticFolder)
+    app.engine('hbs', hbs.engine)
+    app.set('view engine', 'hbs')
   }
 
   configureDevelopmentEnv (app) {
@@ -42,6 +50,10 @@ class MiddlewareManager extends Manager {
     app.use(middleware)
     app.use(morgan('dev'))
     app.use(express.static(staticFolder))
+
+    app.set('views', staticFolder)
+    app.engine('hbs', hbs.engine)
+    app.set('view engine', 'hbs')
   }
 
 }
