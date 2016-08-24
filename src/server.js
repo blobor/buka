@@ -72,7 +72,6 @@ app.get('/', async (req, res) => {
 
   res.send(template(templateData))
 })
-app.use(express.static(staticFolder))
 
 app.listen(config.port, () => {
   console.log(`Express server listening on port ${config.port}`)
