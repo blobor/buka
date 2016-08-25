@@ -10,10 +10,12 @@ import { validate as validateSkipassNumber } from './app/helpers/cardNumberValid
 
 import * as config from './config.js'
 import middlewareManager from './server/infrastructure/middleware-manager.js'
+import assetsManager from './server/infrastructure/assets-manager.js'
 
 const app = express()
 
 middlewareManager.handle(app)
+assetsManager.handle(app)
 
 app.get('/', async (req, res) => {
   const tasks = [
