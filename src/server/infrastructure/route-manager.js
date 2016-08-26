@@ -1,8 +1,9 @@
-import express from 'express'
 import has from 'lodash.has'
 import React from 'react'
+import { Router } from 'express'
 import { renderToString } from 'react-dom/server'
 
+import apiRoute from '../routes'
 import Root from '../../app/Root'
 import configureStore from '../../app/store/configureStore'
 import bukovelAPI from '../../app/data-access/bukovelAPI'
@@ -11,7 +12,7 @@ import { validate as validateSkipassNumber } from '../../app/helpers/cardNumberV
 import Manager from './Manager.js'
 
 const createPageRouter = () => {
-  const router = express.Router()
+  const router = new Router()
 
   router.get('/', async (req, res) => {
     const tasks = []
@@ -60,6 +61,7 @@ const createPageRouter = () => {
 class RouteManager extends Manager {
   configureCommon (app) {
     app.use('/', createPageRouter())
+    app.use('/api', apiRoute)
   }
 }
 
