@@ -16,7 +16,10 @@ class MiddlewareManager extends Manager {
     const handlebarsFileExtension = 'hbs'
 
     app.engine(handlebarsFileExtension, handlebars({
-      extname: handlebarsFileExtension
+      extname: handlebarsFileExtension,
+      helpers: {
+        json: context => JSON.stringify(context)
+      }
     }))
     app.set('view engine', handlebarsFileExtension)
   }

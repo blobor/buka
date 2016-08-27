@@ -45,14 +45,11 @@ const createPageRouter = () => {
     const html = renderToString(
       <Root store={store} userAgent={req.headers['user-agent']} />
     )
-    const finalState = store.getState()
 
-    const templateData = {
+    res.render('index', {
       content: html,
-      preloadedState: JSON.stringify(finalState)
-    }
-
-    res.render('index', templateData)
+      preloadedState: store.getState()
+    })
   })
 
   return router
