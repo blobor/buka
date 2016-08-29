@@ -16,10 +16,6 @@ gulp.task('build:html', () => {
 })
 
 gulp.task('build:server', () => {
-  const babelPlugins = [
-    'babel-plugin-transform-async-to-generator'
-  ]
-
   return gulp
     .src('src/**/*.js')
     .pipe(rollup({
@@ -31,11 +27,12 @@ gulp.task('build:server', () => {
         babelRollup({
           babelrc: false,
           presets: [
-            'react'
+            'react',
+            'es2016',
+            'es2017'
           ],
           plugins: [
-            'external-helpers',
-            ...babelPlugins
+            'external-helpers'
           ]
         })
       ]
@@ -46,8 +43,7 @@ gulp.task('build:server', () => {
       comments: false,
       presets: [
         'es2015-node'
-      ],
-      plugins: babelPlugins
+      ]
     }))
     .pipe(gulp.dest('dist-server'))
 })
