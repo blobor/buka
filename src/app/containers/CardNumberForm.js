@@ -4,9 +4,11 @@ import CardNumberForm from '../components/CardNumberForm'
 import { fetchSkipassData } from '../actions/skipass'
 
 const mapStateToProps = state => {
+  const searchSkipass = state.get('searchSkipass').toJS()
+
   return {
-    isValid: state.searchSkipass.isValid,
-    cardNumber: state.searchSkipass.skipassNumber
+    isValid: searchSkipass.isValid,
+    cardNumber: searchSkipass.skipassNumber
   }
 }
 

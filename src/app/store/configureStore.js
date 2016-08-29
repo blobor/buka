@@ -1,4 +1,5 @@
 import { applyMiddleware, createStore } from 'redux'
+import { fromJS } from 'immutable'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import rootReducer from '../reducers'
@@ -11,7 +12,7 @@ if (config.development) {
 }
 
 const configureStore = initialState => {
-  return createStore(rootReducer, initialState, applyMiddleware(...middlewares))
+  return createStore(rootReducer, fromJS(initialState), applyMiddleware(...middlewares))
 }
 
 export default configureStore

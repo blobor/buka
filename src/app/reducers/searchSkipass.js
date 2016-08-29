@@ -1,30 +1,31 @@
+import { fromJS } from 'immutable'
 import * as actionTypes from '../actions/actionTypes'
 
-const initialState = {
+const initialState = fromJS({
   isValid: true,
   skipassNumber: '',
   skipass: null
-}
+})
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CHANGE_SEARCH_SKIPASS_NUMBER:
-      return Object.assign({}, state, {
+      return state.merge({
         skipassNumber: action.skipassNumber,
         isValid: action.isValid
       })
     case actionTypes.FETCH_SKIPASS_REQUEST:
-      return Object.assign({}, state, {
+      return state.merge({
         isFetching: true
       })
     case actionTypes.FETCH_SKIPASS_SUCCESS:
-      return Object.assign({}, state, {
+      return state.merge({
         isFetching: false,
         error: null,
-        skipass: Object.assign({}, action.skipass)
+        skipass: action.skipass
       })
     case actionTypes.FETCH_SKIPASS_FAILURE:
-      return Object.assign({}, state, {
+      return state.merge({
         isFetching: false,
         skipass: null,
         error: action.error

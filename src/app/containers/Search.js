@@ -15,7 +15,7 @@ const Search = ({ search }) => {
 
 const mapStateToProps = state => {
   return {
-    search: state.searchSkipass
+    search: state.get('searchSkipass').toJS()
   }
 }
 

@@ -3,9 +3,11 @@ import { connect } from 'react-redux'
 import Header from '../components/Footer'
 
 const mapStateToProps = state => {
+  const { name, version } = state.get('app').toJS()
+
   return {
-    name: state.app.name,
-    version: state.app.version
+    name,
+    version
   }
 }
 
