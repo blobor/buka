@@ -8,7 +8,7 @@
   "scripts": {
     "prebuild": "rm -rf dist && rm -rf dist-server && mkdir dist && mkdir dist-server",
     "build": "gulp build && webpack -p --config ./config/webpack.config.prod.js --progress",
-    "start": "pm2 start ./server.start.js",
+    "start": "node ./server.start.js",
     "start:dev": "nodemon src/server.js --exec babel-node",
     "test": "standard --verbose | snazzy && ava",
     "heroku-postbuild": "npm run build",
