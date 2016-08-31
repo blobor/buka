@@ -2,7 +2,7 @@ import has from 'lodash.has'
 import isNil from 'lodash.isnil'
 import fetch from 'isomorphic-fetch'
 
-const url = 'https://buka-server.herokuapp.com'
+const url = '/api'
 const mapResponse = response => {
   return response.json().then(json => ({ skipass: json, response }))
 }

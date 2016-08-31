@@ -22,24 +22,6 @@ const SkipassInfo = ({ skipass }) => (
             {getAdoptedDateString(skipass.purchaseDate)}
           </td>
         </tr>
-        <tr>
-          <td>Used Days</td>
-          <td className='mdl-data-table__cell--non-numeric'>
-            {skipass.usedDays}
-          </td>
-        </tr>
-        <tr>
-          <td>Total Downhills</td>
-          <td className='mdl-data-table__cell--non-numeric'>
-            {skipass.totalDownhills}
-          </td>
-        </tr>
-        <tr>
-          <td>Daily Downhills (avg.)</td>
-          <td className='mdl-data-table__cell--non-numeric'>
-            {skipass.dailyAverageDownhills}
-          </td>
-        </tr>
       </tbody>
     </table>
     {renderLifts(skipass.lifts)}
