@@ -1,7 +1,9 @@
 const gulp = require('gulp')
 const babel = require('gulp-babel')
 const htmlmin = require('gulp-htmlmin')
-const rollup = require('gulp-rollup')
+const buffer = require('vinyl-buffer')
+const source = require('vinyl-source-stream')
+const rollup = require('rollup-stream')
 const babelRollup = require('rollup-plugin-babel')
 const json = require('rollup-plugin-json')
 const commonjs = require('rollup-plugin-commonjs')
@@ -16,36 +18,35 @@ gulp.task('build:html', () => {
 })
 
 gulp.task('build:server', () => {
-  return gulp
-    .src('src/**/*.js')
-    .pipe(rollup({
-      allowRealFiles: true,
-      entry: 'src/server.js',
-      plugins: [
-        json(),
-        commonjs(),
-        babelRollup({
-          babelrc: false,
-          presets: [
-            'react',
-            'es2016',
-            'es2017'
-          ],
-          plugins: [
-            'external-helpers'
-          ]
-        })
-      ]
-    }))
-    .pipe(babel({
-      babelrc: false,
-      minified: true,
-      comments: false,
-      presets: [
-        'es2015-node'
-      ]
-    }))
-    .pipe(gulp.dest('dist-server'))
+  return rollup({
+    entry: 'src/server.js',
+    plugins: [
+      json(),
+      commonjs(),
+      babelRollup({
+        babelrc: false,
+        presets: [
+          'react',
+          'es2016',
+          'es2017'
+        ],
+        plugins: [
+          'external-helpers-2'
+        ]
+      })
+    ]
+  })
+  .pipe(source('server.js'))
+  .pipe(buffer())
+  .pipe(babel({
+    babelrc: false,
+    minified: true,
+    comments: false,
+    presets: [
+      'es2015-node'
+    ]
+  }))
+  .pipe(gulp.dest('dist-server'))
 })
 
 gulp.task('build', gulp.parallel('build:server', 'build:html'))
