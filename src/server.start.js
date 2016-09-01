@@ -8,7 +8,7 @@ const PUBLIC_KEY = process.env.KEYMETRICS_PUBLIC_KEY
 const instances = process.env.WEB_CONCURRENCY || -1
 const maxMemory = process.env.WEB_MEMORY || 512
 
-pm2.connect(() => {
+pm2.connect(true, () => {
   pm2.start({
     script: 'server.js',
     name: 'buka-production-app',
