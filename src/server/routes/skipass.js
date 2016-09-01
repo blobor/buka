@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { getSkipass } from '../data-sourses/bukovel-skipass'
+import { getSkipass } from '../data-sourses/bukovel-shop/bukovel-skipass'
 
 const router = new Router()
 
