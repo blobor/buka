@@ -49,10 +49,4 @@ gulp.task('build:server', () => {
   .pipe(gulp.dest('dist-server'))
 })
 
-gulp.task('copy:server.start', () => {
-  return gulp
-    .src('src/server.start.js')
-    .pipe(gulp.dest('dist-server'))
-})
-
-gulp.task('build', gulp.parallel('build:server', 'copy:server.start', 'build:html'))
+gulp.task('build', gulp.parallel('build:server', 'build:html'))

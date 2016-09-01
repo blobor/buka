@@ -10,7 +10,7 @@ const maxMemory = process.env.WEB_MEMORY || 512
 
 pm2.connect(() => {
   pm2.start({
-    script: 'server.js',
+    script: 'dist-server/server.js',
     name: 'buka-production-app',
     exec_mode: 'cluster',
     instances: instances,
