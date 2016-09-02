@@ -1,8 +1,22 @@
 # buka
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)  
-[![Build Status](https://travis-ci.org/blobor/buka.svg?branch=master)](https://travis-ci.org/blobor/buka)
-[![Build status](https://ci.appveyor.com/api/projects/status/xubg38dr7ujn5x8l?svg=true)](https://ci.appveyor.com/project/blobor/buka)
-[![Dependency Status](https://david-dm.org/blobor/buka.svg)](https://david-dm.org/blobor/buka)
-[![devDependency Status](https://david-dm.org/blobor/buka/dev-status.svg)](https://david-dm.org/blobor/buka#info=devDependencies)
+
+[![Build Status][build-badge]][build]
+[![Dependency Status][dependency-badge]][dependency]
+[![devDependency Status][devDependency-badge]][devDependency]
+
+[![js-standard-style][js-standard-badge]][js-standard]
 
 Simple pet project.
+
+## LICENSE
+
+MIT
+
+[build-badge]: https://img.shields.io/travis/blobor/buka.svg?style=flat-square
+[build]: https://travis-ci.org/blobor/buka
+[dependency-badge]: https://david-dm.org/blobor/buka.svg?style=flat-square
+[dependency]: https://david-dm.org/blobor/buka
+[devDependency-badge]: https://david-dm.org/blobor/buka/dev-status.svg?style=flat-square
+[devDependency]: https://david-dm.org/blobor/buka#info=devDependencies
+[js-standard-badge]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
+[js-standard]: http://standardjs.com
