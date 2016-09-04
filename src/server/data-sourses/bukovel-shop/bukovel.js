@@ -1,5 +1,5 @@
 import qs from 'qs'
-import fetch, { Request } from 'node-fetch'
+import fetch, { Request } from 'isomorphic-fetch'
 
 const BUKOVEL_SHOP_URL = 'http://shop.bukovel.info/index.php'
 const DEFAULT_ROUTE = 'balance/balance/getBalance'
