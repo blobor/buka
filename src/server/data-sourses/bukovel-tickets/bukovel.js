@@ -6,7 +6,7 @@ import { parseCardNumber } from '../../parsers/bukovel-ticket'
 const BUKOVEL_TICKETS_URL = 'http://tickets.bukovel.com/'
 const getResponseText = response => {
   if (!response.ok) {
-    return Promise.reject('Response is not ok')
+    return Promise.reject(`got not OK (${response.status}) response from ${response.url}`)
   }
 
   return response.text()
