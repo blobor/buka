@@ -3,6 +3,7 @@ import React from 'react'
 import { Router } from 'express'
 import { renderToString } from 'react-dom/server'
 
+import { wrapAsync } from '../utils/express-promise-handle'
 import apiRoute from '../routes'
 import Root from '../../app/Root'
 import configureStore from '../../app/store/configureStore'
@@ -14,7 +15,7 @@ import Manager from './Manager.js'
 const createPageRouter = () => {
   const router = new Router()
 
-  router.get('/', async (req, res) => {
+  router.get('/', wrapAsync(async (req, res) => {
     const tasks = []
     const preloadedState = {}
 
@@ -50,7 +51,7 @@ const createPageRouter = () => {
       content: html,
       preloadedState: store.getState()
     })
-  })
+  }))
 
   return router
 }
