@@ -7,7 +7,7 @@ import { wrapAsync } from '../utils/express-promise-handle'
 import apiRoute from '../routes'
 import Root from '../../app/Root'
 import configureStore from '../../app/store/configureStore'
-import bukovelAPI from '../../app/data-access/bukovelAPI'
+import { getSkipass } from '../../app/data-access/bukovelAPI'
 import { validate as validateSkipassNumber } from '../../app/helpers/cardNumberValidator.js'
 
 import Manager from './Manager.js'
@@ -27,8 +27,7 @@ const createPageRouter = () => {
       }
 
       if (searchSkipass.isValid) {
-        const skipassTask = bukovelAPI
-          .getSkipass(req.query.skipassNumber)
+        const skipassTask = getSkipass(req.query.skipassNumber)
           .then(skipass => {
             searchSkipass.skipass = skipass
           }, error => {

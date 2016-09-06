@@ -1,4 +1,4 @@
-import bukovelAPI from '../data-access/bukovelAPI'
+import { getSkipass } from '../data-access/bukovelAPI'
 import * as actionTypes from './actionTypes'
 import { validate } from '../helpers/cardNumberValidator'
 
@@ -34,7 +34,7 @@ const fetchSkipassData = value => {
   return async dispatch => {
     dispatch(fetchSkipassRequest())
     try {
-      const skipass = await bukovelAPI.getSkipass(value)
+      const skipass = await getSkipass(value)
       dispatch(fetchSkipassSuccess(skipass))
     } catch (e) {
       dispatch(fetchSkipassFailure(e))
