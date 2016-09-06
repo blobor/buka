@@ -1,5 +1,5 @@
 import { stringify } from 'qs'
-import fetch from 'node-fetch'
+import fetch from 'isomorphic-fetch'
 
 import { parseCardNumber } from '../../parsers/bukovel-ticket'
 

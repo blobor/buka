@@ -1,14 +1,14 @@
-import moment from 'moment'
-import cacheManager from 'cache-manager'
+import { duration } from 'moment'
+import { caching } from 'cache-manager'
 
 import { parse } from '../../parsers/bukovel-shop'
 import { getSkipassV2 as getSkipassData } from './bukovel'
 
-const memoryCache = cacheManager.caching({
+const memoryCache = caching({
   store: 'memory',
   max: 100,
   // time to live
-  ttl: moment.duration(10, 'm').asSeconds()
+  ttl: duration(10, 'm').asSeconds()
 })
 
 export const getSkipass = id => {
