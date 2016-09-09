@@ -3,14 +3,14 @@ import pify from 'pify'
 import has from 'lodash.has'
 import { readFile } from 'fs'
 
-import { parse } from '../src/server/parsers/bukovel-shop'
+import { parseSkipass } from '../src/server/parsers/bukovel-shop'
 
 test('should parse response', t => {
   // Arrange
   return pify(readFile)('fixtures/bukovel_response.json', 'utf8')
     .then(JSON.parse)
     // Act
-    .then(parse)
+    .then(parseSkipass)
     // Assert
     .then(data => {
       t.is(data.name, '1 День (ДОР)')
@@ -31,7 +31,7 @@ test('in case of error response parser should return array of errors values', t 
   }
 
   // Act
-  const parsedData = parse(data)
+  const parsedData = parseSkipass(data)
 
   // Assert
   t.true(has(parsedData, 'errors'))

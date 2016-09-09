@@ -1,7 +1,7 @@
 import { duration } from 'moment'
 import { caching } from 'cache-manager'
 
-import { parse } from '../../parsers/bukovel-shop'
+import { parseSkipass } from '../../parsers/bukovel-shop'
 import { getSkipassV2 as getSkipassData } from './bukovel'
 
 const memoryCache = caching({
@@ -12,5 +12,5 @@ const memoryCache = caching({
 })
 
 export const getSkipass = id => {
-  return memoryCache.wrap(id, () => getSkipassData(id).then(parse))
+  return memoryCache.wrap(id, () => getSkipassData(id).then(parseSkipass))
 }
