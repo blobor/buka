@@ -1,7 +1,7 @@
 import { stringify } from 'qs'
 import fetch from 'isomorphic-fetch'
 
-import { parseCardNumber } from '../../parsers/bukovel-ticket'
+import { parseCardNumber, parseSkipass } from '../../parsers/bukovel-ticket'
 
 const BUKOVEL_TICKETS_URL = 'http://tickets.bukovel.com/'
 const getResponseText = response => {
@@ -32,4 +32,5 @@ export const getSkipass = async id => {
 
   return fetch(`${BUKOVEL_TICKETS_URL}?${stringify(params)}`)
     .then(getResponseText)
+    .then(parseSkipass)
 }

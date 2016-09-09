@@ -1,5 +1,4 @@
 import cheerio from 'cheerio'
-
 import isObject from 'lodash.isobject'
 
 import { getLifts, normalizeCardName, getAdoptedDateString } from './bukovel-utils.js'
