@@ -39,7 +39,7 @@ const parseCardNumber = html => {
 
 const parseSkipass = html => {
   if (isNil(html)) {
-    throw new Error('Valid HTML string is exprected')
+    return Promise.reject('Valid HTML string is expected')
   }
 
   const $ = cheerio.load(html)
@@ -50,12 +50,12 @@ const parseSkipass = html => {
   const skipassLiftsInfoTable = dataTables.eq(1)
   const skipassCardName = skipassInfoTable.find('tr:nth-child(2) strong').text()
   const cardNumber = getElementText(skipassInfoTable.find('tr:nth-child(3) strong')).trim()
-  return {
+  return Promise.resolve({
     name: normalizeCardName(skipassCardName),
     cardNumber: cardNumber,
-    purchaseDate: '',
+    purchaseDate: null,
     lifts: Array.from(getLifts(skipassLiftsInfoTable))
-  }
+  })
 }
 
 export {
