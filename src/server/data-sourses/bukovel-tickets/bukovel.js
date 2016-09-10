@@ -1,7 +1,17 @@
 import { stringify } from 'qs'
+import { duration } from 'moment'
+import { caching } from 'cache-manager'
+import isNil from 'lodash.isnil'
 import fetch from 'isomorphic-fetch'
 
 import { parseCardNumber, parseSkipass } from '../../parsers/bukovel-ticket'
+
+const memoryCache = caching({
+  store: 'memory',
+  max: 100,
+  // time to live
+  ttl: duration(1, 'h').asSeconds()
+})
 
 const BUKOVEL_TICKETS_URL = 'http://tickets.bukovel.com/'
 const getResponseText = response => {
@@ -12,25 +22,35 @@ const getResponseText = response => {
   return response.text()
 }
 
-export const getSkipassCardNumber = id => {
+const getSkipassCardNumber = id => {
+  if (isNil(id)) {
+    return Promise.reject('id is required')
+  }
+
   const params = {
     NumTicket: id
   }
+  const url = `${BUKOVEL_TICKETS_URL}?${stringify(params)}`
 
-  return fetch(`${BUKOVEL_TICKETS_URL}?${stringify(params)}`)
-    .then(getResponseText)
-    .then(parseCardNumber)
+  return fetch(url).then(getResponseText).then(parseCardNumber)
 }
 
-export const getSkipass = async id => {
-  const cardNumber = await getSkipassCardNumber(id)
+const getSkipassCardNumberCached = id => {
+  return memoryCache.wrap(id, () => getSkipassCardNumber(id))
+}
 
+const getSkipass = async id => {
+  const cardNumber = await getSkipassCardNumberCached(id)
   const params = {
     NumTicket: id,
     Card: cardNumber
   }
+  const url = `${BUKOVEL_TICKETS_URL}?${stringify(params)}`
 
-  return fetch(`${BUKOVEL_TICKETS_URL}?${stringify(params)}`)
-    .then(getResponseText)
-    .then(parseSkipass)
+  return fetch(url).then(getResponseText).then(parseSkipass)
+}
+
+export {
+  getSkipassCardNumberCached as getSkipassCardNumber,
+  getSkipass
 }
