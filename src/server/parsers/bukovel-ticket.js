@@ -16,7 +16,7 @@ const getElementText = $element => {
 
 const parseCardNumber = html => {
   if (isNil(html)) {
-    throw new Error('Valid HTML string is exprected')
+    return Promise.reject('Valid HTML string is expected')
   }
 
   const $ = cheerio.load(html)
@@ -25,16 +25,16 @@ const parseCardNumber = html => {
     .find('tr:nth-child(3) a').attr('href')
 
   if (isNil(cardNumberHref)) {
-    throw new Error('Unable to find cardNumber link')
+    return Promise.reject('Unable to find cardNumber link in response')
   }
 
   const parsedQueryString = parse(cardNumberHref)
 
   if (!has(parsedQueryString, 'Card')) {
-    throw new Error('Unable to find card number in the link')
+    return Promise.reject('Unable to find card number in the link')
   }
 
-  return parsedQueryString.Card
+  return Promise.resolve(parsedQueryString.Card)
 }
 
 const parseSkipass = html => {

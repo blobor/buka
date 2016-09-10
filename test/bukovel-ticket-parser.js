@@ -15,20 +15,13 @@ test('should parse card number from response', t => {
     })
 })
 
-test('should throw error in case not valid data pased', t => {
+test('should throw error in case not valid data passed', t => {
   // Arrange
-  const invalidData = [
-    '--',
-    321,
-    {},
-    null,
-    undefined,
-    '<html>'
-  ]
+  const invalidData = [ '--', 321, {}, null, undefined, '<html>' ]
 
   // Act
   invalidData.forEach(data => {
     // Assert
-    t.throws(() => parseCardNumber(data))
+    t.throws(parseCardNumber(data))
   })
 })
