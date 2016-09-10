@@ -7,7 +7,7 @@ import { wrapAsync } from '../utils/express-promise-handle'
 import apiRoute from '../routes'
 import Root from '../../app/Root'
 import configureStore from '../../app/store/configureStore'
-import { getSkipass } from '../../app/data-access/bukovelAPI'
+import { getSkipass } from '../data-sourses/bukovel-shop/bukovel-skipass'
 import { validate as validateSkipassNumber } from '../../app/helpers/cardNumberValidator.js'
 
 import Manager from './Manager.js'
