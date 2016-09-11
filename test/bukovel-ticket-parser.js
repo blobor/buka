@@ -2,11 +2,11 @@ import test from 'ava'
 import pify from 'pify'
 import { readFile } from 'fs'
 
-import { parseCardNumber } from '../src/server/parsers/bukovel-ticket'
+import { parseCardNumber, parseSkipass } from '../src/server/parsers/bukovel-ticket'
 
 test('should parse card number from response', t => {
   // Arrange
-  return pify(readFile)('fixtures/bukovel-ticket-response.html', 'utf8')
+  return pify(readFile)('fixtures/bukovel-ticket-cardnumber-response.html', 'utf8')
     // Act
     .then(parseCardNumber)
     // Assert
@@ -24,4 +24,17 @@ test('should throw error in case not valid data passed', t => {
     // Assert
     t.throws(parseCardNumber(data))
   })
+})
+
+test('should parse skipass from response', t => {
+  // Arrange
+  return pify(readFile)('fixtures/bukovel-ticket-skipass-responce.html', 'utf8')
+    // Act
+    .then(parseSkipass)
+    // Assert
+    .then(data => {
+      t.is(data.name, '5 днів СЕЗОН (ВСЕF)')
+      t.is(data.cardNumber, '01-2167-30-92545')
+      t.is(data.lifts.length, 33)
+    })
 })
