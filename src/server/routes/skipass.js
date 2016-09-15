@@ -1,7 +1,7 @@
 import { Router } from 'express'
 
 import { wrapAsync } from '../utils/express-promise-handle'
-import { getSkipass } from '../data-sourses/bukovel-shop/bukovel-skipass'
+import { getSkipass } from '../data-sourses/bukovel-tickets/bukovel'
 
 const router = new Router()
 
