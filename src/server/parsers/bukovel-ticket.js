@@ -48,12 +48,13 @@ const parseSkipass = html => {
 
   const skipassInfoTable = dataTables.eq(0)
   const skipassLiftsInfoTable = dataTables.eq(1)
+  const skipassTicketName = skipassInfoTable.find('tr:nth-child(1) strong').text()
   const skipassCardName = skipassInfoTable.find('tr:nth-child(2) strong').text()
   const cardNumber = getElementText(skipassInfoTable.find('tr:nth-child(3) strong')).trim()
   return Promise.resolve({
     name: normalizeCardName(skipassCardName),
     cardNumber: cardNumber,
-    purchaseDate: null,
+    ticketNumber: skipassTicketName,
     lifts: Array.from(getLifts(skipassLiftsInfoTable))
   })
 }

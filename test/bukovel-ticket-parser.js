@@ -35,6 +35,7 @@ test('should parse skipass from response', t => {
     .then(data => {
       t.is(data.name, '5 днів СЕЗОН (ВСЕF)')
       t.is(data.cardNumber, '01-2167-30-92545')
+      t.is(data.ticketNumber, '01-1614 7133 5345 3531 0476-4')
       t.is(data.lifts.length, 33)
     })
 })

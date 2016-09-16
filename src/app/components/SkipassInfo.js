@@ -5,16 +5,16 @@ import LiftsTable from './LiftsTable'
 import { getAdoptedDateString } from '../helpers/date'
 
 const renderLifts = lifts => isEmpty(lifts) ? null : <LiftsTable lifts={lifts} />
-const renderPurchaseDate = date => {
-  if (isNil(date)) {
+const renderNullableValue = (label, value) => {
+  if (isNil(value)) {
     return null
   }
 
   return (
     <tr>
-      <td>Purchase Date</td>
+      <td>{ label }</td>
       <td className='mdl-data-table__cell--non-numeric'>
-        {getAdoptedDateString(date)}
+        { value }
       </td>
     </tr>
   )
@@ -31,7 +31,8 @@ const SkipassInfo = ({ skipass }) => (
             {skipass.cardNumber}
           </td>
         </tr>
-        { renderPurchaseDate(skipass.purchaseDate) }
+        { renderNullableValue('Ticket number', skipass.ticketNumber) }
+        { renderNullableValue('Purchase Date', getAdoptedDateString(skipass.purchaseDate)) }
       </tbody>
     </table>
     { renderLifts(skipass.lifts) }
