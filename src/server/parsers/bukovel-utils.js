@@ -26,7 +26,7 @@ const getLifts = function * ($tableNode) {
   // skip first row,
   // because it is table header
   for (let i = 1; i < rowsCount; i++) {
-    let columns = rows.eq(i).find('td')
+    const columns = rows.eq(i).find('td')
 
     yield {
       id: getliftId(columns.eq(0).text()),
