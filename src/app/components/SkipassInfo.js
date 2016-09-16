@@ -1,9 +1,24 @@
 import React from 'react'
 import isEmpty from 'lodash.isempty'
+import isNil from 'lodash.isnil'
 import LiftsTable from './LiftsTable'
 import { getAdoptedDateString } from '../helpers/date'
 
 const renderLifts = lifts => isEmpty(lifts) ? null : <LiftsTable lifts={lifts} />
+const renderPurchaseDate = date => {
+  if (isNil(date)) {
+    return null
+  }
+
+  return (
+    <tr>
+      <td>Purchase Date</td>
+      <td className='mdl-data-table__cell--non-numeric'>
+        {getAdoptedDateString(date)}
+      </td>
+    </tr>
+  )
+}
 
 const SkipassInfo = ({ skipass }) => (
   <section className='scipass-info'>
@@ -16,15 +31,10 @@ const SkipassInfo = ({ skipass }) => (
             {skipass.cardNumber}
           </td>
         </tr>
-        <tr>
-          <td>Purchase Date</td>
-          <td className='mdl-data-table__cell--non-numeric'>
-            {getAdoptedDateString(skipass.purchaseDate)}
-          </td>
-        </tr>
+        { renderPurchaseDate(skipass.purchaseDate) }
       </tbody>
     </table>
-    {renderLifts(skipass.lifts)}
+    { renderLifts(skipass.lifts) }
   </section>
 )
 
