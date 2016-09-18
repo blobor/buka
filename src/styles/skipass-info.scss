@@ -1,6 +1,6 @@
 @import 'screen-sizes.scss';
 
-.scipass-info {
+.skipass-info {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@
 }
 
 @media (max-width: $xsmall) {
-  .scipass-info__table.mdl-data-table td {
+  .skipass-info__table.mdl-data-table td {
     padding-left: 7px;
     padding-right: 7px;
   }

@@ -21,9 +21,9 @@ const renderNullableValue = (label, value) => {
 }
 
 const SkipassInfo = ({ skipass }) => (
-  <section className='scipass-info'>
+  <section className='skipass-info'>
     <h5>{skipass.name}</h5>
-    <table className='mdl-data-table mdl-shadow--2dp scipass-info__table'>
+    <table className='mdl-data-table mdl-shadow--2dp skipass-info__table'>
       <tbody>
         <tr>
           <td>Сard Number</td>
