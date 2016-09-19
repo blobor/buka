@@ -3,21 +3,21 @@ import isNil from 'lodash.isnil'
 import fetch from 'isomorphic-fetch'
 
 const url = '/api'
-const mapResponse = response => {
-  return response.json().then(json => ({ skipass: json, response }))
-}
 
-const getSkipass = async id => {
+const getSkipass = id => {
   if (isNil(id)) {
-    throw new Error('Card Number is nill')
+    return Promise.reject('Card Number is nill')
   }
-  return await fetch(`${url}/skipass/${id}`)
-    .then(mapResponse)
-    .then(({ skipass, response }) => {
+  return fetch(`${url}/skipass/${id}`)
+    .then(response => {
       if (!response.ok) {
-        return Promise.reject('Response is not ok')
+        return response.text()
+          .then(text => Promise.reject(text))
       }
 
+      return response.json()
+    })
+    .then(skipass => {
       if (has(skipass, 'errors')) {
         const reason = skipass.errors.join(', ')
         return Promise.reject(reason)
