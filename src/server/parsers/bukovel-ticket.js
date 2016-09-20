@@ -1,7 +1,6 @@
 import cheerio from 'cheerio'
-import has from 'lodash.has'
 import isNil from 'lodash.isnil'
-import { parse } from 'qs'
+import isEmpty from 'lodash.isempty'
 
 import { getLifts, normalizeCardName } from './bukovel-utils.js'
 
@@ -13,6 +12,8 @@ const getElementText = $element => {
     .end()      // again go back to selected element
     .text()
 }
+const dashChar = '-'
+const whiteSpaceRegex = /\s+/g
 
 const parseCardNumber = html => {
   if (isNil(html)) {
@@ -20,21 +21,22 @@ const parseCardNumber = html => {
   }
 
   const $ = cheerio.load(html)
+  const ticketNumberText = $('#result')
+    .find('tr:first-child strong').text()
 
-  const cardNumberHref = $('#result')
-    .find('tr:nth-child(3) a').attr('href')
-
-  if (isNil(cardNumberHref)) {
-    return Promise.reject('Unable to find cardNumber link in response')
+  if (isEmpty(ticketNumberText)) {
+    return Promise.reject('Unable to find ticket number')
   }
 
-  const parsedQueryString = parse(cardNumberHref)
+  // ticket number format
+  // XX-XXXX XXXX XXXX XXXX XXXX-X
+  const ticketStartIndex = ticketNumberText.indexOf(dashChar) + 1
+  const ticketEndIndex = ticketNumberText.lastIndexOf(dashChar)
+  const ticketNumber = ticketNumberText
+    .slice(ticketStartIndex, ticketEndIndex)
+    .replace(whiteSpaceRegex, '')
 
-  if (!has(parsedQueryString, 'Card')) {
-    return Promise.reject('Unable to find card number in the link')
-  }
-
-  return Promise.resolve(parsedQueryString.Card)
+  return Promise.resolve(ticketNumber)
 }
 
 const parseSkipass = html => {
