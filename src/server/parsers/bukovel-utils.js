@@ -1,3 +1,4 @@
+import get from 'lodash.get'
 import flow from 'lodash.flow'
 import moment from 'moment-timezone'
 
@@ -11,7 +12,7 @@ const removeWhitespacesBeforeParentheses = str => str.replace(/\s+(?=\))/g, '')
 
 const normalizeCardName = flow(removeDuplicateWhitespaces, removeWhitespacesBeforeParentheses)
 
-const getliftId = text => {
+const getLiftId = text => {
   return text.slice(text.lastIndexOf(whiteSpaceChar) + whiteSpaceChar.length, text.length)
 }
 
@@ -29,7 +30,7 @@ const getLifts = function * ($tableNode) {
     const columns = rows.eq(i).find('td')
 
     yield {
-      id: getliftId(columns.eq(0).text()),
+      id: getLiftId(columns.eq(0).text()),
       date: getAdoptedDateString(columns.eq(1).text()),
       initialLift: Number.parseInt(columns.eq(2).text()),
       liftsLeft: Number.parseInt(columns.eq(3).text())
@@ -37,8 +38,27 @@ const getLifts = function * ($tableNode) {
   }
 }
 
+const getSkipassProps = (keyValues, mappedData) => {
+  const result = {}
+  const emptyAdaptor = value => value
+
+  for (const {key, value} of keyValues) {
+    const mappedKey = get(mappedData, [key, 'propName'], key)
+    const getValue = get(mappedData, [key, 'adaptor'], emptyAdaptor)
+
+    if (mappedKey in result) {
+      continue
+    }
+
+    result[mappedKey] = getValue(value)
+  }
+
+  return result
+}
+
 export {
   getLifts,
+  getSkipassProps,
   normalizeCardName,
   getAdoptedDateString
 }

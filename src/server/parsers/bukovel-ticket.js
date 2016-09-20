@@ -2,18 +2,47 @@ import cheerio from 'cheerio'
 import isNil from 'lodash.isnil'
 import isEmpty from 'lodash.isempty'
 
-import { getLifts, normalizeCardName } from './bukovel-utils.js'
+import { getLifts, getSkipassProps, normalizeCardName, getAdoptedDateString } from './bukovel-utils.js'
 
-const getElementText = $element => {
-  return $element
-    .clone()    // clone the element
-    .children() // select all the children
-    .remove()   // remove all the children
-    .end()      // again go back to selected element
-    .text()
-}
 const dashChar = '-'
 const whiteSpaceRegex = /\s+/g
+const getTableKeyValues = function * ($tableNode) {
+  if (isEmpty($tableNode)) {
+    return
+  }
+
+  const rows = $tableNode.find('tr')
+  const rowsCount = rows.length
+
+  for (let i = 0; i < rowsCount; i++) {
+    const columns = rows.eq(i).find('td')
+
+    yield {
+      key: columns.eq(0).text().trim(),
+      value: columns.eq(1).find('strong').text().trim()
+    }
+  }
+}
+
+const bukovelTicketMapping = {
+  '№ картки': {
+    propName: 'ticketNumber'
+  },
+  'Квиток': {
+    propName: 'name',
+    adaptor: normalizeCardName
+  },
+  'Дата продажу': {
+    propName: 'purchaseDate',
+    adaptor: getAdoptedDateString
+  },
+  '№ квитка': {
+    propName: 'cardNumber',
+    adaptor: value => {
+      return value.slice(0, value.indexOf(' '))
+    }
+  }
+}
 
 const parseCardNumber = html => {
   if (isNil(html)) {
@@ -48,17 +77,15 @@ const parseSkipass = html => {
 
   const dataTables = $('#result')
 
-  const skipassInfoTable = dataTables.eq(0)
+  const keyValues = getTableKeyValues(dataTables.eq(0))
+  const skipassProps = getSkipassProps(keyValues, bukovelTicketMapping)
   const skipassLiftsInfoTable = dataTables.eq(1)
-  const skipassTicketName = skipassInfoTable.find('tr:nth-child(1) strong').text()
-  const skipassCardName = skipassInfoTable.find('tr:nth-child(2) strong').text()
-  const cardNumber = getElementText(skipassInfoTable.find('tr:nth-child(3) strong')).trim()
-  return Promise.resolve({
-    name: normalizeCardName(skipassCardName),
-    cardNumber: cardNumber,
-    ticketNumber: skipassTicketName,
+
+  const result = Object.assign({}, skipassProps, {
     lifts: Array.from(getLifts(skipassLiftsInfoTable))
   })
+
+  return Promise.resolve(result)
 }
 
 export {
