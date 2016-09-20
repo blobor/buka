@@ -27,7 +27,7 @@ const TestCardNumber = ({ onChange }) => {
       }
       anchorOrigin={{horizontal: 'right', vertical: 'top'}}
       targetOrigin={{horizontal: 'right', vertical: 'top'}}>
-        {renredCardNumbers()}
+      { renredCardNumbers() }
     </IconMenu>
   )
 }
