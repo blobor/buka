@@ -12,6 +12,7 @@
     "start:dev": "nodemon src/server.js --exec babel-node",
     "lint": "standard --verbose | snazzy",
     "test": "npm run lint && ava",
+    "test:watch": "ava --watch",
     "heroku-postbuild": "npm run build",
     "precommit": "npm test"
   },
