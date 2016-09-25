@@ -87,7 +87,7 @@ class CardNumberInput extends Component {
       // Cut, delete operations will have shortened the value
       // or if browser don't support 'KeyboardEvent.key' property
       if (elementValue.length < maskValue.length) {
-        this.mask.setSelection(getSelection(event.target))
+        updateMaskSelection(this.mask, event.target)
         this.mask.selection.end = this.mask.selection.start + sizeDiff
         this.mask.backspace()
       // in case browser don't support 'beforeInput' event
@@ -107,7 +107,7 @@ class CardNumberInput extends Component {
   handlePaste (event) {
     event.preventDefault()
 
-    this.mask.setSelection(getSelection(event.target))
+    updateMaskSelection(this.mask, event.target)
     let pastedValue = getTextFromClipboardData(event)
 
     if (this.mask.paste(pastedValue)) {
@@ -144,7 +144,7 @@ class CardNumberInput extends Component {
     if (event.key === BACKSPACE_KEY) {
       event.preventDefault()
 
-      this.mask.setSelection(getSelection(event.target))
+      updateMaskSelection(this.mask, event.target)
       if (this.mask.backspace()) {
         const value = getDisplayMaskValue(this.mask)
         this.setState({
@@ -161,7 +161,7 @@ class CardNumberInput extends Component {
 
     event.preventDefault()
 
-    this.mask.setSelection(getSelection(event.target))
+    updateMaskSelection(this.mask, event.target)
     if (this.mask.input(event.data)) {
       const value = getDisplayMaskValue(this.mask)
       this.setState({
@@ -234,6 +234,10 @@ function getTextFromClipboardData (event) {
   }
 
   return result
+}
+
+function updateMaskSelection (mask, element) {
+  mask.selection = getSelection(element)
 }
 
 export default CardNumberInput
