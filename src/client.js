@@ -3,8 +3,15 @@ import './styles/app.scss'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import PouchDB from 'pouchdb-browser'
 import configureStore from './app/store/configureStore'
 import Root from './app/Root'
+import * as config from './config.js'
+
+if (config.development) {
+  window.PouchDB = PouchDB
+  PouchDB.debug.enable('*')
+}
 
 const store = configureStore(window.__PRELOADED_STATE__)
 const userAgent = window.navigator.userAgent
