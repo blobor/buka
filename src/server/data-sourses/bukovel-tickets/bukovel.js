@@ -1,16 +1,13 @@
 import { stringify } from 'qs'
-import { duration } from 'moment'
 import { caching } from 'cache-manager'
 import isNil from 'lodash.isnil'
 import fetch from 'isomorphic-fetch'
 
 import { parseCardNumber, parseSkipass } from '../../parsers/bukovel-ticket'
 
-const memoryCache = caching({
+const cardNumberMemoryCache = caching({
   store: 'memory',
-  max: 100,
-  // time to live
-  ttl: duration(1, 'h').asSeconds()
+  max: 100
 })
 
 const BUKOVEL_TICKETS_URL = 'http://tickets.bukovel.com/'
@@ -36,7 +33,7 @@ const getSkipassCardNumber = id => {
 }
 
 const getSkipassCardNumberCached = id => {
-  return memoryCache.wrap(id, () => getSkipassCardNumber(id))
+  return cardNumberMemoryCache.wrap(id, () => getSkipassCardNumber(id))
 }
 
 const getSkipass = async id => {
