@@ -1,22 +1,22 @@
-import get from 'lodash.get'
+import { get as getProp } from 'lodash.get'
 import isEmpty from 'lodash.isempty'
 import moment from 'moment'
 import PouchDB from './PouchDB-client'
-import { getSkipass as getSkipassFromAPI } from './bukovelAPI'
+import { getSkipass } from './bukovelAPI'
 
 const DB_NAME = 'skipasses'
 const db = new PouchDB(DB_NAME)
 
 const prepareToSave = obj => {
   const objToSave = {
-    _id: get(obj, '_id', Date.now().toString()),
+    _id: getProp(obj, '_id', Date.now().toString()),
     updateDate: moment.utc().toJSON()
   }
 
   return Object.assign({}, obj, objToSave)
 }
 
-const getSkipass = id => {
+const get = id => {
   return db.find({
     selector: {
       cardNumber: id
@@ -32,7 +32,7 @@ const getSkipass = id => {
 }
 
 const getAndUpdateToLatest = async id => {
-  const skipass = await getSkipassFromAPI(id)
+  const skipass = await getSkipass(id)
   await save(skipass)
 
   return skipass
@@ -45,5 +45,6 @@ const save = skipass => {
 }
 
 export {
-  getSkipass
+  get,
+  getSkipass as getLatest
 }

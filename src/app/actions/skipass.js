@@ -1,4 +1,4 @@
-import { getSkipass } from '../data-access/skipassRepository'
+import { getLatest as getSkipass } from '../data-access/skipassRepository'
 import * as actionTypes from './actionTypes'
 import { validate } from '../helpers/cardNumberValidator'
 
