@@ -64,6 +64,8 @@
     "pm2": "2.0.15",
     "postcss-loader": "0.13.0",
     "pouchdb-adapter-idb": "6.0.5",
+    "pouchdb-adapter-localstorage": "6.0.5",
+    "pouchdb-adapter-memory": "6.0.5",
     "pouchdb-adapter-websql": "6.0.5",
     "pouchdb-core": "6.0.5",
     "qs": "6.2.1",
