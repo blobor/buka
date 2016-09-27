@@ -7,7 +7,7 @@ const mapStateToProps = state => {
   const searchSkipass = state.get('searchSkipass').toJS()
 
   return {
-    isValid: searchSkipass.isValid,
+    isDisabled: !searchSkipass.isValid || searchSkipass.isFetching,
     cardNumber: searchSkipass.skipassNumber
   }
 }
