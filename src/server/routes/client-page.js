@@ -6,36 +6,13 @@ import { renderToString } from 'react-dom/server'
 import { wrapAsync } from '../utils/express-promise-handle'
 import Root from '../../app/Root'
 import configureStore from '../../app/store/configureStore'
-import { getSkipass } from '../data-sourses/bukovel-shop/bukovel-skipass'
+import { getSkipass } from '../data-sourses/bukovel-tickets/bukovel'
 import { validate as validateSkipassNumber } from '../../app/helpers/cardNumberValidator.js'
 
 const router = new Router()
 
 router.get('/', wrapAsync(async (req, res) => {
-  const tasks = []
-  const preloadedState = {}
-
-  if (has(req.query, 'skipassNumber')) {
-    const searchSkipass = {
-      skipass: null,
-      skipassNumber: req.query.skipassNumber,
-      isValid: validateSkipassNumber(req.query.skipassNumber)
-    }
-
-    if (searchSkipass.isValid) {
-      const skipassTask = getSkipass(req.query.skipassNumber)
-        .then(skipass => {
-          searchSkipass.skipass = skipass
-        }, error => {
-          searchSkipass.error = error
-        })
-      tasks.push(skipassTask)
-    }
-
-    preloadedState.searchSkipass = searchSkipass
-  }
-
-  await Promise.all(tasks)
+  const preloadedState = await getPreloadedState(req.query)
 
   const store = configureStore(preloadedState)
   const html = renderToString(
@@ -47,5 +24,32 @@ router.get('/', wrapAsync(async (req, res) => {
     preloadedState: store.getState()
   })
 }))
+
+function getPreloadedState (queryString) {
+  if (!has(queryString, 'skipassNumber')) {
+    return Promise.resolve({})
+  }
+
+  const preloadedState = {
+    searchSkipass: {
+      skipass: null,
+      skipassNumber: queryString.skipassNumber,
+      isValid: validateSkipassNumber(queryString.skipassNumber)
+    }
+  }
+
+  if (!preloadedState.searchSkipass.isValid) {
+    return Promise.resolve(preloadedState)
+  }
+
+  return getSkipass(queryString.skipassNumber)
+    .then(skipass => {
+      preloadedState.searchSkipass.skipass = skipass
+      return preloadedState
+    }, error => {
+      preloadedState.searchSkipass.error = error
+      return preloadedState
+    })
+}
 
 export default router
