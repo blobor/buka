@@ -8,6 +8,10 @@
 
 Simple pet project.
 
+## Windows installation
+
+See installation instructions for `node-gyp` dependencies [here](https://github.com/nodejs/node-gyp#installation), you'll need these (free) components from Microsoft to compile and run any native Node add-on in Windows.
+
 ## LICENSE
 
 MIT
