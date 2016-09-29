@@ -1,25 +1,43 @@
 import has from 'lodash.has'
 import React from 'react'
 import { Router } from 'express'
+import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
+import { ServerRouter, createServerRenderContext } from 'react-router'
 
 import { wrapAsync } from '../utils/express-promise-handle'
-import Root from '../../app/Root'
+import App from '../../app/App'
 import configureStore from '../../app/store/configureStore'
 import { getSkipass } from '../data-sourses/bukovel-tickets/bukovel'
 import { validate as validateSkipassNumber } from '../../app/helpers/cardNumberValidator.js'
 
 const router = new Router()
 
-router.get('/', wrapAsync(async (req, res) => {
+router.get('*', wrapAsync(async (req, res) => {
   const preloadedState = await getPreloadedState(req.query)
 
+  const context = createServerRenderContext()
   const store = configureStore(preloadedState)
-  const html = renderToString(
-    <Root store={store} userAgent={req.headers['user-agent']} />
-  )
+  let httpStatus = 200
+  let html = renderToString(renderAppComponent(req, store, context))
 
-  res.render('index', {
+  const result = context.getResult()
+
+  if (result.redirect) {
+    res.redirect(301, result.redirect.pathname + result.redirect.search)
+    return
+  }
+
+  // the result will tell you if there were any misses, if so
+  // we can send a 404 and then do a second render pass with
+  // the context to clue the <Miss> components into rendering
+  // this time
+  if (result.missed) {
+    httpStatus = 404
+    html = renderToString(renderAppComponent(req, store, context))
+  }
+
+  res.status(httpStatus).render('index', {
     content: html,
     preloadedState: store.getState()
   })
@@ -50,6 +68,16 @@ function getPreloadedState (queryString) {
       preloadedState.searchSkipass.error = error
       return preloadedState
     })
+}
+
+function renderAppComponent (req, store, routeContext) {
+  return (
+    <Provider store={store}>
+      <ServerRouter location={req.url} context={routeContext}>
+        <App userAgent={req.headers['user-agent']} />
+      </ServerRouter>
+    </Provider>
+  )
 }
 
 export default router

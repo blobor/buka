@@ -21,7 +21,7 @@ const renderNullableValue = (label, value) => {
 }
 
 const SkipassInfo = ({ skipass }) => (
-  <section className='skipass-info'>
+  <article className='skipass-info'>
     <h5>{skipass.name}</h5>
     <table className='mdl-data-table mdl-shadow--2dp skipass-info__table'>
       <tbody>
@@ -36,7 +36,7 @@ const SkipassInfo = ({ skipass }) => (
       </tbody>
     </table>
     { renderLifts(skipass.lifts) }
-  </section>
+  </article>
 )
 
 SkipassInfo.propTypes = {

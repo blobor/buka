@@ -27,6 +27,13 @@ html, body {
   }
 }
 
+.buka-skipass-search__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .buka-skipass-number__form {
     width: 100%;
     display: flex;

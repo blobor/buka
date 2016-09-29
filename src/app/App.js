@@ -2,10 +2,11 @@ import 'babel-polyfill'
 
 import React, { Component, PropTypes } from 'react'
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import { Match } from 'react-router'
 
+import Search from './containers/Search'
 import Header from './containers/Header'
 import Footer from './containers/Footer'
-import Search from './containers/Search'
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -35,7 +36,9 @@ class App extends Component {
       <MuiThemeProvider muiTheme={this.muiTheme}>
         <div className='buka'>
           <Header />
-          <Search />
+          <main className='buka__container'>
+            <Match pattern='/' component={Search} />
+          </main>
           <Footer />
         </div>
       </MuiThemeProvider>

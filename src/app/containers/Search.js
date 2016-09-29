@@ -6,10 +6,10 @@ import SkipassSearchResult from '../components/SkipassSearchResult'
 
 const Search = ({ search }) => {
   return (
-    <main className='buka__container'>
+    <section className='buka-skipass-search__container'>
       <CardNumberForm />
       <SkipassSearchResult search={search} />
-    </main>
+    </section>
   )
 }
 
