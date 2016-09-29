@@ -1,8 +1,6 @@
 'use strict'
 
 const webpack = require('webpack')
-const autoprefixer = require('autoprefixer')
-
 const commonConfig = require('./webpack.config.common')
 
 const sassLoaders = [
@@ -46,13 +44,6 @@ let config = {
         test: /\.json?$/,
         loader: 'json'
       }
-    ]
-  },
-  postcss: function () {
-    return [
-      autoprefixer({
-        browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']
-      })
     ]
   },
   plugins: [
