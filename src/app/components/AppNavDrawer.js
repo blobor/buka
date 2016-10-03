@@ -35,11 +35,13 @@ class AppNavDrawer extends Component {
           onTouchTap={this.handleToggle}>
           <NavigationMenu color={fullWhite} />
         </IconButton>
-        <Drawer open={this.state.open}
+        <Drawer className='buka-navigation-drawer__container'
+          open={this.state.open}
           docked={false}
           onRequestChange={this.handleClose}>
-          <AppBar
+          <AppBar className='buka-navigation-drawer__header'
             title='Buka'
+            onTitleTouchTap={this.handleClose}
             showMenuIconButton={false} />
         </Drawer>
       </div>
