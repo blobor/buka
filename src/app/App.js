@@ -1,6 +1,6 @@
 import 'babel-polyfill'
 
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import { Match } from 'react-router'
 
@@ -17,36 +17,25 @@ import { getMuiTheme, MuiThemeProvider } from 'material-ui/styles'
 // https://github.com/zilverline/react-tap-event-plugin
 injectTapEventPlugin()
 
-class App extends Component {
+const App = ({ userAgent }) => {
+  const muiTheme = getMuiTheme({
+    userAgent: userAgent,
+    svgIcon: {
+      color: fullWhite
+    }
+  })
 
-  constructor () {
-    super()
-
-    this.muiTheme = null
-  }
-
-  componentWillMount () {
-    this.muiTheme = getMuiTheme({
-      userAgent: this.props.userAgent,
-      svgIcon: {
-        color: fullWhite
-      }
-    })
-  }
-
-  render () {
-    return (
-      <MuiThemeProvider muiTheme={this.muiTheme}>
-        <div className='buka'>
-          <Header />
-          <main className='buka__container'>
-            <Match pattern='/' component={Search} />
-          </main>
-          <Footer />
-        </div>
-      </MuiThemeProvider>
-    )
-  }
+  return (
+    <MuiThemeProvider muiTheme={muiTheme}>
+      <div className='buka'>
+        <Header />
+        <main className='buka__container'>
+          <Match pattern='/' component={Search} />
+        </main>
+        <Footer />
+      </div>
+    </MuiThemeProvider>
+  )
 }
 
 App.propTypes = {
