@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { fullWhite } from 'material-ui/styles/colors'
+
 import { Drawer, IconButton, AppBar } from 'material-ui'
 import { NavigationMenu } from 'material-ui/svg-icons'
 
@@ -33,7 +33,7 @@ class AppNavDrawer extends Component {
       <div>
         <IconButton
           onTouchTap={this.handleToggle}>
-          <NavigationMenu color={fullWhite} />
+          <NavigationMenu />
         </IconButton>
         <Drawer className='buka-navigation-drawer__container'
           open={this.state.open}

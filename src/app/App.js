@@ -8,8 +8,8 @@ import Search from './containers/Search'
 import Header from './containers/Header'
 import Footer from './containers/Footer'
 
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { fullWhite } from 'material-ui/styles/colors'
+import { getMuiTheme, MuiThemeProvider } from 'material-ui/styles'
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release
@@ -27,7 +27,10 @@ class App extends Component {
 
   componentWillMount () {
     this.muiTheme = getMuiTheme({
-      userAgent: this.props.userAgent
+      userAgent: this.props.userAgent,
+      svgIcon: {
+        color: fullWhite
+      }
     })
   }
 
