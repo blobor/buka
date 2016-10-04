@@ -1,6 +1,6 @@
 import React from 'react'
 import { AppBar } from 'material-ui'
-import AppNavDrawer from './AppNavDrawer'
+import NavigationDrawer from '../containers/NavigationDrawer'
 import TestCardNumber from './TestCardNumber'
 
 const Header = ({ testCardNumberChange }) => {
@@ -9,7 +9,7 @@ const Header = ({ testCardNumberChange }) => {
       <AppBar
         className='buka__header-appbar'
         iconElementLeft={
-          <AppNavDrawer />
+          <NavigationDrawer />
         }
         iconElementRight={
           <TestCardNumber onChange={testCardNumberChange} />
