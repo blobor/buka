@@ -7,6 +7,7 @@ import { Match } from 'react-router'
 import Search from './containers/Search'
 import Header from './containers/Header'
 import Footer from './containers/Footer'
+import NavigationDrawer from './containers/NavigationDrawer'
 
 import { fullWhite } from 'material-ui/styles/colors'
 import { getMuiTheme, MuiThemeProvider } from 'material-ui/styles'
@@ -30,6 +31,7 @@ const App = ({ userAgent }) => {
       <div className='buka'>
         <Header />
         <main className='buka__container'>
+          <NavigationDrawer />
           <Match pattern='/' component={Search} />
         </main>
         <Footer />

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { closeNavigationDrawer, toggleNavigationDrawer } from '../actions/app'
+import { closeNavigationDrawer } from '../actions/app'
 import NavigationDrawer from '../components/NavigationDrawer'
 
 const mapStateToProps = state => {
@@ -13,9 +13,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleToggle: () => {
-      dispatch(toggleNavigationDrawer())
-    },
     handleClose: () => {
       dispatch(closeNavigationDrawer())
     }
