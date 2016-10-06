@@ -21,6 +21,9 @@ injectTapEventPlugin()
 const App = ({ userAgent }) => {
   const muiTheme = getMuiTheme({
     userAgent: userAgent,
+    textField: {
+      hintColor: '#565656'
+    },
     svgIcon: {
       color: fullWhite
     }

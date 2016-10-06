@@ -23,7 +23,7 @@ html, body {
 
   &__footer {
     flex-shrink: 0;
-    background-color: #424242;
+    background-color: #212121;
   }
 }
 
@@ -61,11 +61,12 @@ html, body {
   flex-wrap: wrap;
 
   &__json {
-    color: #757575;
+    color: #b8b8b8;
   }
 
   &__github {
     text-decoration: initial;
+    color: #e2e2e2
   }
 
 }
