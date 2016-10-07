@@ -33,6 +33,7 @@ const SkipassInfo = ({ skipass }) => (
         </tr>
         { renderNullableValue('Ticket number', skipass.ticketNumber) }
         { renderNullableValue('Purchase Date', getAdoptedDateString(skipass.purchaseDate)) }
+        { renderNullableValue('Last Update', getAdoptedDateString(skipass.syncDate)) }
       </tbody>
     </table>
     { renderLifts(skipass.lifts) }

@@ -31,7 +31,7 @@ const fetchSkipassFailure = error => {
 }
 
 const fetchSkipassData = value => {
-  return async dispatch => {
+  return async (dispatch) => {
     dispatch(fetchSkipassRequest())
     try {
       const skipass = await getSkipass(value)

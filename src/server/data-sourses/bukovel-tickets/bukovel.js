@@ -1,3 +1,4 @@
+import { utc } from 'moment'
 import { stringify } from 'qs'
 import { caching } from 'cache-manager'
 import isNil from 'lodash.isnil'
@@ -36,7 +37,7 @@ const getSkipassCardNumberCached = id => {
   return cardNumberMemoryCache.wrap(id, () => getSkipassCardNumber(id))
 }
 
-const getSkipass = async id => {
+const getSkipass = async (id) => {
   const cardNumber = await getSkipassCardNumberCached(id)
   const params = {
     NumTicket: id,
@@ -44,7 +45,14 @@ const getSkipass = async id => {
   }
   const url = `${BUKOVEL_TICKETS_URL}?${stringify(params)}`
 
-  return fetch(url).then(getResponseText).then(parseSkipass)
+  return fetch(url)
+    .then(getResponseText)
+    .then(parseSkipass)
+    .then(skipass => {
+      return Object.assign(skipass, {
+        syncDate: utc()
+      })
+    })
 }
 
 export {
