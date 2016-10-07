@@ -1,5 +1,6 @@
 import React from 'react'
 import { Drawer, AppBar } from 'material-ui'
+import RaisedButtonLink from './RaisedButtonLink'
 
 const NavigationDrawer = ({ isOpen, handleClose }) => {
   return (
@@ -11,6 +12,7 @@ const NavigationDrawer = ({ isOpen, handleClose }) => {
         title='Buka'
         onTitleTouchTap={handleClose}
         showMenuIconButton={false} />
+      <RaisedButtonLink to='/' label='Search' activeOnlyWhenExact />
     </Drawer>
   )
 }
