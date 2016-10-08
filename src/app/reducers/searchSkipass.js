@@ -3,6 +3,7 @@ import * as actionTypes from '../actions/actionTypes'
 
 const initialState = fromJS({
   isValid: true,
+  canBeAdded: false,
   skipassNumber: '',
   skipass: null
 })
@@ -14,9 +15,12 @@ export default (state = initialState, action) => {
         skipassNumber: action.skipassNumber,
         isValid: action.isValid
       })
+    case actionTypes.TOGGLE_SKIPASS_CAN_BE_ADDED:
+      return state.set('canBeAdded', action.canBeAdded)
     case actionTypes.FETCH_SKIPASS_REQUEST:
       return state.merge({
-        isFetching: true
+        isFetching: true,
+        canBeAdded: false
       })
     case actionTypes.FETCH_SKIPASS_SUCCESS:
       return state.merge({
@@ -27,6 +31,7 @@ export default (state = initialState, action) => {
     case actionTypes.FETCH_SKIPASS_FAILURE:
       return state.merge({
         isFetching: false,
+        canBeAdded: false,
         skipass: null,
         error: action.error
       })

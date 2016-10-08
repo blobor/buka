@@ -31,11 +31,20 @@ const get = id => {
   .catch(getAndUpdateToLatest)
 }
 
-const getAndUpdateToLatest = async id => {
+const getAndUpdateToLatest = async (id) => {
   const skipass = await getSkipass(id)
   await save(skipass)
 
   return skipass
+}
+
+const hasSkipass = cardNumber => {
+  return db.find({
+    selector: {
+      cardNumber
+    }
+  })
+  .then(result => !isEmpty(result.docs))
 }
 
 const save = skipass => {
@@ -46,5 +55,6 @@ const save = skipass => {
 
 export {
   get,
+  hasSkipass,
   getSkipass as getLatest
 }

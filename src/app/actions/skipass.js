@@ -1,4 +1,4 @@
-import { getLatest as getSkipass } from '../data-access/skipassRepository'
+import { hasSkipass, getLatest as getSkipass } from '../data-access/skipassRepository'
 import * as actionTypes from './actionTypes'
 import { validate } from '../helpers/cardNumberValidator'
 
@@ -30,14 +30,28 @@ const fetchSkipassFailure = error => {
   }
 }
 
+const toggleSkipassCanBeAdded = canBeAdded => {
+  return {
+    type: actionTypes.TOGGLE_SKIPASS_CAN_BE_ADDED,
+    canBeAdded: canBeAdded
+  }
+}
+
 const fetchSkipassData = value => {
   return async (dispatch) => {
+    let skipass = null
+
     dispatch(fetchSkipassRequest())
     try {
-      const skipass = await getSkipass(value)
+      skipass = await getSkipass(value)
       dispatch(fetchSkipassSuccess(skipass))
     } catch (e) {
       dispatch(fetchSkipassFailure(e))
+    }
+
+    if (skipass != null) {
+      const skipassIsPresent = await hasSkipass(value)
+      dispatch(toggleSkipassCanBeAdded(!skipassIsPresent))
     }
   }
 }
