@@ -1,4 +1,4 @@
-import { get as getProp } from 'lodash.get'
+import getProp from 'lodash.get'
 import isEmpty from 'lodash.isempty'
 import moment from 'moment'
 import PouchDB from './PouchDB-client'
@@ -55,6 +55,7 @@ const save = skipass => {
 
 export {
   get,
+  save,
   hasSkipass,
   getSkipass as getLatest
 }

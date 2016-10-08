@@ -3,13 +3,15 @@ import { connect } from 'react-redux'
 import { FloatingActionButton } from 'material-ui'
 import { ContentAdd } from 'material-ui/svg-icons'
 
-const AddSkipassButton = ({ canBeAdded }) => {
+import { storeSkipass } from '../actions/store-skipass'
+
+const AddSkipassButton = ({ canBeAdded, storeSkipass }) => {
   if (!canBeAdded) {
     return null
   }
 
   return (
-    <FloatingActionButton className='buka-skipass-search__add-button'>
+    <FloatingActionButton className='buka-skipass-search__add-button' onTouchTap={storeSkipass} >
       <ContentAdd />
     </FloatingActionButton>
   )
@@ -21,4 +23,12 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(AddSkipassButton)
+const mapDispatchToProps = dispatch => {
+  return {
+    storeSkipass: skipass => {
+      dispatch(storeSkipass(skipass))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddSkipassButton)

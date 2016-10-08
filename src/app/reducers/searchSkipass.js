@@ -35,6 +35,8 @@ export default (state = initialState, action) => {
         skipass: null,
         error: action.error
       })
+    case actionTypes.STORE_SKIPASS_SUCCESS:
+      return state.set('canBeAdded', false)
     default:
       return state
   }
