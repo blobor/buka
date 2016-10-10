@@ -35,6 +35,9 @@ const getAll = () => {
   return db.allDocs({
     include_docs: true
   })
+  .then(result => {
+    return result.rows.map(row => row.doc)
+  })
 }
 
 const getAndUpdateToLatest = async (id) => {
