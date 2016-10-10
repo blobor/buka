@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 import { connect } from 'react-redux'
 import { FloatingActionButton } from 'material-ui'
 import { ContentAdd } from 'material-ui/svg-icons'
@@ -6,12 +7,12 @@ import { ContentAdd } from 'material-ui/svg-icons'
 import { storeSkipass } from '../actions/store-skipass'
 
 const AddSkipassButton = ({ canBeAdded, storeSkipass }) => {
-  if (!canBeAdded) {
-    return null
-  }
+  const className = classNames('add-skipass__button', {
+    'add-skipass__button--hidden': !canBeAdded
+  })
 
   return (
-    <FloatingActionButton className='buka-skipass-search__add-button' onTouchTap={storeSkipass} >
+    <FloatingActionButton className={className} onTouchTap={storeSkipass} >
       <ContentAdd />
     </FloatingActionButton>
   )

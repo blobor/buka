@@ -7,6 +7,7 @@ module.exports = {
     app: './src/client.js',
     vendor: [
       'babel-polyfill',
+      'classNames',
       'immutable',
       'inputmask-core',
       'isomorphic-fetch',

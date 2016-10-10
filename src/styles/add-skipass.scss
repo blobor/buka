@@ -1,0 +1,11 @@
+.add-skipass {
+  &__button {
+    position: fixed;
+    right: 10pt;
+    bottom: 20pt;
+
+    &--hidden {
+      display: none !important;
+    }
+  }
+}
