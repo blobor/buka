@@ -1,11 +1,30 @@
+$shadow-width: 3px;
+$right-shift: 10pt;
+
 .add-skipass {
   &__button {
     position: fixed;
-    right: 10pt;
+    right: $right-shift;
     bottom: 20pt;
+
+    &--animated {
+      animation-duration: 450ms;
+      animation-fill-mode: both;
+      animation-name: addSkipassSlideInRight;
+    }
 
     &--hidden {
       display: none !important;
     }
+  }
+}
+
+@keyframes addSkipassSlideInRight {
+  0% {
+    transform: translateX(calc(100% + #{$right-shift} + #{$shadow-width}));
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }

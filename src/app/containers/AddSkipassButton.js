@@ -7,7 +7,7 @@ import { ContentAdd } from 'material-ui/svg-icons'
 import { storeSkipass } from '../actions/store-skipass'
 
 const AddSkipassButton = ({ canBeAdded, storeSkipass }) => {
-  const className = classNames('add-skipass__button', {
+  const className = classNames('add-skipass__button', 'add-skipass__button--animated', {
     'add-skipass__button--hidden': !canBeAdded
   })
 
