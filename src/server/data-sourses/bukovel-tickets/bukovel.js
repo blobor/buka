@@ -1,4 +1,3 @@
-import { utc } from 'moment'
 import { stringify } from 'qs'
 import { caching } from 'cache-manager'
 import isNil from 'lodash.isnil'
@@ -48,11 +47,6 @@ const getSkipass = async (id) => {
   return fetch(url)
     .then(getResponseText)
     .then(parseSkipass)
-    .then(skipass => {
-      return Object.assign(skipass, {
-        syncDate: utc()
-      })
-    })
 }
 
 export {

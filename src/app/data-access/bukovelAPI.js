@@ -1,3 +1,4 @@
+import { utc } from 'moment'
 import has from 'lodash.has'
 import isNil from 'lodash.isnil'
 import fetch from 'isomorphic-fetch'
@@ -23,7 +24,9 @@ const getSkipass = id => {
         return Promise.reject(reason)
       }
 
-      return skipass
+      return Object.assign(skipass, {
+        syncDate: utc()
+      })
     })
 }
 

@@ -31,6 +31,12 @@ const get = id => {
   .catch(getAndUpdateToLatest)
 }
 
+const getAll = () => {
+  return db.allDocs({
+    include_docs: true
+  })
+}
+
 const getAndUpdateToLatest = async (id) => {
   const skipass = await getSkipass(id)
   await save(skipass)
@@ -56,6 +62,7 @@ const save = skipass => {
 export {
   get,
   save,
+  getAll,
   hasSkipass,
   getSkipass as getLatest
 }
