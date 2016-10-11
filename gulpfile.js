@@ -27,6 +27,7 @@ gulp.task('build:server', () => {
         babelrc: false,
         presets: [
           'react',
+          'react-optimize',
           'es2016',
           'es2017'
         ],
