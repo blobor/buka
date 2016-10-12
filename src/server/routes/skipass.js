@@ -7,8 +7,14 @@ const router = new Router()
 
 router
   .get('/:skipassID', wrapAsync(async (req, res, next) => {
-    const skipass = await getSkipass(req.params.skipassID)
-    res.json(skipass)
+    try {
+      const skipass = await getSkipass(req.params.skipassID)
+      res.json(skipass)
+    } catch (e) {
+      res.json({
+        errors: Array.of(e)
+      })
+    }
   }))
 
 export default router
