@@ -24,7 +24,7 @@ export default class CardNumberForm extends Component {
     const { isDisabled } = this.props
 
     return (
-      <form className='buka-skipass-number__form' method='GET'>
+      <form className='buka-skipass-number__form' method='GET' onSubmit={this.handleFormSubmit}>
         <CardNumberInput
           required
           pattern={CARD_NUMBER_PATTERN}
@@ -33,7 +33,7 @@ export default class CardNumberForm extends Component {
           type='search'
           className='buka-skipass-number__input'
           autoComplete='off' />
-        <RaisedButton type='submit' label='Search' primary disabled={isDisabled} onClick={this.handleFormSubmit} />
+        <RaisedButton type='submit' label='Search' primary disabled={isDisabled} />
       </form>
     )
   }
