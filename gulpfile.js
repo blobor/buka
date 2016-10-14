@@ -32,7 +32,7 @@ gulp.task('build:server', () => {
           'es2017'
         ],
         plugins: [
-          'external-helpers-2'
+          'external-helpers'
         ]
       })
     ]
