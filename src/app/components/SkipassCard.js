@@ -3,7 +3,10 @@ import React from 'react'
 const SkipassCard = ({ skipass }) => {
   return (
     <article className='skipass-card skipass-card--shadow'>
-      <h5>{skipass.cardNumber}</h5>
+      <header className='skipass-card__header'>
+        <h5 className='skipass-card__title'>{skipass.cardNumber}</h5>
+      </header>
+      <main />
     </article>
   )
 }

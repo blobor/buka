@@ -1,3 +1,5 @@
+@import 'screen-sizes.scss';
+
 .skipass-card {
   cursor: pointer;
   display: flex;
@@ -11,6 +13,31 @@
 
     &:hover {
       box-shadow: 0 2pt 2pt 0 rgba(0,0,0,0.2),0 5pt 10pt 0 rgba(0,0,0,0.3);
+    }
+  }
+
+  &__header {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00bcd4;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.4em;
+    text-align: center;
+  }
+}
+
+@media (max-width: $xsmall) {
+  .skipass-card {
+    width: 105pt;
+
+    &__title {
+      font-size: 1em;
     }
   }
 }
