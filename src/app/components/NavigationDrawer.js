@@ -13,6 +13,7 @@ const NavigationDrawer = ({ isOpen, handleClose }) => {
         onTitleTouchTap={handleClose}
         showMenuIconButton={false} />
       <RaisedButtonLink to='/' label='Search' activeOnlyWhenExact />
+      <RaisedButtonLink to='/skipasses' label='Skipasses' activeOnlyWhenExact />
     </Drawer>
   )
 }

@@ -5,6 +5,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import { Match } from 'react-router'
 
 import Search from './containers/Search'
+import SkipassGridList from './containers/SkipassGridList'
 import Header from './containers/Header'
 import Footer from './containers/Footer'
 import NavigationDrawer from './containers/NavigationDrawer'
@@ -35,7 +36,8 @@ const App = ({ userAgent }) => {
         <Header />
         <NavigationDrawer />
         <main className='buka__container'>
-          <Match pattern='/' component={Search} />
+          <Match exactly pattern='/' component={Search} />
+          <Match pattern='/skipasses' component={SkipassGridList} />
         </main>
         <Footer />
       </div>
