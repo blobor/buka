@@ -33,8 +33,8 @@ const App = ({ userAgent }) => {
     <MuiThemeProvider muiTheme={muiTheme}>
       <div className='buka'>
         <Header />
+        <NavigationDrawer />
         <main className='buka__container'>
-          <NavigationDrawer />
           <Match pattern='/' component={Search} />
         </main>
         <Footer />
