@@ -1,0 +1,9 @@
+.skipasess__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  & .skipass-card {
+    margin: 7pt 0;
+  }
+}

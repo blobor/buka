@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SkipassCard from './SkipassCard'
 
 class SkipassGridList extends Component {
   constructor (props) {
@@ -11,9 +12,9 @@ class SkipassGridList extends Component {
     const { skipasses } = this.props
 
     return (
-      <ul>
-        {skipasses.map((skipass, index) => <li key={index}>{skipass.cardNumber}</li>)}
-      </ul>
+      <section className='skipasess__container'>
+        {skipasses.map((skipass, index) => <SkipassCard key={index} skipass={skipass} />)}
+      </section>
     )
   }
 }

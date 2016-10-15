@@ -1,0 +1,16 @@
+.skipass-card {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: 140pt;
+  height: 170pt;
+
+  &--shadow {
+    box-shadow: 0 1pt 3pt 0 rgba(0,0,0,0.37);
+    transition: box-shadow 0.28s cubic-bezier(0.4,0,0.2,1);
+
+    &:hover {
+      box-shadow: 0 2pt 2pt 0 rgba(0,0,0,0.2),0 5pt 10pt 0 rgba(0,0,0,0.3);
+    }
+  }
+}
