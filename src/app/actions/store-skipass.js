@@ -1,4 +1,3 @@
-import isEmpty from 'lodash.isempty'
 import {
   save as saveSkipass,
   getAll as getStoredSkipasses
@@ -67,13 +66,7 @@ const storeSkipass = () => {
 }
 
 const fetchStoredSkipasses = () => {
-  return async (dispatch, getState) => {
-    const skipasses = getState().get('storedSkipasses').toJS()
-
-    if (!isEmpty(skipasses)) {
-      return
-    }
-
+  return async (dispatch) => {
     dispatch(fetchStoredSkipassesRequest())
 
     try {
