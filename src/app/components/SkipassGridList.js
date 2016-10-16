@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import SkipassCard from './SkipassCard'
 
 class SkipassGridList extends Component {
-  constructor (props) {
-    super(props)
-
-    props.initialize()
+  componentDidMount () {
+    this.props.initialize()
   }
 
   render () {
