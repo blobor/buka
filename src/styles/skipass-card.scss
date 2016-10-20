@@ -4,7 +4,7 @@
   cursor: pointer;
   display: flex;
   justify-content: center;
-  width: 140pt;
+  width: 100%;
   height: 170pt;
 
   &--shadow {
@@ -35,12 +35,14 @@
   }
 }
 
-@media (max-width: $xsmall) {
+@media (min-width: $xsmall) {
   .skipass-card {
-    width: 105pt;
+    width: calc(50% - 3pt);
+  }
+}
 
-    &__title {
-      font-size: 1em;
-    }
+@media (min-width: $small) {
+  .skipass-card {
+    width: calc(100% / 3 - 6pt);
   }
 }
