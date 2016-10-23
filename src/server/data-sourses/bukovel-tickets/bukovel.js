@@ -4,7 +4,11 @@ import isNil from 'lodash.isnil'
 import isEmpty from 'lodash.isempty'
 import fetch from 'isomorphic-fetch'
 
-import { parseCardNumber, parseSkipass } from '../../parsers/bukovel-ticket'
+import {
+  parseCardNumber,
+  parseSkipass,
+  parseSkipassLifts
+} from '../../parsers/bukovel-ticket'
 
 const cardNumberMemoryCache = caching({
   store: 'memory',
@@ -58,7 +62,21 @@ const getSkipass = async (id) => {
     })
 }
 
+const getSkipassLifts = async (id) => {
+  const cardNumber = await getSkipassCardNumberCached(id)
+  const params = {
+    NumTicket: id,
+    Card: cardNumber
+  }
+  const url = `${BUKOVEL_TICKETS_URL}?${stringify(params)}`
+
+  return fetch(url)
+    .then(getResponseText)
+    .then(parseSkipassLifts)
+}
+
 export {
   getSkipassCardNumberCached as getSkipassCardNumber,
-  getSkipass
+  getSkipass,
+  getSkipassLifts
 }

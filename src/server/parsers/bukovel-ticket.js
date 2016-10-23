@@ -88,7 +88,19 @@ const parseSkipass = html => {
   return Promise.resolve(result)
 }
 
+const parseSkipassLifts = html => {
+  if (isNil(html)) {
+    return Promise.reject('Valid HTML string is expected')
+  }
+
+  const $ = cheerio.load(html)
+  const skipassLiftsInfoTable = $('#result').eq(1)
+
+  return Promise.resolve(Array.from(getLifts(skipassLiftsInfoTable)))
+}
+
 export {
   parseCardNumber,
-  parseSkipass
+  parseSkipass,
+  parseSkipassLifts
 }
