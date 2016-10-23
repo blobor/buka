@@ -25,7 +25,7 @@ const getSkipass = id => {
       }
 
       return Object.assign(skipass, {
-        syncDate: utc()
+        syncDate: utc().toJSON()
       })
     })
 }
