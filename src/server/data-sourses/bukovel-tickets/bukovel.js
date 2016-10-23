@@ -1,6 +1,7 @@
 import { stringify } from 'qs'
 import { caching } from 'cache-manager'
 import isNil from 'lodash.isnil'
+import isEmpty from 'lodash.isempty'
 import fetch from 'isomorphic-fetch'
 
 import { parseCardNumber, parseSkipass } from '../../parsers/bukovel-ticket'
@@ -47,6 +48,14 @@ const getSkipass = async (id) => {
   return fetch(url)
     .then(getResponseText)
     .then(parseSkipass)
+    .then(skipass => {
+      const isUnUsed = isEmpty(skipass.lifts)
+
+      return Object.assign(skipass, {
+        isUnUsed: isUnUsed,
+        balance: isUnUsed ? -1 : skipass.lifts[0].liftsLeft
+      })
+    })
 }
 
 export {
