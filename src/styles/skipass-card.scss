@@ -2,7 +2,6 @@
 @import 'material-colors.scss';
 
 .skipass-card {
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,6 +11,10 @@
 
   &--zero-balance {
     background-color: $red;
+
+    .skipass-card__header {
+      background-color: $red-400;
+    }
   }
 
   &--shadow {
@@ -33,10 +36,6 @@
     justify-content: center;
     align-items: center;
     background-color: $green-400;
-
-    &--zero-balance {
-      background-color: $red-400;
-    }
   }
 
   &__title {

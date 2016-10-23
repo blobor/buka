@@ -1,9 +1,31 @@
 import React from 'react'
+import classNames from 'classnames'
 import { getAdoptedDateString } from '../helpers/date'
 
-const SkipassCard = ({ skipass }) => {
+const renderSkipassBalance = skipass => {
+  if (skipass.isUnUsed) {
+    return (
+      <section className='skipass-card__balance-container'>
+        <h5 className='skipass-card__balance-title'>Unused</h5>
+      </section>
+    )
+  }
+
   return (
-    <article className='skipass-card skipass-card--shadow skipass-card skipass-card--shadow-animated'>
+    <section className='skipass-card__balance-container'>
+      <h5 className='skipass-card__balance-title'>Balance</h5>
+      <span className='skipass-card__balance'>{skipass.balance}</span>
+    </section>
+  )
+}
+
+const SkipassCard = ({ skipass }) => {
+  const className = classNames('skipass-card', 'skipass-card--shadow', 'skipass-card--shadow-animated', {
+    'skipass-card--zero-balance': skipass.balance === 0
+  })
+
+  return (
+    <article className={className}>
       <header className='skipass-card__header'>
         <h5 className='skipass-card__title'>{skipass.name}</h5>
       </header>
@@ -12,10 +34,7 @@ const SkipassCard = ({ skipass }) => {
         <section className='skipass-card__info-container'>
           <time className='skipass-card__purchase-date' dateTime={skipass.purchaseDate}>{ getAdoptedDateString(skipass.purchaseDate) }</time>
         </section>
-        <section className='skipass-card__balance-container'>
-          <h5 className='skipass-card__balance-title'>Balance</h5>
-          <span className='skipass-card__balance'>0</span>
-        </section>
+        { renderSkipassBalance(skipass) }
       </main>
     </article>
   )
