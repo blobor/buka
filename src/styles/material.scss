@@ -1,0 +1,13 @@
+.material-shadow {
+  &--z1 {
+    box-shadow: 0 1pt 3pt 0 rgba(0, 0, 0, 0.37);
+
+    &-animated {
+      transition: box-shadow .28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &-interactive:hover, &-interactive:focus {
+      box-shadow: 0 2pt 2pt 0 rgba(0, 0, 0, 0.2), 0 5pt 10pt 0 rgba(0, 0, 0, 0.3);
+    }
+  }
+}
