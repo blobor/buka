@@ -17,7 +17,7 @@
     "precommit": "npm test"
   },
   "engines": {
-    "node": ">=6.0"
+    "node": "6.9.1"
   },
   "dependencies": {
     "app-root-path": "2.0.1",
