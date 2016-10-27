@@ -1,5 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
+import { FlatButton } from 'material-ui'
+import { NavigationClose } from 'material-ui/svg-icons'
+import { fullWhite } from 'material-ui/styles/colors'
 import { getAdoptedDateString } from '../helpers/date'
 
 const renderSkipassBalance = skipass => {
@@ -28,6 +31,7 @@ const SkipassCard = ({ skipass }) => {
     <article className={className}>
       <header className='skipass-card__header'>
         <h5 className='skipass-card__title'>{skipass.name}</h5>
+        <FlatButton className='skipass-card__close-button' icon={<NavigationClose color={fullWhite} />} />
       </header>
       <main className='skipass-card__main-container'>
         <h5 className='skipass-card__card-number'>{skipass.cardNumber}</h5>
