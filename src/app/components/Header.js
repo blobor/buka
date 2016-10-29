@@ -1,18 +1,13 @@
 import React from 'react'
-import { AppBar, IconButton } from 'material-ui'
-import { NavigationMenu } from 'material-ui/svg-icons'
+import { AppBar } from 'material-ui'
 import TestCardNumber from './TestCardNumber'
 
-const Header = ({ testCardNumberChange, handleToggle }) => {
+const Header = ({ testCardNumberChange }) => {
   return (
     <header className='buka__header'>
       <AppBar
         className='buka__header-appbar'
-        iconElementLeft={
-          <IconButton onTouchTap={handleToggle}>
-            <NavigationMenu />
-          </IconButton>
-        }
+        showMenuIconButton={false}
         iconElementRight={
           <TestCardNumber onChange={testCardNumberChange} />
         } />
