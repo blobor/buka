@@ -39,7 +39,7 @@ router.get('*', wrapAsync(async (req, res) => {
 
   res.status(httpStatus).render('index', {
     content: html,
-    preloadedState: store.getState()
+    preloadedState: JSON.stringify(store.getState())
   })
 }))
 

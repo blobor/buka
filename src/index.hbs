@@ -29,11 +29,9 @@
 </head>
 
 <body>
-  <div id="buka-app">{{{content}}}</div>
+  <div id="app-container">{{{ content }}}</div>
 
-  <script>
-    window.__PRELOADED_STATE__ = {{{json preloadedState}}}
-  </script>
+  <script id="app-preloaded-state" type="application/json">{{{ preloadedState }}}</script>
   <script src="/vendor.bundle.js"></script>
   <script src="/app.js"></script>
 </body>
