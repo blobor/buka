@@ -31,8 +31,6 @@ html, body {
     width: 100%;
     height: $footer-height;
     background-color: #FFF;
-    display: flex;
-    justify-content: center;
   }
 }
 
@@ -70,4 +68,9 @@ html, body {
 
 .buka-skipass-search__add-button--hidden {
   display: none !important;
+}
+
+.bottom-navigation {
+  display: flex;
+  justify-content: center;
 }
