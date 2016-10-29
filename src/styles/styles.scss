@@ -18,14 +18,21 @@ html, body {
       align-items: center;
       box-sizing: border-box;
       padding: 0 10pt;
-      margin: $header-height auto 5pt;
+      margin: $header-height auto calc(#{$footer-height} + 5pt);
       width: 100%;
       max-width: 980px;
   }
 
   &__footer {
     flex-shrink: 0;
-    background-color: #212121;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: $footer-height;
+    background-color: #FFF;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -63,21 +70,4 @@ html, body {
 
 .buka-skipass-search__add-button--hidden {
   display: none !important;
-}
-
-.app-info {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-
-  &__json {
-    color: #b8b8b8;
-  }
-
-  &__github {
-    text-decoration: initial;
-    color: #e2e2e2
-  }
-
 }

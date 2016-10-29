@@ -1,15 +1,23 @@
 import React from 'react'
+import { Link } from 'react-router'
+import { BottomNavigationItem } from 'material-ui/BottomNavigation'
+import { ActionSearch, ContentSave } from 'material-ui/svg-icons'
 
-const Footer = ({ name, version }) => {
-  const json = JSON.stringify({
-    name,
-    version
-  })
-
+const Footer = () => {
   return (
-    <footer className='buka__footer app-info'>
-      <pre className='app-info__json'>{json}</pre>
-      <a className='app-info__github' href='https://github.com/blobor/buka'>💚 GitHub</a>
+    <footer className='buka__footer material-shadow--z1'>
+      <Link to='/'>
+        <BottomNavigationItem
+          label='Search'
+          icon={<ActionSearch />}
+        />
+      </Link>
+      <Link to='/skipasses'>
+        <BottomNavigationItem
+          label='Skipasses'
+          icon={<ContentSave />}
+        />
+      </Link>
     </footer>
   )
 }
