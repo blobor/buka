@@ -7,7 +7,7 @@ import { Match } from 'react-router'
 import Search from './containers/Search'
 import SkipassGridList from './containers/SkipassGridList'
 import Header from './containers/Header'
-import Footer from './containers/Footer'
+import Footer from './components/Footer'
 
 import { fullWhite } from 'material-ui/styles/colors'
 import { getMuiTheme, MuiThemeProvider } from 'material-ui/styles'
