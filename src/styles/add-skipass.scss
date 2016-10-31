@@ -1,3 +1,5 @@
+@import "constant.scss";
+
 $shadow-width: 3px;
 $right-shift: 10pt;
 
@@ -5,7 +7,7 @@ $right-shift: 10pt;
   &__button {
     position: fixed;
     right: $right-shift;
-    bottom: 20pt;
+    bottom: calc(#{$footer-height} + 20pt);
 
     &--animated {
       animation-duration: 450ms;

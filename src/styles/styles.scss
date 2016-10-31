@@ -18,14 +18,19 @@ html, body {
       align-items: center;
       box-sizing: border-box;
       padding: 0 10pt;
-      margin: $header-height auto 5pt;
+      margin: $header-height auto calc(#{$footer-height} + 5pt);
       width: 100%;
       max-width: 980px;
   }
 
   &__footer {
     flex-shrink: 0;
-    background-color: #212121;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: $footer-height;
+    background-color: #FFF;
   }
 }
 
@@ -69,19 +74,17 @@ html, body {
   display: none !important;
 }
 
-.app-info {
+.bottom-navigation {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  justify-content: center;
 
-  &__json {
-    color: #b8b8b8;
+  &__link {
+    max-width: 168px;
+    flex: 1;
+
+    button {
+      // workaround for FF
+      width: 100%;
+    }
   }
-
-  &__github {
-    text-decoration: initial;
-    color: #e2e2e2
-  }
-
 }
