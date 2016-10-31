@@ -77,4 +77,14 @@ html, body {
 .bottom-navigation {
   display: flex;
   justify-content: center;
+
+  &__link {
+    max-width: 168px;
+    flex: 1;
+
+    button {
+      // workaround for FF
+      width: 100%;
+    }
+  }
 }

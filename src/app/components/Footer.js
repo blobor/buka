@@ -7,6 +7,7 @@ const Footer = () => {
     <footer className='buka__footer material-shadow--z1'>
       <nav className='bottom-navigation'>
         <BottomNavigationLink
+          className='bottom-navigation__link'
           to='/'
           label='Search'
           activeOnlyWhenExact
@@ -14,6 +15,7 @@ const Footer = () => {
             <ActionSearch />
           } />
         <BottomNavigationLink
+          className='bottom-navigation__link'
           to='/skipasses'
           label='Skipasses'
           activeOnlyWhenExact
