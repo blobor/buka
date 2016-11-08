@@ -1,7 +1,7 @@
 {
   "name": "buka",
   "version": "0.0.20",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "description": "",
   "author": "Bogdan Lobor <b.lobor@outlook.com>",
   "main": "src/server.js",
