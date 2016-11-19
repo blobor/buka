@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import times from 'lodash.times'
 import isNil from 'lodash.isnil'
 import omit from 'lodash.omit'
-import { getSelection, setSelection } from 'react/lib/ReactInputSelection'
 import InputMask from 'inputmask-core'
 import TextField from 'material-ui/TextField'
 
@@ -167,7 +166,8 @@ class CardNumberInput extends Component {
       this.setState({
         text: value
       }, () => {
-        setSelection(this.refs.textField.input, this.mask.selection)
+        this.refs.textField.input.selectionStart = this.mask.selection.start
+        this.refs.textField.input.selectionEnd = this.mask.selection.end
         triggerOnchange(this.state, this.props)
       })
     }
@@ -237,7 +237,10 @@ function getTextFromClipboardData (event) {
 }
 
 function updateMaskSelection (mask, element) {
-  mask.selection = getSelection(element)
+  mask.selection = {
+    start: element.selectionStart,
+    end: element.selectionEnd
+  }
 }
 
 export default CardNumberInput
