@@ -1,13 +1,16 @@
 import test from 'ava'
 import pify from 'pify'
 import has from 'lodash.has'
+import { join } from 'path'
 import { readFile } from 'fs'
 
 import { parseSkipass } from '../src/server/parsers/bukovel-shop'
 
 test('should parse response', t => {
   // Arrange
-  return pify(readFile)('fixtures/bukovel_response.json', 'utf8')
+  const filePath = join(__dirname, 'fixtures/bukovel_response.json')
+
+  return pify(readFile)(filePath, 'utf8')
     .then(JSON.parse)
     // Act
     .then(parseSkipass)

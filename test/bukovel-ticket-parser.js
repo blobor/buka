@@ -1,12 +1,15 @@
 import test from 'ava'
 import pify from 'pify'
+import { join } from 'path'
 import { readFile } from 'fs'
 
 import { parseCardNumber, parseSkipass } from '../src/server/parsers/bukovel-ticket'
 
 test('should parse card number from response', t => {
   // Arrange
-  return pify(readFile)('fixtures/bukovel-ticket-cardnumber-response.html', 'utf8')
+  const filePath = join(__dirname, 'fixtures/bukovel-ticket-cardnumber-response.html')
+
+  return pify(readFile)(filePath, 'utf8')
     // Act
     .then(parseCardNumber)
     // Assert
@@ -28,7 +31,9 @@ test('should throw error in case not valid data passed', t => {
 
 test('should parse skipass from response', t => {
   // Arrange
-  return pify(readFile)('fixtures/bukovel-ticket-skipass-responce.html', 'utf8')
+  const filePath = join(__dirname, 'fixtures/bukovel-ticket-skipass-responce.html')
+
+  return pify(readFile)(filePath, 'utf8')
     // Act
     .then(parseSkipass)
     // Assert
@@ -42,7 +47,9 @@ test('should parse skipass from response', t => {
 
 test('should parse skipass from response', t => {
   // Arrange
-  return pify(readFile)('fixtures/bukovel-ticket-skipass-responce--with-date.html', 'utf8')
+  const filePath = join(__dirname, 'fixtures/bukovel-ticket-skipass-responce--with-date.html')
+
+  return pify(readFile)(filePath, 'utf8')
     // Act
     .then(parseSkipass)
     // Assert
