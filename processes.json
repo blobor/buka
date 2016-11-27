@@ -1,0 +1,9 @@
+[
+  {
+    "script": "dist-server/server.js",
+    "name": "skipass-web-app",
+    "exec_mode": "cluster",
+    "instances": "max",
+    "merge_logs": true
+  }
+]
