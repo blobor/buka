@@ -1,6 +1,4 @@
 import helmet from 'helmet'
-import compression from 'compression'
-import enforce from 'express-sslify'
 import handlebars from 'express-handlebars'
 
 import morgan from 'morgan'
@@ -22,12 +20,7 @@ class MiddlewareManager extends Manager {
   }
 
   configureProductionEnv (app) {
-    app.use(enforce.HTTPS({
-      // app is behind Heroku load balancer
-      trustProtoHeader: true
-    }))
     app.use(helmet())
-    app.use(compression())
   }
 
   configureDevelopmentEnv (app) {
