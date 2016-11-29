@@ -6,7 +6,7 @@ services:
     environment:
       - NODE_ENV=production
     ports:
-      - 3000:3000
+      - 3000
 
   proxy:
     image: blobor/skipass-nginx-proxy
