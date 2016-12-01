@@ -1,4 +1,3 @@
-import helmet from 'helmet'
 import handlebars from 'express-handlebars'
 
 import morgan from 'morgan'
@@ -17,10 +16,6 @@ class MiddlewareManager extends Manager {
       extname: handlebarsFileExtension
     }))
     app.set('view engine', handlebarsFileExtension)
-  }
-
-  configureProductionEnv (app) {
-    app.use(helmet())
   }
 
   configureDevelopmentEnv (app) {
