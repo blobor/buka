@@ -14,7 +14,7 @@ See installation instructions for `node-gyp` dependencies [here](https://github.
 
 ## LICENSE
 
-MIT
+Apache-2.0
 
 [build-badge]: https://img.shields.io/travis/blobor/buka.svg?style=flat-square
 [build]: https://travis-ci.org/blobor/buka
