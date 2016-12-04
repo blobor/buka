@@ -14,7 +14,7 @@ RUN npm install -g pm2
 # Restore dependencies
 RUN npm install
 
-RUN npm run build
+RUN npm run build:server
 
 EXPOSE ${PORT}
 
