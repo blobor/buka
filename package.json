@@ -9,7 +9,7 @@
     "prebuild": "rm -rf dist && rm -rf dist-server && mkdir dist && mkdir dist-server",
     "build": "gulp build:server && webpack -p --config ./config/webpack.config.prod.js --progress",
     "build:server": "gulp build:server",
-    "start:dev": "nodemon src/server.js --exec babel-node",
+    "start:server:watch": "nodemon src/server.js --exec babel-node",
     "lint": "standard --verbose | snazzy",
     "test": "npm run lint && ava",
     "test:watch": "ava --watch",
@@ -86,8 +86,7 @@
     "style-loader": "0.13.1",
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "1.1.0",
-    "webpack": "1.13.3",
-    "webpack-dev-middleware": "1.8.4"
+    "webpack": "1.13.3"
   },
   "devDependencies": {
     "ava": "0.17.0",

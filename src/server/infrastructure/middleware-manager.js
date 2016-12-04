@@ -1,9 +1,5 @@
-import handlebars from 'express-handlebars'
-
 import morgan from 'morgan'
-import webpack from 'webpack'
-import webpackMiddleware from 'webpack-dev-middleware'
-import webpackConfig from '../../../config/webpack.config.dev.js'
+import handlebars from 'express-handlebars'
 
 import Manager from './Manager.js'
 
@@ -19,18 +15,6 @@ class MiddlewareManager extends Manager {
   }
 
   configureDevelopmentEnv (app) {
-    const compiler = webpack(webpackConfig)
-    const middleware = webpackMiddleware(compiler, {
-      stats: {
-        colors: true,
-        hash: false,
-        timings: true,
-        chunks: false,
-        chunkModules: false,
-        modules: false
-      }
-    })
-    app.use(middleware)
     app.use(morgan('dev'))
   }
 
