@@ -8,11 +8,13 @@ WORKDIR /usr/src/skipass
 
 COPY . /usr/src/skipass
 
-# Install PM2
-RUN npm install -g pm2
+# Install yarn
+RUN npm install -g yarn
+
+RUN yarn global add pm2
 
 # Restore dependencies
-RUN npm install
+RUN yarn install
 
 RUN npm run build:server
 
