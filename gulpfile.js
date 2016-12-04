@@ -1,4 +1,5 @@
 const gulp = require('gulp')
+const gulpIf = require('gulp-if')
 const babel = require('gulp-babel')
 const htmlmin = require('gulp-htmlmin')
 const buffer = require('vinyl-buffer')
@@ -10,14 +11,17 @@ const commonjs = require('rollup-plugin-commonjs')
 
 const config = require('./config/gulp.config')
 
-gulp.task('build:html', () => {
+const isDevelopment = process.env.NODE_ENV !== 'production'
+console.log(`[SKIPASS.SITE WEB] Running gulp task with NODE_ENV=${process.env.NODE_ENV}`)
+
+const buildHtml = () => {
   return gulp
     .src(config.index)
-    .pipe(htmlmin(config.htmlMinOptions))
+    .pipe(gulpIf(isDevelopment, htmlmin(config.htmlMinOptions)))
     .pipe(gulp.dest('dist'))
-})
+}
 
-gulp.task('build:server', () => {
+const compileServerJS = () => {
   return rollup({
     entry: 'src/server.js',
     plugins: [
@@ -41,13 +45,13 @@ gulp.task('build:server', () => {
   .pipe(buffer())
   .pipe(babel({
     babelrc: false,
-    minified: true,
-    comments: false,
+    minified: !isDevelopment,
+    comments: isDevelopment,
     presets: [
       'es2015-node'
     ]
   }))
   .pipe(gulp.dest('dist-server'))
-})
+}
 
-gulp.task('build', gulp.parallel('build:server', 'build:html'))
+gulp.task('build:server', gulp.parallel(compileServerJS, buildHtml))
