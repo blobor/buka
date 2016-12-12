@@ -6,18 +6,18 @@ RUN mkdir -p /usr/src/skipass
 
 WORKDIR /usr/src/skipass
 
-COPY . /usr/src/skipass
+ADD package.json yarn.lock /usr/src/skipass/
 
-# Install yarn
-RUN npm install -g yarn
+# Install yarn and pm2
+RUN npm install -g yarn \
+  && yarn global add pm2 \
+  # Restore dependencies
+  && yarn
 
-RUN yarn global add pm2
-
-# Restore dependencies
-RUN yarn install
+COPY . /usr/src/skipass/
 
 RUN npm run build:server
 
 EXPOSE ${PORT}
 
-CMD ["pm2-docker", "processes.json"]
+CMD ["pm2-docker", "--format", "processes.json"]
