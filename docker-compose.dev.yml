@@ -7,11 +7,16 @@ services:
       - NODE_ENV=development
     ports:
       - 3000
+    volumes:
+      - ./:/usr/src/skipass
 
   proxy:
     build: nginx
     ports:
-      - 8080:80
-      - 4433:433
+      - 80:80
+      - 443:443
+    depends_on:
+      - web
     volumes:
+      - ./nginx/config/nginx.development.conf:/etc/nginx/nginx.conf
       - ./nginx/dev-certs:/etc/letsencrypt/live/skipass.site
