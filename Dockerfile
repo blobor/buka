@@ -20,4 +20,4 @@ RUN npm run build:server
 
 EXPOSE ${PORT}
 
-CMD ["pm2-docker", "--format", "processes.json"]
+CMD ["pm2-docker", "--format", "ecosystem.config.js"]

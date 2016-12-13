@@ -8,13 +8,14 @@ services:
     ports:
       - 3000
     volumes:
-      - ./:/usr/src/skipass
+      - ./src:/usr/src/skipass/src
+    command: pm2-dev start ecosystem.config.js
 
   proxy:
     build: nginx
     ports:
-      - 80:80
-      - 443:443
+      - 8888:80
+      - 4444:443
     depends_on:
       - web
     volumes:
