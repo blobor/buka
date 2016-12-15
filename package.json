@@ -91,7 +91,7 @@
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "1.1.0",
     "webpack": "1.14.0",
-    "webpack-dev-middleware": "1.8.4"
+    "webpack-dev-middleware": "1.9.0"
   },
   "devDependencies": {
     "ava": "0.17.0",
