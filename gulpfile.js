@@ -4,6 +4,7 @@ const babel = require('gulp-babel')
 const htmlmin = require('gulp-htmlmin')
 const buffer = require('vinyl-buffer')
 const source = require('vinyl-source-stream')
+const webpack = require('webpack-stream')
 const rollup = require('rollup-stream')
 const babelRollup = require('rollup-plugin-babel')
 const json = require('rollup-plugin-json')
@@ -18,7 +19,18 @@ const buildHtml = () => {
   return gulp
     .src(config.index)
     .pipe(gulpIf(isDevelopment, htmlmin(config.htmlMinOptions)))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist-server'))
+}
+
+const buildClient = () => {
+  const webpackConfigPath = isDevelopment ? './config/webpack.config.dev' : './config/webpack.config.prod'
+  const webpackConfig = Object.assign(require(webpackConfigPath), {
+    progress: true
+  })
+
+  return gulp.src(webpackConfig.entry.app)
+    .pipe(webpack(webpackConfig))
+    .pipe(gulp.dest('public'))
 }
 
 const compileServerJS = () => {
@@ -54,4 +66,11 @@ const compileServerJS = () => {
   .pipe(gulp.dest('dist-server'))
 }
 
-gulp.task('build:server', gulp.parallel(compileServerJS, buildHtml))
+const buildServer = gulp.parallel(compileServerJS, buildHtml)
+
+gulp.task('build', gulp.parallel(buildClient, buildServer))
+
+gulp.task('build:client', buildClient)
+gulp.task('build:server', buildServer)
+
+gulp.task('start')

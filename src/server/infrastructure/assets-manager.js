@@ -5,7 +5,7 @@ import Manager from './Manager.js'
 
 class AssetsManager extends Manager {
   configureProductionEnv (app) {
-    const staticFolder = resolve(root, 'dist')
+    const staticFolder = resolve(root, 'dist-server')
 
     app.set('views', staticFolder)
   }

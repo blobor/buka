@@ -6,9 +6,10 @@
   "author": "Bogdan Lobor <b.lobor@outlook.com>",
   "main": "src/server.js",
   "scripts": {
-    "prebuild": "rm -rf dist && rm -rf dist-server && mkdir dist && mkdir dist-server",
-    "build": "gulp build:server && webpack -p --config ./config/webpack.config.prod.js --progress",
+    "prebuild": "rm -rf public && rm -rf dist-server && mkdir public && mkdir dist-server",
+    "build": "gulp build",
     "build:server": "gulp build:server",
+    "build:client": "gulp build:client",
     "lint": "standard --verbose | snazzy",
     "test": "npm run lint && ava",
     "test:watch": "ava --watch",
@@ -85,7 +86,8 @@
     "style-loader": "0.13.1",
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "1.1.0",
-    "webpack": "1.13.3"
+    "webpack": "1.13.3",
+    "webpack-stream": "3.2.0"
   },
   "devDependencies": {
     "ava": "0.17.0",

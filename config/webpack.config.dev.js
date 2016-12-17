@@ -12,19 +12,10 @@ const sassLoaders = [
 
 let config = {
   output: {
-    path: '/',
     publicPath: '/',
     filename: '[name].js'
   },
   devtool: '#source-map',
-  devServer: {
-    port: 3333,
-    inline: true
-  },
-  stats: {
-    colors: true,
-    reasons: true
-  },
   module: {
     loaders: [
       {
