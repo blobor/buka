@@ -2,11 +2,11 @@ FROM node:6.9
 
 ENV PORT 3000
 
-RUN mkdir -p /usr/src/skipass
+ARG NODE_ENV=production
 
-WORKDIR /usr/src/skipass
+WORKDIR /usr/src/skipass.site
 
-ADD package.json yarn.lock /usr/src/skipass/
+ADD package.json yarn.lock /usr/src/skipass.site/
 
 # Install yarn and pm2
 RUN npm install -g yarn \
@@ -14,9 +14,11 @@ RUN npm install -g yarn \
   # Restore dependencies
   && yarn
 
-COPY . /usr/src/skipass/
+COPY . /usr/src/skipass.site/
 
-RUN npm run build:server
+RUN npm run build
+
+VOLUME /usr/src/skipass.site/public
 
 EXPOSE ${PORT}
 
