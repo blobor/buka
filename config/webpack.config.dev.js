@@ -1,10 +1,10 @@
 'use strict'
 
 const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const commonConfig = require('./webpack.config.common')
 
 const sassLoaders = [
-  'style',
   'css',
   'postcss',
   'sass'
@@ -12,19 +12,10 @@ const sassLoaders = [
 
 let config = {
   output: {
-    path: '/',
     publicPath: '/',
     filename: '[name].js'
   },
   devtool: '#source-map',
-  devServer: {
-    port: 3333,
-    inline: true
-  },
-  stats: {
-    colors: true,
-    reasons: true
-  },
   module: {
     loaders: [
       {
@@ -34,11 +25,11 @@ let config = {
       },
       {
         test: /\.scss$/,
-        loader: sassLoaders.join('!')
+        loader: ExtractTextPlugin.extract('style', sassLoaders)
       },
       {
         test: /\.css$/,
-        loader: 'style!css!postcss'
+        loader: ExtractTextPlugin.extract('style', 'css!postcss')
       },
       {
         test: /\.json?$/,
@@ -49,7 +40,8 @@ let config = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.OccurenceOrderPlugin()
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new ExtractTextPlugin('bundle.css')
   ]
 }
 
