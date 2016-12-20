@@ -12,8 +12,7 @@
     "build:client": "gulp build:client",
     "lint": "standard --verbose | snazzy",
     "test": "npm run lint && ava",
-    "test:watch": "ava --watch",
-    "precommit": "npm run lint"
+    "test:watch": "ava --watch"
   },
   "engines": {
     "node": "6.9.1"
@@ -82,7 +81,7 @@
     "rollup-plugin-json": "2.0.2",
     "rollup-plugin-node-resolve": "2.0.0",
     "rollup-stream": "1.14.0",
-    "sass-loader": "4.0.2",
+    "sass-loader": "4.1.0",
     "style-loader": "0.13.1",
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "1.1.0",
