@@ -1,4 +1,4 @@
-FROM nginx:1.11-alpine
+FROM nginx:1.11.6-alpine
 
 # Install required dependencies
 RUN apk add --no-cache openssl
