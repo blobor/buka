@@ -17,3 +17,5 @@ services:
       - web
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
+    volumes_from:
+      - web:ro
