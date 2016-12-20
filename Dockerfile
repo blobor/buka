@@ -1,4 +1,4 @@
-FROM node:6.9
+FROM node:6.9.1
 
 ENV PORT 3000
 
