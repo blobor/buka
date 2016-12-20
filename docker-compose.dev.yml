@@ -11,7 +11,8 @@ services:
     ports:
       - 3000
     volumes:
-      - ./src:/usr/src/skipass/src:rw
+      - ./public:/usr/src/skipass.site/public:rw
+      - ./dist-server:/usr/src/skipass.site/dist-server:rw
     command: pm2-dev start ecosystem.config.js
 
   proxy:

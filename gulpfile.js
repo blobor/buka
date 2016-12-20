@@ -43,13 +43,19 @@ const compileServerJS = () => {
         babelrc: false,
         presets: [
           'react',
-          'react-optimize',
           'es2016',
           'es2017'
         ],
         plugins: [
           'external-helpers'
-        ]
+        ],
+        env: {
+          production: {
+            presets: [
+              'react-optimize'
+            ]
+          }
+        }
       })
     ]
   })
@@ -73,4 +79,14 @@ gulp.task('build', gulp.parallel(buildClient, buildServer))
 gulp.task('build:client', buildClient)
 gulp.task('build:server', buildServer)
 
-gulp.task('start')
+gulp.task('start:dev', () => {
+  const webpackConfig = Object.assign(require('./config/webpack.config.dev'), {
+    watch: true,
+    progress: true
+  })
+
+  gulp.watch('src/**/*.js', compileServerJS)
+  return gulp.src(webpackConfig.entry.app)
+    .pipe(webpack(webpackConfig))
+    .pipe(gulp.dest('public'))
+})
