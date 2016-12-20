@@ -40,6 +40,10 @@ module.exports = {
       'redux-thunk'
     ]
   },
+  stats: {
+    colors: true,
+    timings: true
+  },
   postcss: function () {
     return [
       autoprefixer({

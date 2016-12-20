@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  web:
+    image: blobor/skipass-web-api
+    environment:
+      - NODE_ENV=production
+    ports:
+      - 3000
+
+  proxy:
+    image: blobor/skipass-nginx-proxy
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - web
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+    volumes_from:
+      - web:ro

@@ -13,7 +13,6 @@ const sassLoaders = [
 
 let config = {
   output: {
-    path: './dist',
     publicPath: '/',
     filename: '[name].js'
   },
