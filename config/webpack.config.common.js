@@ -1,6 +1,7 @@
 'use strict'
 
 const autoprefixer = require('autoprefixer')
+const { browsers } = require('./app.config')
 
 module.exports = {
   entry: {
@@ -47,7 +48,7 @@ module.exports = {
   postcss: function () {
     return [
       autoprefixer({
-        browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']
+        browsers
       })
     ]
   }
