@@ -62,7 +62,7 @@
     "moment": "2.17.1",
     "moment-timezone": "0.5.10",
     "morgan": "1.7.0",
-    "node-sass": "3.13.0",
+    "node-sass": "3.13.1",
     "pm2": "2.1.6",
     "postcss-loader": "1.2.0",
     "pouchdb-adapter-idb": "6.0.7",
