@@ -1,2 +1,17 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directory
 node_modules
-npm-debug.log
+
+# Optional npm cache directory
+.npm
+
+# User-specific stuff:
+.idea
+.vscode
+
+# Directory with tests
+test

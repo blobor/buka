@@ -16,7 +16,9 @@ RUN npm install -g yarn \
 
 COPY . /usr/src/skipass.site/
 
-RUN npm run build
+RUN npm run build \
+  # Remove source files (they unneeded)
+  && rm -rf /src
 
 VOLUME /usr/src/skipass.site/public
 
