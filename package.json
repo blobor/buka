@@ -90,7 +90,6 @@
   },
   "devDependencies": {
     "ava": "0.17.0",
-    "babel-cli": "6.18.0",
     "enzyme": "2.6.0",
     "pify": "2.3.0",
     "react-addons-test-utils": "^15.2.1",
