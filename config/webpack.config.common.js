@@ -1,7 +1,14 @@
 'use strict'
 
 const autoprefixer = require('autoprefixer')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const { browsers } = require('./app.config')
+
+const sassLoaders = [
+  'css',
+  'postcss',
+  'sass'
+]
 
 module.exports = {
   entry: {
@@ -39,6 +46,27 @@ module.exports = {
       'redux-immutable',
       'redux-logger',
       'redux-thunk'
+    ]
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel'
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style', sassLoaders)
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style', 'css!postcss')
+      },
+      {
+        test: /\.json?$/,
+        loader: 'json'
+      }
     ]
   },
   stats: {
