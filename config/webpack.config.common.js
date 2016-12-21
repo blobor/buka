@@ -14,7 +14,6 @@ module.exports = {
   entry: {
     app: './src/client.js',
     vendor: [
-      'babel-polyfill',
       'classnames',
       'immutable',
       'inputmask-core',
@@ -53,7 +52,26 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel'
+        loader: 'babel',
+        query: {
+          babelrc: false,
+          presets: [
+            'react',
+            ['env', {
+              targets: {
+                browsers: browsers
+              },
+              useBuiltIns: true
+            }]
+          ],
+          env: {
+            production: {
+              presets: [
+                'react-optimize'
+              ]
+            }
+          }
+        }
       },
       {
         test: /\.scss$/,

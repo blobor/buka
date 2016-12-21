@@ -41,21 +41,14 @@ const compileServerJS = () => {
       commonjs(),
       babelRollup({
         babelrc: false,
+        exclude: 'node_modules/**',
         presets: [
           'react',
-          'es2016',
           'es2017'
         ],
         plugins: [
           'external-helpers'
-        ],
-        env: {
-          production: {
-            presets: [
-              'react-optimize'
-            ]
-          }
-        }
+        ]
       })
     ]
   })
@@ -66,8 +59,20 @@ const compileServerJS = () => {
     minified: !isDevelopment,
     comments: isDevelopment,
     presets: [
-      'es2015-node'
-    ]
+      ['env', {
+        targets: {
+          node: 'current'
+        },
+        useBuiltIns: true
+      }]
+    ],
+    env: {
+      production: {
+        presets: [
+          'react-optimize'
+        ]
+      }
+    }
   }))
   .pipe(gulp.dest('dist-server'))
 }
