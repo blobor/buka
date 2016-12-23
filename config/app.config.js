@@ -5,6 +5,8 @@ module.exports = {
   browsers: [
     '> 1%',
     'last 2 versions',
-    'Firefox ESR'
+    'Firefox ESR',
+    "not ie 11",
+    "not ie_mob 11"
   ]
 }
