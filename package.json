@@ -62,7 +62,7 @@
     "postcss-loader": "1.2.0",
     "pouchdb-adapter-idb": "6.0.7",
     "pouchdb-adapter-localstorage": "6.0.7",
-    "pouchdb-adapter-memory": "6.0.7",
+    "pouchdb-adapter-memory": "6.1.0",
     "pouchdb-adapter-websql": "6.0.7",
     "pouchdb-core": "6.0.7",
     "pouchdb-find": "0.10.4",
