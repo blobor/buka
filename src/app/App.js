@@ -1,5 +1,3 @@
-import 'babel-polyfill'
-
 import React, { PropTypes } from 'react'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import { Match } from 'react-router'

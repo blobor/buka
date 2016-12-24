@@ -1,12 +1,19 @@
 'use strict'
 
 const autoprefixer = require('autoprefixer')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const { browsers } = require('./app.config')
+
+const sassLoaders = [
+  'css',
+  'postcss',
+  'sass'
+]
 
 module.exports = {
   entry: {
     app: './src/client.js',
     vendor: [
-      'babel-polyfill',
       'classnames',
       'immutable',
       'inputmask-core',
@@ -40,6 +47,46 @@ module.exports = {
       'redux-thunk'
     ]
   },
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: {
+          babelrc: false,
+          presets: [
+            'react',
+            ['env', {
+              targets: {
+                browsers: browsers
+              },
+              useBuiltIns: true
+            }]
+          ],
+          env: {
+            production: {
+              presets: [
+                'react-optimize'
+              ]
+            }
+          }
+        }
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style', sassLoaders)
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style', 'css!postcss')
+      },
+      {
+        test: /\.json?$/,
+        loader: 'json'
+      }
+    ]
+  },
   stats: {
     colors: true,
     timings: true
@@ -47,7 +94,7 @@ module.exports = {
   postcss: function () {
     return [
       autoprefixer({
-        browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']
+        browsers
       })
     ]
   }
