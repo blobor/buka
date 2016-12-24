@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "app-root-path": "2.0.1",
-    "autoprefixer": "6.5.3",
+    "autoprefixer": "6.5.4",
     "babel-core": "6.18.2",
     "babel-loader": "6.2.8",
     "babel-plugin-external-helpers": "6.18.0",
