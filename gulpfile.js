@@ -55,24 +55,8 @@ const compileServerJS = () => {
   .pipe(source('server.js'))
   .pipe(buffer())
   .pipe(babel({
-    babelrc: false,
     minified: !isDevelopment,
-    comments: isDevelopment,
-    presets: [
-      ['env', {
-        targets: {
-          node: 'current'
-        },
-        useBuiltIns: true
-      }]
-    ],
-    env: {
-      production: {
-        presets: [
-          'react-optimize'
-        ]
-      }
-    }
+    comments: isDevelopment
   }))
   .pipe(gulp.dest('dist-server'))
 }
