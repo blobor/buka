@@ -26,7 +26,6 @@ module.exports = {
       'lodash.isobject',
       'lodash.omit',
       'lodash.times',
-      'material-design-lite',
       'material-ui',
       'moment',
       'moment-timezone',
