@@ -2,7 +2,9 @@
 @import "common/material-shadows";
 @import "common/material-data-table";
 
-@import "header.scss";
+@import "layout/header";
+@import "layout/container";
+@import "layout/footer";
 @import "styles.scss";
 @import "search.scss";
 @import "add-skipass";

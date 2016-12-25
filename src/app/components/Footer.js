@@ -4,7 +4,7 @@ import BottomNavigationLink from './BottomNavigationLink'
 
 const Footer = () => {
   return (
-    <footer className='buka__footer'>
+    <footer className='app__footer'>
       <nav className='bottom-navigation'>
         <BottomNavigationLink
           className='bottom-navigation__link'

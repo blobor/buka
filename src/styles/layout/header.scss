@@ -1,0 +1,14 @@
+@import "../constant";
+
+.app-header {
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: $header-height;
+    position: fixed;
+    flex-shrink: 0;
+}
+
+.app-header__appbar {
+  display: flex;
+}

@@ -4,9 +4,9 @@ import TestCardNumber from './TestCardNumber'
 
 const Header = ({ testCardNumberChange }) => {
   return (
-    <header className='buka__header'>
+    <header className='app-header'>
       <AppBar
-        className='buka__header-appbar'
+        className='app-header__appbar'
         showMenuIconButton={false}
         iconElementRight={
           <TestCardNumber onChange={testCardNumberChange} />

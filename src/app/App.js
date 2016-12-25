@@ -29,9 +29,9 @@ const App = ({ userAgent }) => {
 
   return (
     <MuiThemeProvider muiTheme={muiTheme}>
-      <div className='buka'>
+      <div className='app'>
         <Header />
-        <main className='buka__container'>
+        <main className='app__container'>
           <Match exactly pattern='/' component={Search} />
           <Match pattern='/skipasses' component={SkipassGridList} />
         </main>

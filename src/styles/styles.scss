@@ -1,55 +1,6 @@
 @import "constant.scss";
 @import "screen-sizes.scss";
 
-html, body {
-  font-family: 'Roboto', sans-serif;
-  line-height: 20px;
-  margin: 0;
-}
-
-.buka {
-    display: flex;
-    flex-direction: column;
-    font-size: 14px;
-    min-height: 100vh;
-
-  &__container {
-      display: flex;
-      flex: 1 0 auto;
-      flex-direction: column;
-      align-items: center;
-      box-sizing: border-box;
-      padding: 0 10pt;
-      margin: $header-height auto calc(#{$footer-height} + 5pt);
-      width: 100%;
-      max-width: 980px;
-  }
-
-  &__footer {
-    flex-shrink: 0;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: $footer-height;
-    background-color: #FFF;
-
-    box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.14);
-  }
-}
-
-@media (max-width: $xsmall) {
-  .buka__container {
-    padding: 0 2pt;
-  }
-}
-
-@media (max-width: $small) {
-  .buka__container {
-    padding: 0 5pt;
-  }
-}
-
 .buka-skipass-number__form {
     width: 100%;
     display: flex;
