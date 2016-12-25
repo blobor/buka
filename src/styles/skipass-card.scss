@@ -1,5 +1,5 @@
 @import 'screen-sizes.scss';
-@import 'material-colors.scss';
+@import 'common/material-colors';
 
 .skipass-card {
   display: flex;
@@ -30,7 +30,6 @@
     margin: 0;
     flex-grow: 2;
     color: #FFF;
-    font-size: 1.4em;
     text-align: center;
   }
 

@@ -1,4 +1,3 @@
-import 'material-design-lite/material.css'
 import './styles/app.scss'
 
 import 'babel-polyfill'

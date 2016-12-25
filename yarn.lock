@@ -1252,13 +1252,7 @@ browserify-zlib@^0.1.4:
   dependencies:
     pako "~0.2.0"
 
-browserslist@^1.4.0:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-1.5.1.tgz#67c3f2a1a6ad174cd01d25d2362e6e6083b26986"
-  dependencies:
-    caniuse-db "^1.0.30000601"
-
-browserslist@~1.4.0:
+browserslist@^1.4.0, browserslist@~1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-1.4.0.tgz#9cfdcf5384d9158f5b70da2aa00b30e8ff019049"
   dependencies:
@@ -1364,7 +1358,7 @@ camelcase@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
 
-caniuse-db@^1.0.30000539, caniuse-db@^1.0.30000597, caniuse-db@^1.0.30000601:
+caniuse-db@^1.0.30000539, caniuse-db@^1.0.30000597:
   version "1.0.30000602"
   resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000602.tgz#06b2cbfb6c3aeef7ddb18cd588043549ad1a2d4e"
 
@@ -4237,10 +4231,6 @@ matcher@^0.1.1:
   resolved "https://registry.yarnpkg.com/matcher/-/matcher-0.1.2.tgz#ef20cbde64c24c50cc61af5b83ee0b1b8ff00101"
   dependencies:
     escape-string-regexp "^1.0.4"
-
-material-design-lite@1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/material-design-lite/-/material-design-lite-1.2.1.tgz#09e5caab2575af8ee21b2630bff175c5a822c662"
 
 material-ui@0.16.5:
   version "0.16.5"

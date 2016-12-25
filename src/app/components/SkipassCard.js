@@ -23,7 +23,7 @@ const renderSkipassBalance = skipass => {
 }
 
 const SkipassCard = ({ skipass }) => {
-  const className = classNames('skipass-card', 'material-shadow--z1', 'material-shadow--z1-animated', 'material-shadow--z1-interactive', {
+  const className = classNames('skipass-card', 'md-shadow--2dp', 'md-shadow--animated', 'md-shadow--2dp-interactive', {
     'skipass-card--zero-balance': skipass.balance === 0
   })
 

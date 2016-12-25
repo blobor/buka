@@ -68,6 +68,9 @@ node_modules
 # JIRA plugin
 atlassian-ide-plugin.xml
 
+# VS Code
+.vscode
+
 # Project distribution folder
 public
 dist-server

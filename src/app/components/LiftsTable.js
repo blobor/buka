@@ -14,7 +14,7 @@ const getLiftsRows = lifts => {
 }
 
 const LiftsTable = ({ lifts }) => (
-  <table className='mdl-data-table lifts-table mdl-shadow--2dp'>
+  <table className='md-data-table lifts-table md-shadow--2dp'>
     <thead>
       <tr>
         <th>#</th>
