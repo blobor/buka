@@ -8,6 +8,7 @@ class MiddlewareManager extends Manager {
   configureCommon (app) {
     const handlebarsFileExtension = 'hbs'
 
+    app.disable('etag')
     app.engine(handlebarsFileExtension, handlebars({
       extname: handlebarsFileExtension
     }))
