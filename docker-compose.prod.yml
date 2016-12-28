@@ -5,6 +5,7 @@ services:
     image: blobor/skipass-web-api:0.20.0
     environment:
       - NODE_ENV=production
+      - GOOGLE_TRACKING_ID
     ports:
       - 3000
 
