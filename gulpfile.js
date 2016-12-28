@@ -1,4 +1,5 @@
 const gulp = require('gulp')
+const del = require('del')
 const gulpIf = require('gulp-if')
 const babel = require('gulp-babel')
 const htmlmin = require('gulp-htmlmin')
@@ -14,6 +15,10 @@ const config = require('./config/gulp.config')
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 console.log(`[SKIPASS.SITE WEB] Running gulp task with NODE_ENV=${process.env.NODE_ENV}`)
+
+const clean = () => del('dist-server/**', {
+  force: true
+})
 
 const buildHtml = () => {
   return gulp
@@ -63,12 +68,12 @@ const compileServerJS = () => {
 
 const buildServer = gulp.parallel(compileServerJS, buildHtml)
 
-gulp.task('build', gulp.parallel(buildClient, buildServer))
+gulp.task('build', gulp.series(clean, gulp.parallel(buildClient, buildServer)))
 
 gulp.task('build:client', buildClient)
 gulp.task('build:server', buildServer)
 
-gulp.task('start:dev', gulp.series(buildServer, () => {
+gulp.task('start:dev', gulp.series(clean, buildServer, () => {
   const webpackConfig = Object.assign(require('./config/webpack.config.dev'), {
     watch: true,
     progress: true
