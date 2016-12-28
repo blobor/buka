@@ -18,7 +18,7 @@ console.log(`[SKIPASS.SITE WEB] Running gulp task with NODE_ENV=${process.env.NO
 const buildHtml = () => {
   return gulp
     .src(config.index)
-    .pipe(gulpIf(isDevelopment, htmlmin(config.htmlMinOptions)))
+    .pipe(gulpIf(!isDevelopment, htmlmin(config.htmlMinOptions)))
     .pipe(gulp.dest('dist-server'))
 }
 
@@ -68,14 +68,15 @@ gulp.task('build', gulp.parallel(buildClient, buildServer))
 gulp.task('build:client', buildClient)
 gulp.task('build:server', buildServer)
 
-gulp.task('start:dev', () => {
+gulp.task('start:dev', gulp.series(buildServer, () => {
   const webpackConfig = Object.assign(require('./config/webpack.config.dev'), {
     watch: true,
     progress: true
   })
 
+  gulp.watch(config.index, buildHtml)
   gulp.watch('src/**/*.js', compileServerJS)
   return gulp.src(webpackConfig.entry.app)
     .pipe(webpack(webpackConfig))
     .pipe(gulp.dest('public'))
-})
+}))
