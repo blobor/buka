@@ -32,7 +32,7 @@ const SkipassCard = ({ skipass, onRemoveSkipass }) => {
       <header className='skipass-card__header'>
         <h5 className='skipass-card__title'>{skipass.name}</h5>
         <FlatButton className='skipass-card__close-button'
-          onTouchTap={onRemoveSkipass.bind(this, skipass)}
+          onTouchTap={onRemoveSkipass.bind(null, skipass)}
           icon={<NavigationClose color={fullWhite} />} />
       </header>
       <main className='skipass-card__main-container'>
