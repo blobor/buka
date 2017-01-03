@@ -22,7 +22,7 @@ const renderSkipassBalance = skipass => {
   )
 }
 
-const SkipassCard = ({ skipass }) => {
+const SkipassCard = ({ skipass, onRemoveSkipass }) => {
   const className = classNames('skipass-card', 'md-shadow--2dp', 'md-shadow--animated', 'md-shadow--2dp-interactive', {
     'skipass-card--zero-balance': skipass.balance === 0
   })
@@ -31,7 +31,9 @@ const SkipassCard = ({ skipass }) => {
     <article className={className}>
       <header className='skipass-card__header'>
         <h5 className='skipass-card__title'>{skipass.name}</h5>
-        <FlatButton className='skipass-card__close-button' icon={<NavigationClose color={fullWhite} />} />
+        <FlatButton className='skipass-card__close-button'
+          onTouchTap={onRemoveSkipass.bind(this, skipass)}
+          icon={<NavigationClose color={fullWhite} />} />
       </header>
       <main className='skipass-card__main-container'>
         <h5 className='skipass-card__card-number'>{skipass.cardNumber}</h5>

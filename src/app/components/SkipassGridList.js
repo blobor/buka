@@ -3,15 +3,18 @@ import SkipassCard from './SkipassCard'
 
 class SkipassGridList extends Component {
   componentDidMount () {
-    this.props.initialize()
+    const { initialize } = this.props
+
+    // initialize component
+    initialize()
   }
 
   render () {
-    const { skipasses } = this.props
+    const { skipasses, onRemoveSkipass } = this.props
 
     return (
       <section className='skipasess__container'>
-        {skipasses.map((skipass, index) => <SkipassCard key={index} skipass={skipass} />)}
+        {skipasses.map((skipass, index) => <SkipassCard key={index} skipass={skipass} onRemoveSkipass={onRemoveSkipass} />)}
       </section>
     )
   }

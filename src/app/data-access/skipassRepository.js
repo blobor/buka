@@ -62,6 +62,10 @@ const save = skipass => {
   return db.put(skipassToSave)
 }
 
+export const remove = (skipass) => {
+  return db.remove(skipass)
+}
+
 export {
   get,
   save,
