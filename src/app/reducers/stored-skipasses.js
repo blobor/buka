@@ -1,5 +1,5 @@
 import { List } from 'immutable'
-import { FETCH_STORED_SKIPASSES_SUCCESS, REMOVE_STORED_SKIPASS_SUCCESS } from '../actions/actionTypes'
+import { FETCH_STORED_SKIPASSES_SUCCESS, REMOVE_STORED_SKIPASS_SUCCESS } from '../core/actions/action-types'
 
 const initialState = new List()
 

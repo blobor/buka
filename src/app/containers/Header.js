@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { changeSearchSkipassNumber } from '../actions/skipass'
+import { changeSearchSkipassNumber } from '../core/actions/action-creators/search-skipass.action-creator'
 import Header from '../components/Header'
 
 const mapStateToProps = null

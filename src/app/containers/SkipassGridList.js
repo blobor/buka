@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchStoredSkipasses, removeStoredSkipass } from '../actions/store-skipass'
+import { fetchStoredSkipasses, removeStoredSkipass } from '../core/actions/stored-skipasses.actions'
 import SkipassGridList from '../components/SkipassGridList'
 
 const mapStateToProps = state => {

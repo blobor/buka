@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import CardNumberForm from '../components/CardNumberForm'
-import { fetchSkipassData } from '../actions/skipass'
+import { fetchSkipassData } from '../core/actions/search-skipass.actions'
 
 const mapStateToProps = state => {
   const searchSkipass = state.get('searchSkipass').toJS()

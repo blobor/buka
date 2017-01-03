@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { FloatingActionButton } from 'material-ui'
 import { ContentAdd } from 'material-ui/svg-icons'
 
-import { storeSkipass } from '../actions/store-skipass'
+import { storeSkipass } from '../core/actions/stored-skipasses.actions'
 
 const AddSkipassButton = ({ canBeAdded, storeSkipass }) => {
   const className = classNames('add-skipass__button', 'add-skipass__button--animated', {
