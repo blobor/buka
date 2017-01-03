@@ -8,7 +8,12 @@ import * as config from '../../config.js'
 const middlewares = [thunk]
 
 if (config.development) {
-  middlewares.push(createLogger())
+  middlewares.push(createLogger({
+    // Transform Symbol() action type to string
+    actionTransformer: action => Object.assign(action, {
+      type: String(action.type)
+    })
+  }))
 }
 
 const configureStore = initialState => {
