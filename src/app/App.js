@@ -34,6 +34,7 @@ const App = ({ userAgent }) => {
         <main className='app__container'>
           <Match exactly pattern='/' component={Search} />
           <Match pattern='/skipasses' component={SkipassGridList} />
+          <Match pattern='/skipasses/:id' />
         </main>
         <Footer />
       </div>

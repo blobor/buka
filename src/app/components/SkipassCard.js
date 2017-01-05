@@ -1,5 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
+import { Link } from 'react-router'
 import { FlatButton } from 'material-ui'
 import { NavigationClose } from 'material-ui/svg-icons'
 import { fullWhite } from 'material-ui/styles/colors'
@@ -30,7 +31,9 @@ const SkipassCard = ({ skipass, onRemoveSkipass }) => {
   return (
     <article className={className}>
       <header className='skipass-card__header'>
-        <h5 className='skipass-card__title'>{skipass.name}</h5>
+        <h5 className='skipass-card__title'>
+          <Link to={`/skipasses/${skipass.cardNumber}`} className='skipass-card__link'>{skipass.name}</Link>
+        </h5>
         <FlatButton className='skipass-card__close-button'
           onTouchTap={onRemoveSkipass.bind(null, skipass)}
           icon={<NavigationClose color={fullWhite} />} />
