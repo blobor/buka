@@ -2,8 +2,7 @@ import { fromJS, Set } from 'immutable'
 import { FETCH_STORED_SKIPASSES_SUCCESS, REMOVE_STORED_SKIPASS_SUCCESS } from '../core/actions/action-types'
 
 const initialState = fromJS({
-  list: new Set(),
-  selected: null
+  list: new Set()
 })
 
 export default (state = initialState, action) => {

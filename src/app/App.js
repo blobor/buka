@@ -3,6 +3,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import { Match } from 'react-router'
 
 import Search from './containers/Search'
+import SkipassPage from './containers/SkipassPage'
 import SkipassGridList from './containers/SkipassGridList'
 import Header from './containers/Header'
 import Footer from './components/Footer'
@@ -33,8 +34,8 @@ const App = ({ userAgent }) => {
         <Header />
         <main className='app__container'>
           <Match exactly pattern='/' component={Search} />
-          <Match pattern='/skipasses' component={SkipassGridList} />
-          <Match pattern='/skipasses/:id' />
+          <Match exactly pattern='/skipasses' component={SkipassGridList} />
+          <Match exactly pattern='/skipasses/:id' component={SkipassPage} />
         </main>
         <Footer />
       </div>

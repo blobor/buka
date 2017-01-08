@@ -18,7 +18,6 @@ const Footer = () => {
           className='bottom-navigation__link'
           to='/skipasses'
           label='Skipasses'
-          activeOnlyWhenExact
           icon={
             <ContentSave />
           } />
