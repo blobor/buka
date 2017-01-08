@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SkipassCard from './SkipassCard'
+import SkipassCard from './SkipassCard.component'
 
 class SkipassGridList extends Component {
   componentDidMount () {
