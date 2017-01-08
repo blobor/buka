@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux-immutable'
 import app from './app'
 import searchSkipass from './search-skipass'
-import storedSkipasses from './stored-skipasses'
+import skipasses from './skipasses'
 
 const rootReducer = combineReducers({
   app,
   searchSkipass,
-  storedSkipasses
+  skipasses
 })
 
 export default rootReducer

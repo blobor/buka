@@ -3,8 +3,10 @@ import { fetchStoredSkipasses, removeStoredSkipass } from '../core/actions/store
 import SkipassGridList from '../components/SkipassGridList'
 
 const mapStateToProps = state => {
+  const { list: skipasses } = state.get('skipasses').toJS()
+
   return {
-    skipasses: state.get('storedSkipasses').toJS()
+    skipasses
   }
 }
 
