@@ -3,7 +3,7 @@ import {
   STORE_SKIPASS_SUCCESS,
   FETCH_STORED_SKIPASSES_SUCCESS,
   REMOVE_STORED_SKIPASS_SUCCESS
-} from '../core/actions/action-types'
+} from '../../core/actions/action-types'
 
 const initialState = fromJS({
   list: new Set()

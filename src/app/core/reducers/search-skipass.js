@@ -6,7 +6,7 @@ import {
   FETCH_SKIPASS_SUCCESS,
   FETCH_SKIPASS_FAILURE,
   STORE_SKIPASS_SUCCESS
-} from '../core/actions/action-types'
+} from '../../core/actions/action-types'
 
 const initialState = fromJS({
   isValid: true,

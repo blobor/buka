@@ -6,7 +6,7 @@ import { renderToString } from 'react-dom/server'
 import { ServerRouter, createServerRenderContext } from 'react-router'
 
 import App from '../../app/App'
-import configureStore from '../../app/store/configureStore'
+import configureStore from '../../app/core/store/configureStore'
 import { version, analytics } from '../../config'
 import { wrapAsync } from '../utils/express-promise-handle'
 import { getSkipass } from '../data-sourses/bukovel-tickets/bukovel'
