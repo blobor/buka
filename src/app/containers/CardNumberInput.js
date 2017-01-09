@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { changeSearchSkipassNumber } from '../core/actions/action-creators/search-skipass.action-creator'
+import { changeSearchSkipassNumber } from '../core/actions/action-creators/search-skipass.action-creators'
 import CardNumberInput from '../components/CardNumberInput'
 
 const mapStateToProps = state => {

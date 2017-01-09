@@ -15,7 +15,7 @@ import {
   removeStoredSkipassSuccess,
   removeStoredSkipassFailure
 } from './action-creators/stored-skipasses.action-creators'
-import { toggleSkipassCanBeAdded } from './action-creators/search-skipass.action-creator'
+import { toggleSkipassCanBeAdded } from './action-creators/search-skipass.action-creators'
 
 const storeSkipass = () => {
   return async (dispatch, getState) => {
@@ -24,8 +24,8 @@ const storeSkipass = () => {
     dispatch(storeSkipassRequest())
 
     try {
-      await saveSkipass(skipass)
-      dispatch(storeSkipassSuccess())
+      const savedSkipass = await saveSkipass(skipass)
+      dispatch(storeSkipassSuccess(savedSkipass))
     } catch (e) {
       dispatch(storeSkipassFailure(e))
     }

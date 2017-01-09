@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchStoredSkipasses, removeStoredSkipass } from '../core/actions/stored-skipasses.actions'
+import { removeStoredSkipass } from '../core/actions/stored-skipasses.actions'
 import SkipassGridList from './SkipassGridList.component'
 
 const mapStateToProps = state => {
@@ -12,9 +12,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    initialize: () => {
-      dispatch(fetchStoredSkipasses())
-    },
     onRemoveSkipass: skipass => {
       dispatch(removeStoredSkipass(skipass))
     }

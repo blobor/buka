@@ -1,10 +1,11 @@
+import isNil from 'lodash.isnil'
 import { hasSkipass, getLatest as getSkipass } from '../../data-access/skipassRepository'
 import {
   fetchSkipassRequest,
   fetchSkipassSuccess,
   fetchSkipassFailure,
   toggleSkipassCanBeAdded
-} from './action-creators/search-skipass.action-creator'
+} from './action-creators/search-skipass.action-creators'
 
 const fetchSkipassData = value => {
   return async (dispatch) => {
@@ -18,7 +19,7 @@ const fetchSkipassData = value => {
       dispatch(fetchSkipassFailure(e))
     }
 
-    if (skipass != null) {
+    if (!isNil(skipass)) {
       const skipassIsPresent = await hasSkipass(value)
       dispatch(toggleSkipassCanBeAdded(!skipassIsPresent))
     }

@@ -16,9 +16,10 @@ const storeSkipassRequest = () => {
   }
 }
 
-const storeSkipassSuccess = () => {
+const storeSkipassSuccess = savedSkipass => {
   return {
-    type: STORE_SKIPASS_SUCCESS
+    type: STORE_SKIPASS_SUCCESS,
+    savedSkipass
   }
 }
 

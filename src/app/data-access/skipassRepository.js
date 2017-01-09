@@ -60,6 +60,9 @@ const save = skipass => {
   const skipassToSave = prepareToSave(skipass)
 
   return db.put(skipassToSave)
+    .then(response => {
+      return db.get(response.id)
+    })
 }
 
 export const remove = (skipass) => {
