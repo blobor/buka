@@ -2,7 +2,7 @@ version: '2'
 
 services:
   web:
-    image: blobor/skipass-web-api:0.20.0
+    image: blobor/skipass-web-api:0.30.3
     environment:
       - NODE_ENV=production
       - GOOGLE_TRACKING_ID
@@ -10,7 +10,7 @@ services:
       - 3000
 
   proxy:
-    image: blobor/skipass-nginx-proxy:0.20.0
+    image: blobor/skipass-nginx-proxy:0.30.3
     ports:
       - 80:80
       - 443:443
