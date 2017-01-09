@@ -1,15 +1,15 @@
 import PouchDBCore from 'pouchdb-core'
-import idbApapter from 'pouchdb-adapter-idb'
-import websqlApapter from 'pouchdb-adapter-websql'
-import localstorageApapter from 'pouchdb-adapter-localstorage'
-import memorypapter from 'pouchdb-adapter-memory'
-import pouchdbFind from 'pouchdb-find'
+import idbAdapter from 'pouchdb-adapter-idb'
+import webSqlAdapter from 'pouchdb-adapter-websql'
+import localStorageAdapter from 'pouchdb-adapter-localstorage'
+import memoryAdapter from 'pouchdb-adapter-memory'
+import pouchDBFind from 'pouchdb-find'
 
 const PouchDB = PouchDBCore
-  .plugin(idbApapter)
-  .plugin(websqlApapter)
-  .plugin(localstorageApapter)
-  .plugin(memorypapter)
-  .plugin(pouchdbFind)
+  .plugin(idbAdapter)
+  .plugin(webSqlAdapter)
+  .plugin(localStorageAdapter)
+  .plugin(memoryAdapter)
+  .plugin(pouchDBFind)
 
 export default PouchDB

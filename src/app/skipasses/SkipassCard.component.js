@@ -1,5 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
+import { Link } from 'react-router'
 import { FlatButton } from 'material-ui'
 import { NavigationClose } from 'material-ui/svg-icons'
 import { fullWhite } from 'material-ui/styles/colors'
@@ -22,7 +23,7 @@ const renderSkipassBalance = skipass => {
   )
 }
 
-const SkipassCard = ({ skipass }) => {
+const SkipassCard = ({ skipass, onRemoveSkipass }) => {
   const className = classNames('skipass-card', 'md-shadow--2dp', 'md-shadow--animated', 'md-shadow--2dp-interactive', {
     'skipass-card--zero-balance': skipass.balance === 0
   })
@@ -30,8 +31,12 @@ const SkipassCard = ({ skipass }) => {
   return (
     <article className={className}>
       <header className='skipass-card__header'>
-        <h5 className='skipass-card__title'>{skipass.name}</h5>
-        <FlatButton className='skipass-card__close-button' icon={<NavigationClose color={fullWhite} />} />
+        <h5 className='skipass-card__title'>
+          <Link to={`/skipasses/${skipass.cardNumber}`} className='skipass-card__link'>{skipass.name}</Link>
+        </h5>
+        <FlatButton className='skipass-card__close-button'
+          onTouchTap={onRemoveSkipass.bind(null, skipass)}
+          icon={<NavigationClose color={fullWhite} />} />
       </header>
       <main className='skipass-card__main-container'>
         <h5 className='skipass-card__card-number'>{skipass.cardNumber}</h5>

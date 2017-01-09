@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable'
-import { appName, version } from '../../config.js'
+import { appName, version } from '../../../config.js'
 
 const initialState = fromJS({
   name: appName,
