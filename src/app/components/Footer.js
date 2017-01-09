@@ -4,7 +4,7 @@ import BottomNavigationLink from './BottomNavigationLink'
 
 const Footer = () => {
   return (
-    <footer className='buka__footer material-shadow--z1'>
+    <footer className='app__footer'>
       <nav className='bottom-navigation'>
         <BottomNavigationLink
           className='bottom-navigation__link'
@@ -18,7 +18,6 @@ const Footer = () => {
           className='bottom-navigation__link'
           to='/skipasses'
           label='Skipasses'
-          activeOnlyWhenExact
           icon={
             <ContentSave />
           } />

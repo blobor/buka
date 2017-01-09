@@ -3,21 +3,25 @@ import { connect } from 'react-redux'
 
 import CardNumberForm from './CardNumberForm'
 import AddSkipassButton from './AddSkipassButton'
-import SkipassSearchResult from '../components/SkipassSearchResult'
+import Skipass from '../components/Skipass'
 
-const Search = ({ search }) => {
+const Search = ({ error, skipass, isFetching }) => {
   return (
     <section className='buka-skipass-search__container'>
       <CardNumberForm />
-      <SkipassSearchResult search={search} />
+      <Skipass error={error} skipass={skipass} isFetching={isFetching} />
       <AddSkipassButton />
     </section>
   )
 }
 
 const mapStateToProps = state => {
+  const { skipass, error, isFetching } = state.get('searchSkipass').toJS()
+
   return {
-    search: state.get('searchSkipass').toJS()
+    error,
+    skipass,
+    isFetching
   }
 }
 

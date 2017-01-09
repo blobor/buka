@@ -1,13 +1,13 @@
-import 'material-design-lite/material.css'
 import './styles/app.scss'
 
+import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router'
 import isEmpty from 'lodash.isempty'
 import PouchDB from './app/data-access/PouchDB-client'
-import configureStore from './app/store/configureStore'
+import configureStore from './app/core/store/configureStore'
 import App from './app/App'
 import * as config from './config'
 

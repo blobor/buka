@@ -1,4 +1,10 @@
-@import "header.scss";
+@import "common/material-html";
+@import "common/material-shadows";
+@import "common/material-data-table";
+
+@import "layout/header";
+@import "layout/container";
+@import "layout/footer";
 @import "styles.scss";
 @import "search.scss";
 @import "add-skipass";
@@ -6,4 +12,3 @@
 @import "skipass-info.scss";
 @import "skipass-grid-list.scss";
 @import "skipass-card.scss";
-@import "material.scss";

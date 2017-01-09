@@ -13,7 +13,7 @@ const renderNullableValue = (label, value) => {
   return (
     <tr>
       <td>{ label }</td>
-      <td className='mdl-data-table__cell--non-numeric'>
+      <td className='md-data-table__cell--non-numeric'>
         { value }
       </td>
     </tr>
@@ -23,11 +23,11 @@ const renderNullableValue = (label, value) => {
 const SkipassInfo = ({ skipass }) => (
   <article className='skipass-info'>
     <h5>{skipass.name}</h5>
-    <table className='mdl-data-table mdl-shadow--2dp skipass-info__table'>
+    <table className='md-data-table md-shadow--2dp skipass-info__table'>
       <tbody>
         <tr>
           <td>Сard Number</td>
-          <td className='mdl-data-table__cell--non-numeric'>
+          <td className='md-data-table__cell--non-numeric'>
             {skipass.cardNumber}
           </td>
         </tr>

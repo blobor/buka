@@ -1,18 +1,24 @@
-FROM node:6.9.2-alpine
+FROM node:6.9.4-alpine
 
 ENV PORT 3000
 
 ARG NODE_ENV=production
 
+# Install Yarn
+RUN apk add --no-cache --virtual .build-deps tar curl bash gnupg \
+  && curl -o- -L https://yarnpkg.com/install.sh | bash \
+  && apk del .build-deps
+ENV PATH /root/.yarn/bin:$PATH
+
+# Create app directory
+RUN mkdir -p /usr/src/skipass.site
 WORKDIR /usr/src/skipass.site
 
+# Install app dependencies
 ADD package.json yarn.lock /usr/src/skipass.site/
-
-# Install yarn and pm2
-RUN npm install -g yarn \
-  && yarn global add pm2 \
-  # Restore dependencies
-  && yarn
+RUN yarn global add pm2 \
+  && yarn install --pure-lockfile \
+  && yarn cache clean
 
 COPY . /usr/src/skipass.site/
 

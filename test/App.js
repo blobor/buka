@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import { ServerRouter, createServerRenderContext } from 'react-router'
 
 import App from '../src/app/App.js'
-import configureStore from '../src/app/store/configureStore'
+import configureStore from '../src/app/core/store/configureStore'
 
 test('check if App component log errors', t => {
   const store = configureStore()

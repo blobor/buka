@@ -1,5 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
+import { Link } from 'react-router'
 import { FlatButton } from 'material-ui'
 import { NavigationClose } from 'material-ui/svg-icons'
 import { fullWhite } from 'material-ui/styles/colors'
@@ -22,24 +23,29 @@ const renderSkipassBalance = skipass => {
   )
 }
 
-const SkipassCard = ({ skipass }) => {
-  const className = classNames('skipass-card', 'material-shadow--z1', 'material-shadow--z1-animated', 'material-shadow--z1-interactive', {
+const SkipassCard = ({ skipass, onRemoveSkipass }) => {
+  const skipassUrl = `/skipasses/${skipass.cardNumber}`
+  const className = classNames('skipass-card', 'md-shadow--2dp', 'md-shadow--animated', 'md-shadow--2dp-interactive', {
     'skipass-card--zero-balance': skipass.balance === 0
   })
 
   return (
     <article className={className}>
       <header className='skipass-card__header'>
-        <h5 className='skipass-card__title'>{skipass.name}</h5>
-        <FlatButton className='skipass-card__close-button' icon={<NavigationClose color={fullWhite} />} />
+        <h5 className='skipass-card__title'>
+          <Link to={skipassUrl} className='skipass-card__link'>{skipass.name}</Link>
+        </h5>
+        <FlatButton className='skipass-card__close-button'
+          onTouchTap={onRemoveSkipass.bind(null, skipass)}
+          icon={<NavigationClose color={fullWhite} />} />
       </header>
-      <main className='skipass-card__main-container'>
+      <Link to={skipassUrl} className='skipass-card__link skipass-card__main-container'>
         <h5 className='skipass-card__card-number'>{skipass.cardNumber}</h5>
         <section className='skipass-card__info-container'>
           <time className='skipass-card__purchase-date' dateTime={skipass.purchaseDate}>{ getAdoptedDateString(skipass.purchaseDate) }</time>
         </section>
         { renderSkipassBalance(skipass) }
-      </main>
+      </Link>
     </article>
   )
 }
