@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { MuiThemeProvider } from 'material-ui/styles'
@@ -24,7 +26,7 @@ describe('SkipassCard', () => {
       <MuiThemeProvider muiTheme={muiTheme}>
         <SkipassCard skipass={skipass} onRemoveSkipass={onRemoveSkipass} />
       </MuiThemeProvider>
-    ).toJSON();
+    ).toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

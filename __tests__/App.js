@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import React from 'react'
 import { spy as createSpy } from 'sinon'
 import renderer from 'react-test-renderer'

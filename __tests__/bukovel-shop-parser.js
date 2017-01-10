@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import pify from 'pify'
 import has from 'lodash.has'
 import { join } from 'path'

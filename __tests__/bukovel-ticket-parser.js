@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import pify from 'pify'
 import { join } from 'path'
 import { readFile } from 'fs'
