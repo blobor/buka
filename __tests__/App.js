@@ -1,5 +1,5 @@
 import React from 'react'
-import sinon from 'sinon'
+import { spy as createSpy } from 'sinon'
 import renderer from 'react-test-renderer'
 import { Provider } from 'react-redux'
 import { ServerRouter, createServerRenderContext } from 'react-router'
@@ -11,7 +11,7 @@ it('check if App component log errors', () => {
   const store = configureStore()
   const context = createServerRenderContext()
 
-  const spy = sinon.spy(console, 'error')
+  const consoleErrorSpy = createSpy(console, 'error')
 
   renderer.create(
     <Provider store={store}>
@@ -21,5 +21,5 @@ it('check if App component log errors', () => {
     </Provider>
   )
 
-  expect(spy.called).toBe(false)
+  expect(consoleErrorSpy.called).toBe(false)
 })
