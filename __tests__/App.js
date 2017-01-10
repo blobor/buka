@@ -1,6 +1,6 @@
 import React from 'react'
 import sinon from 'sinon'
-import { render } from 'enzyme'
+import renderer from 'react-test-renderer'
 import { Provider } from 'react-redux'
 import { ServerRouter, createServerRenderContext } from 'react-router'
 
@@ -13,7 +13,7 @@ it('check if App component log errors', () => {
 
   const spy = sinon.spy(console, 'error')
 
-  render(
+  renderer.create(
     <Provider store={store}>
       <ServerRouter location='/' context={context}>
         <App userAgent='all' />
