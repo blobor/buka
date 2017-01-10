@@ -1,4 +1,3 @@
-import test from 'ava'
 import React from 'react'
 import sinon from 'sinon'
 import { render } from 'enzyme'
@@ -8,7 +7,7 @@ import { ServerRouter, createServerRenderContext } from 'react-router'
 import App from '../src/app/App.js'
 import configureStore from '../src/app/core/store/configureStore'
 
-test('check if App component log errors', t => {
+it('check if App component log errors', () => {
   const store = configureStore()
   const context = createServerRenderContext()
 
@@ -22,5 +21,5 @@ test('check if App component log errors', t => {
     </Provider>
   )
 
-  t.false(spy.called)
+  expect(spy.called).toBe(false)
 })
