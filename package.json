@@ -12,7 +12,8 @@
     "build:client": "gulp build:client",
     "lint": "standard --verbose | snazzy",
     "test": "jest",
-    "test:watch": "ava --watch"
+    "test:ci": "npm run lint && npm run test:coverage",
+    "test:coverage": "npm run test -- --coverage"
   },
   "dependencies": {
     "app-root-path": "2.0.1",
@@ -113,6 +114,11 @@
     "require": [
       "babel-register",
       "babel-polyfill"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
     ]
   }
 }
