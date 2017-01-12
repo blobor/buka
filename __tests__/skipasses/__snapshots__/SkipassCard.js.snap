@@ -106,7 +106,7 @@ exports[`SkipassCard should renders correctly 1`] = `
       <time
         className="skipass-card__purchase-date"
         dateTime={2015-03-09T00:00:00.000Z}>
-        03/09/2015 2:00:00 AM
+        2015-03-09T00:00:00.000Z
       </time>
     </section>
     <section
