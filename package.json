@@ -11,8 +11,9 @@
     "build:server": "gulp build:server",
     "build:client": "gulp build:client",
     "lint": "standard --verbose | snazzy",
-    "test": "npm run lint && ava",
-    "test:watch": "ava --watch"
+    "test": "jest",
+    "test:ci": "npm run lint && npm run test:coverage",
+    "test:coverage": "npm run test -- --coverage"
   },
   "dependencies": {
     "app-root-path": "2.0.1",
@@ -84,32 +85,18 @@
     "webpack-stream": "3.2.0"
   },
   "devDependencies": {
-    "ava": "0.17.0",
-    "enzyme": "2.7.0",
+    "babel-jest": "18.0.0",
+    "jest": "18.1.0",
     "pify": "2.3.0",
-    "react-addons-test-utils": "15.4.2",
+    "react-test-renderer": "15.4.2",
     "sinon": "1.17.7",
     "snazzy": "5.0.0",
     "standard": "8.6.0"
   },
-  "ava": {
-    "babel": {
-      "presets": [
-        "react",
-        [
-          "env",
-          {
-            "targets": {
-              "node": "current"
-            },
-            "useBuiltIns": true
-          }
-        ]
-      ]
-    },
-    "require": [
-      "babel-register",
-      "babel-polyfill"
+  "jest": {
+    "bail": true,
+    "collectCoverageFrom": [
+      "src/**/*.js"
     ]
   }
 }

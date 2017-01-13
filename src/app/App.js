@@ -9,8 +9,8 @@ import SkipassGridList from './skipasses/SkipassGridList.container'
 import Header from './containers/Header'
 import Footer from './components/Footer'
 
-import { fullWhite } from 'material-ui/styles/colors'
-import { getMuiTheme, MuiThemeProvider } from 'material-ui/styles'
+import { getMuiTheme } from './core/mui-theme'
+import { MuiThemeProvider } from 'material-ui/styles'
 
 import { fetchStoredSkipasses } from './core/actions/stored-skipasses.actions'
 
@@ -27,16 +27,7 @@ class App extends Component {
 
   render () {
     const { userAgent } = this.props
-
-    const muiTheme = getMuiTheme({
-      userAgent: userAgent,
-      textField: {
-        hintColor: '#565656'
-      },
-      svgIcon: {
-        color: fullWhite
-      }
-    })
+    const muiTheme = getMuiTheme(userAgent)
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
