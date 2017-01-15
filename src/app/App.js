@@ -6,6 +6,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import Search from './containers/Search'
 import Skipass from './skipasses/Skipass.container'
 import SkipassGridList from './skipasses/SkipassGridList.container'
+import About from './about'
 import Header from './containers/Header'
 import Footer from './components/Footer'
 
@@ -37,6 +38,7 @@ class App extends Component {
             <Match exactly pattern='/' component={Search} />
             <Match exactly pattern='/skipasses' component={SkipassGridList} />
             <Match exactly pattern='/skipasses/:id' component={Skipass} />
+            <Match exactly pattern='/about' component={About} />
           </main>
           <Footer />
         </div>

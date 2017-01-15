@@ -1,5 +1,5 @@
 import React from 'react'
-import { ActionSearch, ContentSave } from 'material-ui/svg-icons'
+import { ActionSearch, ContentSave, ActionInfoOutline } from 'material-ui/svg-icons'
 import BottomNavigationLink from './BottomNavigationLink'
 
 const Footer = () => {
@@ -20,6 +20,13 @@ const Footer = () => {
           label='Skipasses'
           icon={
             <ContentSave />
+          } />
+        <BottomNavigationLink
+          className='bottom-navigation__link'
+          to='/about'
+          label='About'
+          icon={
+            <ActionInfoOutline />
           } />
       </nav>
     </footer>
