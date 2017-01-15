@@ -96,6 +96,9 @@
   },
   "jest": {
     "bail": true,
+    "modulePaths": [
+      "<rootDir>/src/"
+    ],
     "collectCoverageFrom": [
       "src/**/*.js"
     ]

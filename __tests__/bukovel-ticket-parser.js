@@ -4,7 +4,7 @@ import pify from 'pify'
 import { join } from 'path'
 import { readFile } from 'fs'
 
-import { parseCardNumber, parseSkipass } from '../src/server/parsers/bukovel-ticket'
+import { parseCardNumber, parseSkipass } from 'server/parsers/bukovel-ticket'
 
 it('should parse card number from response', () => {
   // Arrange
