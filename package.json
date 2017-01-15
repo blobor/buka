@@ -10,6 +10,7 @@
     "build": "gulp build",
     "build:server": "gulp build:server",
     "build:client": "gulp build:client",
+    "start:watch": "gulp start:watch",
     "lint": "standard --verbose | snazzy",
     "test": "jest",
     "test:ci": "npm run lint && npm run test:coverage",
