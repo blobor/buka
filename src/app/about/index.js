@@ -22,4 +22,7 @@ const mapStateToProps = state => {
   }
 }
 
+export {
+  About
+}
 export default connect(mapStateToProps)(About)
