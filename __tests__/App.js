@@ -6,8 +6,8 @@ import renderer from 'react-test-renderer'
 import { Provider } from 'react-redux'
 import { ServerRouter, createServerRenderContext } from 'react-router'
 
-import App from '../src/app/App.js'
-import configureStore from '../src/app/core/store/configureStore'
+import App from 'app/App.js'
+import configureStore from 'app/core/store/configureStore'
 
 it('check if App component log errors', () => {
   const store = configureStore()

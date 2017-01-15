@@ -4,10 +4,10 @@ import React from 'react'
 import moment from 'moment'
 import renderer from 'react-test-renderer'
 import { MuiThemeProvider } from 'material-ui/styles'
-import { getMuiTheme } from '../../src/app/core/mui-theme'
-import SkipassGridList from '../../src/app/skipasses/SkipassGridList.component'
+import { getMuiTheme } from 'app/core/mui-theme'
+import SkipassGridList from 'app/skipasses/SkipassGridList.component'
 
-jest.mock('../../src/app/helpers/date', () => ({
+jest.mock('app/helpers/date', () => ({
   getAdoptedDateString: date => date.toISOString()
 }))
 

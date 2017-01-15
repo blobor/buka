@@ -5,7 +5,7 @@ import has from 'lodash.has'
 import { join } from 'path'
 import { readFile } from 'fs'
 
-import { parseSkipass } from '../src/server/parsers/bukovel-shop'
+import { parseSkipass } from 'server/parsers/bukovel-shop'
 
 it('should parse response', () => {
   // Arrange
