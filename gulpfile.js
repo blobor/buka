@@ -41,6 +41,7 @@ const buildClient = () => {
 const compileServerJS = () => {
   return rollup({
     entry: 'src/server.js',
+    format: 'cjs',
     plugins: [
       json(),
       commonjs(),
@@ -73,7 +74,7 @@ gulp.task('build', gulp.series(clean, gulp.parallel(buildClient, buildServer)))
 gulp.task('build:client', buildClient)
 gulp.task('build:server', buildServer)
 
-gulp.task('start:dev', gulp.series(clean, buildServer, () => {
+gulp.task('start:watch', gulp.series(clean, buildServer, () => {
   const webpackConfig = Object.assign(require('./config/webpack.config.dev'), {
     watch: true,
     progress: true
