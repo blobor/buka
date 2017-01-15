@@ -1,11 +1,25 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { List, ListItem, Divider } from 'material-ui'
 
-const About = () => {
+const About = ({ appVersion }) => {
   return (
-    <article>
-      <h1>About!!</h1>
+    <article className='about__container'>
+
+      <List>
+        <ListItem primaryText='App version' secondaryText={appVersion} />
+        <Divider />
+      </List>
     </article>
   )
 }
 
-export default About
+const mapStateToProps = state => {
+  const { version: appVersion } = state.get('app').toJS()
+
+  return {
+    appVersion
+  }
+}
+
+export default connect(mapStateToProps)(About)
