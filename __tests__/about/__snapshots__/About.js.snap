@@ -65,7 +65,7 @@ exports[`About should renders correctly 1`] = `
                 "paddingBottom": 16,
                 "paddingLeft": 16,
                 "paddingRight": 16,
-                "paddingTop": 20,
+                "paddingTop": 16,
                 "position": "relative",
               }
             }>
@@ -75,27 +75,7 @@ exports[`About should renders correctly 1`] = `
                   "muiPrepared": true,
                 }
               }>
-              App version
-            </div>
-            <div
-              style={
-                Object {
-                  "WebkitBoxOrient": null,
-                  "WebkitLineClamp": null,
-                  "color": "rgba(0, 0, 0, 0.54)",
-                  "display": null,
-                  "fontSize": 14,
-                  "height": 16,
-                  "lineHeight": "16px",
-                  "margin": 0,
-                  "marginTop": 4,
-                  "muiPrepared": true,
-                  "overflow": "hidden",
-                  "textOverflow": "ellipsis",
-                  "whiteSpace": "nowrap",
-                }
-              }>
-              0.0.1
+              Version
             </div>
           </div>
         </div>
