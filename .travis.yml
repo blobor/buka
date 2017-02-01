@@ -3,15 +3,14 @@ sudo: false
 node_js:
   - '6.9.4'
 env:
-  - CXX=g++-4.8 NODE_ENV=test
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
-install:
+  - NODE_ENV=test
+cache:
+  yarn: true
+  directories:
+    - node_modules
+before-script:
   - yarn global add codecov
+  - yarn
 script:
   - yarn run test:ci
   - codecov
