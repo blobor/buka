@@ -7,10 +7,10 @@ env:
 cache:
   yarn: true
   directories:
-    - node_modules
-before-script:
+    - $HOME/.npm
+    - $HOME/.yarn-cache
+before_script:
   - yarn global add codecov
-  - yarn
 script:
   - yarn run test:ci
   - codecov
