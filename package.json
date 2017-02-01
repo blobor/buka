@@ -101,6 +101,7 @@
     ],
     "collectCoverageFrom": [
       "src/**/*.js"
-    ]
+    ],
+    "coverageDirectory": "./coverage/"
   }
 }
