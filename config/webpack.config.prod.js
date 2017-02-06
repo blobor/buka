@@ -1,6 +1,7 @@
 'use strict'
 
 const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const commonConfig = require('./webpack.config.common')
 
@@ -10,6 +11,12 @@ let config = {
     filename: '[name].js'
   },
   plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: 'src/images',
+        to: 'images'
+      }
+    ]),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
     new webpack.DefinePlugin({
       'process.env': {
