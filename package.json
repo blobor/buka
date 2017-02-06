@@ -87,6 +87,7 @@
   },
   "devDependencies": {
     "babel-jest": "18.0.0",
+    "copy-webpack-plugin": "^4.0.1",
     "jest": "18.1.0",
     "pify": "2.3.0",
     "react-test-renderer": "15.4.2",
