@@ -1,0 +1,30 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "name": "skipass",
+  "short_name": "skipass",
+  "description": "App that helps you manage your bukovel skipasses",
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#00bcd4",
+  "background_color": "#00bcd4",
+  "icons": [{
+    "src": "images/favicons/favicon-96.png",
+    "sizes": "96x96",
+    "type": "image/png"
+  }, {
+    "src": "images/favicons/favicon-152.png",
+    "sizes": "152x152",
+    "type": "image/png"
+  }, {
+    "src": "images/favicons/favicon-196.png",
+    "sizes": "196x196",
+    "type": "image/png"
+  }, {
+    "src": "images/favicons/favicon-228.png",
+    "sizes": "228x228",
+    "type": "image/png"
+  }]
+}
