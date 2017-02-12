@@ -17,6 +17,12 @@ let config = {
         to: 'images'
       }
     ]),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/manifest.json',
+        to: ''
+      }
+    ]),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
     new webpack.DefinePlugin({
       'process.env': {
