@@ -923,9 +923,9 @@ base64-js@^1.0.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.2.0.tgz#a39992d723584811982be5e290bb6a53d86700f1"
 
-basic-auth@~1.0.3:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/basic-auth/-/basic-auth-1.0.4.tgz#030935b01de7c9b94a824b29f3fccb750d3a5290"
+basic-auth@~1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/basic-auth/-/basic-auth-1.1.0.tgz#45221ee429f7ee1e5035be3f51533f1cdfd29884"
 
 bcrypt-pbkdf@^1.0.0:
   version "1.0.1"
@@ -1053,9 +1053,9 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
 
-cache-manager@2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-2.3.0.tgz#fb2a5d08b05ac4a24e1960bc0d05269a4bfb7721"
+cache-manager@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-2.4.0.tgz#272e4eee3a4ecebb281fcb086499804e59a6a251"
   dependencies:
     async "1.5.2"
     lru-cache "4.0.0"
@@ -1370,9 +1370,9 @@ constants-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
 
-content-disposition@0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/content-disposition/-/content-disposition-0.5.1.tgz#87476c6a67c8daa87e32e87616df883ba7fb071b"
+content-disposition@0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/content-disposition/-/content-disposition-0.5.2.tgz#0cf68bb9ddf5f2be7961c3a85178cb85dba78cb4"
 
 content-type-parser@^1.0.1:
   version "1.0.1"
@@ -1597,6 +1597,12 @@ debug-log@^1.0.0:
 debug@2.6.0, debug@^2.1.0, debug@^2.1.1, debug@^2.2.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.0.tgz#bc596bcabe7617f11d9fa15361eded5608b8499b"
+  dependencies:
+    ms "0.7.2"
+
+debug@2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.1.tgz#79855090ba2c4e3115cc7d8769491d58f0491351"
   dependencies:
     ms "0.7.2"
 
@@ -2098,13 +2104,13 @@ express-handlebars@3.0.0:
     object.assign "^4.0.3"
     promise "^7.0.0"
 
-express@4.14.0:
-  version "4.14.0"
-  resolved "https://registry.yarnpkg.com/express/-/express-4.14.0.tgz#c1ee3f42cdc891fb3dc650a8922d51ec847d0d66"
+express@4.14.1:
+  version "4.14.1"
+  resolved "https://registry.yarnpkg.com/express/-/express-4.14.1.tgz#646c237f766f148c2120aff073817b9e4d7e0d33"
   dependencies:
     accepts "~1.3.3"
     array-flatten "1.1.1"
-    content-disposition "0.5.1"
+    content-disposition "0.5.2"
     content-type "~1.0.2"
     cookie "0.3.1"
     cookie-signature "1.0.6"
@@ -2113,19 +2119,19 @@ express@4.14.0:
     encodeurl "~1.0.1"
     escape-html "~1.0.3"
     etag "~1.7.0"
-    finalhandler "0.5.0"
+    finalhandler "0.5.1"
     fresh "0.3.0"
     merge-descriptors "1.0.1"
     methods "~1.1.2"
     on-finished "~2.3.0"
     parseurl "~1.3.1"
     path-to-regexp "0.1.7"
-    proxy-addr "~1.1.2"
+    proxy-addr "~1.1.3"
     qs "6.2.0"
     range-parser "~1.2.0"
-    send "0.14.1"
-    serve-static "~1.11.1"
-    type-is "~1.6.13"
+    send "0.14.2"
+    serve-static "~1.11.2"
+    type-is "~1.6.14"
     utils-merge "1.0.0"
     vary "~1.1.0"
 
@@ -2234,14 +2240,14 @@ fill-range@^2.1.0:
     repeat-element "^1.1.2"
     repeat-string "^1.5.2"
 
-finalhandler@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-0.5.0.tgz#e9508abece9b6dba871a6942a1d7911b91911ac7"
+finalhandler@0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-0.5.1.tgz#2c400d8d4530935bc232549c5fa385ec07de6fcd"
   dependencies:
     debug "~2.2.0"
     escape-html "~1.0.3"
     on-finished "~2.3.0"
-    statuses "~1.3.0"
+    statuses "~1.3.1"
     unpipe "~1.0.0"
 
 find-cache-dir@^0.1.1:
@@ -2831,7 +2837,7 @@ htmlparser2@^3.9.1:
     inherits "^2.0.1"
     readable-stream "^2.0.2"
 
-http-errors@~1.5.0, http-errors@~1.5.1:
+http-errors@~1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-1.5.1.tgz#788c0d2c1de2c81b9e6e8c01843b6b97eb920750"
   dependencies:
@@ -3629,9 +3635,9 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
-level-codec@6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/level-codec/-/level-codec-6.2.0.tgz#a4b5244bb6a4c2f723d68a1d64e980c53627d9d4"
+level-codec@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/level-codec/-/level-codec-7.0.0.tgz#c755b68d0d44ffa0b1cba044b8f81a55a14ad39b"
 
 level-codec@~6.1.0:
   version "6.1.0"
@@ -4265,12 +4271,12 @@ moment@2.17.1, "moment@>= 2.6.0":
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
-morgan@1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.7.0.tgz#eb10ca8e50d1abe0f8d3dad5c0201d052d981c62"
+morgan@1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.8.1.tgz#f93023d3887bd27b78dfd6023cea7892ee27a4b1"
   dependencies:
-    basic-auth "~1.0.3"
-    debug "~2.2.0"
+    basic-auth "~1.1.0"
+    debug "2.6.1"
     depd "~1.1.0"
     on-finished "~2.3.0"
     on-headers "~1.0.1"
@@ -5024,88 +5030,88 @@ postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0
     source-map "^0.5.6"
     supports-color "^3.2.3"
 
-pouchdb-adapter-idb@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-adapter-idb/-/pouchdb-adapter-idb-6.1.1.tgz#9681f861630f22053f43eaf949b48b55f26fcebe"
+pouchdb-adapter-idb@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-adapter-idb/-/pouchdb-adapter-idb-6.1.2.tgz#06f0f432705f6e9ae89c2aba6f08f0b7a0d83eff"
   dependencies:
-    pouchdb-adapter-utils "6.1.1"
-    pouchdb-binary-utils "6.1.1"
-    pouchdb-collections "6.1.1"
-    pouchdb-errors "6.1.1"
-    pouchdb-json "6.1.1"
-    pouchdb-merge "6.1.1"
-    pouchdb-promise "6.1.1"
-    pouchdb-utils "6.1.1"
+    pouchdb-adapter-utils "6.1.2"
+    pouchdb-binary-utils "6.1.2"
+    pouchdb-collections "6.1.2"
+    pouchdb-errors "6.1.2"
+    pouchdb-json "6.1.2"
+    pouchdb-merge "6.1.2"
+    pouchdb-promise "6.1.2"
+    pouchdb-utils "6.1.2"
 
-pouchdb-adapter-leveldb-core@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-adapter-leveldb-core/-/pouchdb-adapter-leveldb-core-6.1.1.tgz#d5a1bef80911b6e9c9dd5566420b4a8914c53964"
+pouchdb-adapter-leveldb-core@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-adapter-leveldb-core/-/pouchdb-adapter-leveldb-core-6.1.2.tgz#86e30f02ba00dfcad1fd74a5f8614deaa0911008"
   dependencies:
     argsarray "0.0.1"
     buffer-from "0.1.1"
     double-ended-queue "2.1.0-0"
     levelup "1.3.3"
-    pouchdb-adapter-utils "6.1.1"
-    pouchdb-binary-utils "6.1.1"
-    pouchdb-collections "6.1.1"
-    pouchdb-errors "6.1.1"
-    pouchdb-json "6.1.1"
-    pouchdb-md5 "6.1.1"
-    pouchdb-merge "6.1.1"
-    pouchdb-promise "6.1.1"
-    pouchdb-utils "6.1.1"
-    sublevel-pouchdb "6.1.1"
+    pouchdb-adapter-utils "6.1.2"
+    pouchdb-binary-utils "6.1.2"
+    pouchdb-collections "6.1.2"
+    pouchdb-errors "6.1.2"
+    pouchdb-json "6.1.2"
+    pouchdb-md5 "6.1.2"
+    pouchdb-merge "6.1.2"
+    pouchdb-promise "6.1.2"
+    pouchdb-utils "6.1.2"
+    sublevel-pouchdb "6.1.2"
     through2 "2.0.1"
 
-pouchdb-adapter-localstorage@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-adapter-localstorage/-/pouchdb-adapter-localstorage-6.1.1.tgz#35cb4d204cd25c26500197c17dae1dea4fe5d172"
+pouchdb-adapter-localstorage@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-adapter-localstorage/-/pouchdb-adapter-localstorage-6.1.2.tgz#efe40c1dda4d80adc0bb4f8d9dda8cdf622aa398"
   dependencies:
     localstorage-down "0.6.7"
-    pouchdb-adapter-leveldb-core "6.1.1"
-    pouchdb-utils "6.1.1"
+    pouchdb-adapter-leveldb-core "6.1.2"
+    pouchdb-utils "6.1.2"
 
-pouchdb-adapter-memory@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-adapter-memory/-/pouchdb-adapter-memory-6.1.1.tgz#a7c67b8f0fefb34a4531baa57f705597363550c3"
+pouchdb-adapter-memory@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-adapter-memory/-/pouchdb-adapter-memory-6.1.2.tgz#0a53b6cb9d85e3f60ab0c1c36de246c345ce41d9"
   dependencies:
     memdown "1.2.4"
-    pouchdb-adapter-leveldb-core "6.1.1"
-    pouchdb-utils "6.1.1"
+    pouchdb-adapter-leveldb-core "6.1.2"
+    pouchdb-utils "6.1.2"
 
-pouchdb-adapter-utils@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-adapter-utils/-/pouchdb-adapter-utils-6.1.1.tgz#ed40047ba2be69e2eec8730e24514951e5fe4e28"
+pouchdb-adapter-utils@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-adapter-utils/-/pouchdb-adapter-utils-6.1.2.tgz#6353686ef270a943fd9ec0d541b06812138516d6"
   dependencies:
-    pouchdb-binary-utils "6.1.1"
-    pouchdb-collections "6.1.1"
-    pouchdb-errors "6.1.1"
-    pouchdb-md5 "6.1.1"
-    pouchdb-merge "6.1.1"
-    pouchdb-utils "6.1.1"
+    pouchdb-binary-utils "6.1.2"
+    pouchdb-collections "6.1.2"
+    pouchdb-errors "6.1.2"
+    pouchdb-md5 "6.1.2"
+    pouchdb-merge "6.1.2"
+    pouchdb-utils "6.1.2"
 
-pouchdb-adapter-websql-core@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-adapter-websql-core/-/pouchdb-adapter-websql-core-6.1.1.tgz#bb09488d8bdc117c72b6cf8e3378b3b2f8c46b91"
+pouchdb-adapter-websql-core@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-adapter-websql-core/-/pouchdb-adapter-websql-core-6.1.2.tgz#0df6f14c520a0d8ad4f4197b357e6fbdc3bf7dfc"
   dependencies:
-    pouchdb-adapter-utils "6.1.1"
-    pouchdb-binary-utils "6.1.1"
-    pouchdb-collections "6.1.1"
-    pouchdb-errors "6.1.1"
-    pouchdb-json "6.1.1"
-    pouchdb-merge "6.1.1"
-    pouchdb-utils "6.1.1"
+    pouchdb-adapter-utils "6.1.2"
+    pouchdb-binary-utils "6.1.2"
+    pouchdb-collections "6.1.2"
+    pouchdb-errors "6.1.2"
+    pouchdb-json "6.1.2"
+    pouchdb-merge "6.1.2"
+    pouchdb-utils "6.1.2"
 
-pouchdb-adapter-websql@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-adapter-websql/-/pouchdb-adapter-websql-6.1.1.tgz#1fe2044150935d1b771b2d2732f7fa0a48cb17e2"
+pouchdb-adapter-websql@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-adapter-websql/-/pouchdb-adapter-websql-6.1.2.tgz#6310d9c80ed9d0efff194546678c2eab33c2de25"
   dependencies:
-    pouchdb-adapter-websql-core "6.1.1"
-    pouchdb-utils "6.1.1"
+    pouchdb-adapter-websql-core "6.1.2"
+    pouchdb-utils "6.1.2"
 
-pouchdb-binary-utils@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-binary-utils/-/pouchdb-binary-utils-6.1.1.tgz#ea565addcca18a2b6ee072faeddb37fa81e26807"
+pouchdb-binary-utils@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-binary-utils/-/pouchdb-binary-utils-6.1.2.tgz#0246d463e237015fb1524670d7d26614628e8fdb"
   dependencies:
     buffer-from "0.1.1"
 
@@ -5113,27 +5119,27 @@ pouchdb-collate@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/pouchdb-collate/-/pouchdb-collate-1.2.0.tgz#cae3b830fca124b7f97d23046e4faa311ec3828c"
 
-pouchdb-collections@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-collections/-/pouchdb-collections-6.1.1.tgz#a33f836bace9249b40960bcc2cbc76b7cf3f4883"
+pouchdb-collections@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-collections/-/pouchdb-collections-6.1.2.tgz#070161cdf485d87ddd29d977e4e8392dabf9313d"
 
-pouchdb-core@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-core/-/pouchdb-core-6.1.1.tgz#f10de4c4e8c7c9be9c949a6a4a518f1b669e3a35"
+pouchdb-core@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-core/-/pouchdb-core-6.1.2.tgz#57fc869ff99087e4af60d8b941a3681d5f915b1c"
   dependencies:
     argsarray "0.0.1"
     debug "2.6.0"
     inherits "2.0.3"
-    pouchdb-collections "6.1.1"
-    pouchdb-errors "6.1.1"
-    pouchdb-merge "6.1.1"
-    pouchdb-promise "6.1.1"
-    pouchdb-utils "6.1.1"
+    pouchdb-collections "6.1.2"
+    pouchdb-errors "6.1.2"
+    pouchdb-merge "6.1.2"
+    pouchdb-promise "6.1.2"
+    pouchdb-utils "6.1.2"
     scope-eval "0.0.3"
 
-pouchdb-errors@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-errors/-/pouchdb-errors-6.1.1.tgz#0a8373189c2c6ea9fd5796141c9fe70dc5c6f2a8"
+pouchdb-errors@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-errors/-/pouchdb-errors-6.1.2.tgz#1a85aaf8c8a7214148b271e8f1a06b450a7e5e62"
   dependencies:
     inherits "2.0.3"
 
@@ -5141,9 +5147,9 @@ pouchdb-extend@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/pouchdb-extend/-/pouchdb-extend-0.1.2.tgz#d1ce511bf704ed2e29f7bf428a416acfffa124b8"
 
-pouchdb-find@0.10.4:
-  version "0.10.4"
-  resolved "https://registry.yarnpkg.com/pouchdb-find/-/pouchdb-find-0.10.4.tgz#c8601200b695ea1ddc796761c675eed32984acc8"
+pouchdb-find@0.10.5:
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/pouchdb-find/-/pouchdb-find-0.10.5.tgz#34f285b8a56496a98f9cef2e1a1f6a0aac4eae8b"
   dependencies:
     argsarray "0.0.1"
     debug "^2.1.0"
@@ -5153,24 +5159,24 @@ pouchdb-find@0.10.4:
     pouchdb-extend "^0.1.2"
     pouchdb-promise "5.4.0"
     pouchdb-upsert "~2.0.1"
-    spark-md5 "0.0.5"
+    spark-md5 "2.0.2"
 
-pouchdb-json@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-json/-/pouchdb-json-6.1.1.tgz#5a252c6299ee01040f7b03529253781b42d6f74d"
+pouchdb-json@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-json/-/pouchdb-json-6.1.2.tgz#a27deb5d5c6ff52d7a008a75f8f8556b2c17768c"
   dependencies:
     vuvuzela "1.0.3"
 
-pouchdb-md5@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-md5/-/pouchdb-md5-6.1.1.tgz#1c00eda802cfe82f95950f5d6b3d96abf7a6bb68"
+pouchdb-md5@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-md5/-/pouchdb-md5-6.1.2.tgz#27ab60957326dcc5b1e9dd56ba3f72eb2b53240d"
   dependencies:
-    pouchdb-binary-utils "6.1.1"
+    pouchdb-binary-utils "6.1.2"
     spark-md5 "3.0.0"
 
-pouchdb-merge@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-merge/-/pouchdb-merge-6.1.1.tgz#e11a79704798f9148c2a22b4f3a9b193eb91599a"
+pouchdb-merge@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-merge/-/pouchdb-merge-6.1.2.tgz#406c2a95b84bdb16fe973ab4b7d8f26153cc42aa"
 
 pouchdb-promise@5.4.0:
   version "5.4.0"
@@ -5178,9 +5184,9 @@ pouchdb-promise@5.4.0:
   dependencies:
     lie "3.0.4"
 
-pouchdb-promise@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-promise/-/pouchdb-promise-6.1.1.tgz#b5ab7c16a991d7cb27921bfdd6260ec1f4680221"
+pouchdb-promise@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-promise/-/pouchdb-promise-6.1.2.tgz#e89f021e513e47ded37195f45b080dd52c4ee6a7"
   dependencies:
     lie "3.1.0"
 
@@ -5196,18 +5202,18 @@ pouchdb-upsert@~2.0.1:
   dependencies:
     pouchdb-promise "^5.4.3"
 
-pouchdb-utils@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/pouchdb-utils/-/pouchdb-utils-6.1.1.tgz#3d0acae20fc45fe967dd55c50143abe3afd3b6d6"
+pouchdb-utils@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/pouchdb-utils/-/pouchdb-utils-6.1.2.tgz#3cdde6d1d37a396f291849d289a37980673522d9"
   dependencies:
     argsarray "0.0.1"
     clone-buffer "1.0.0"
     debug "2.6.0"
     immediate "3.0.6"
     inherits "2.0.3"
-    pouchdb-collections "6.1.1"
-    pouchdb-errors "6.1.1"
-    pouchdb-promise "6.1.1"
+    pouchdb-collections "6.1.2"
+    pouchdb-errors "6.1.2"
+    pouchdb-promise "6.1.2"
 
 prelude-ls@~1.1.2:
   version "1.1.2"
@@ -5253,7 +5259,7 @@ promise@^7.0.0, promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-proxy-addr@~1.1.2:
+proxy-addr@~1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/proxy-addr/-/proxy-addr-1.1.3.tgz#dc97502f5722e888467b3fa2297a7b1ff47df074"
   dependencies:
@@ -5288,7 +5294,11 @@ qs@6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.0.tgz#3b7848c03c2dece69a9522b0fae8c4126d745f3b"
 
-qs@6.3.0, qs@~6.3.0:
+qs@6.3.1:
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.1.tgz#918c0b3bcd36679772baf135b1acb4c1651ed79d"
+
+qs@~6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.0.tgz#f403b264f23bc01228c74131b407f18d5ea5d442"
 
@@ -5790,15 +5800,15 @@ rollup-pluginutils@^1.5.0, rollup-pluginutils@^1.5.1, rollup-pluginutils@^1.5.2:
     estree-walker "^0.2.1"
     minimatch "^3.0.2"
 
-rollup-stream@1.18.0:
-  version "1.18.0"
-  resolved "https://registry.yarnpkg.com/rollup-stream/-/rollup-stream-1.18.0.tgz#db8fbec44ebbc8bc0da4dfc0bb7b419000e2d605"
+rollup-stream@1.19.0:
+  version "1.19.0"
+  resolved "https://registry.yarnpkg.com/rollup-stream/-/rollup-stream-1.19.0.tgz#8ab70d3970d8ec8529f1c1d7a688d8d65f90599a"
   dependencies:
-    rollup "^0.40.2"
+    rollup "^0.41.4"
 
-rollup@^0.40.2:
-  version "0.40.2"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.40.2.tgz#b59c8377332f828be38983192f3369e502f9e44b"
+rollup@^0.41.4:
+  version "0.41.4"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.41.4.tgz#a970580176329f9ead86854d7fd4c46de752aef8"
   dependencies:
     source-map-support "^0.4.0"
 
@@ -5879,24 +5889,6 @@ semver@~5.1.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.1.1.tgz#a3292a373e6f3e0798da0b20641b9a9c5bc47e19"
 
-send@0.14.1:
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/send/-/send-0.14.1.tgz#a954984325392f51532a7760760e459598c89f7a"
-  dependencies:
-    debug "~2.2.0"
-    depd "~1.1.0"
-    destroy "~1.0.4"
-    encodeurl "~1.0.1"
-    escape-html "~1.0.3"
-    etag "~1.7.0"
-    fresh "0.3.0"
-    http-errors "~1.5.0"
-    mime "1.3.4"
-    ms "0.7.1"
-    on-finished "~2.3.0"
-    range-parser "~1.2.0"
-    statuses "~1.3.0"
-
 send@0.14.2:
   version "0.14.2"
   resolved "https://registry.yarnpkg.com/send/-/send-0.14.2.tgz#39b0438b3f510be5dc6f667a11f71689368cdeef"
@@ -5915,7 +5907,7 @@ send@0.14.2:
     range-parser "~1.2.0"
     statuses "~1.3.1"
 
-serve-static@~1.11.1:
+serve-static@~1.11.2:
   version "1.11.2"
   resolved "https://registry.yarnpkg.com/serve-static/-/serve-static-1.11.2.tgz#2cf9889bd4435a320cc36895c9aa57bd662e6ac7"
   dependencies:
@@ -5981,9 +5973,9 @@ slice-ansi@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/slice-ansi/-/slice-ansi-0.0.4.tgz#edbf8903f66f7ce2f8eafd6ceed65e264c831b35"
 
-snazzy@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/snazzy/-/snazzy-5.0.0.tgz#22a0a8da8f1311f681316c51c3a54ab138786800"
+snazzy@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/snazzy/-/snazzy-6.0.0.tgz#6a17d4798cbbc8bc6e113153694907a8bac9494d"
   dependencies:
     chalk "^1.1.0"
     inherits "^2.0.1"
@@ -6031,9 +6023,9 @@ source-map@~0.2.0:
   dependencies:
     amdefine ">=0.0.4"
 
-spark-md5@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/spark-md5/-/spark-md5-0.0.5.tgz#931da5e3b951d06527e9b7d90dfff578b6fcdc8e"
+spark-md5@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/spark-md5/-/spark-md5-2.0.2.tgz#37b763847763ae7e7acef2ca5233d01e649a78b7"
 
 spark-md5@3.0.0:
   version "3.0.0"
@@ -6109,7 +6101,7 @@ standard@*, standard@8.6.0:
     eslint-plugin-standard "~2.0.1"
     standard-engine "~5.2.0"
 
-"statuses@>= 1.3.1 < 2", statuses@~1.3.0, statuses@~1.3.1:
+"statuses@>= 1.3.1 < 2", statuses@~1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.3.1.tgz#faf51b9eb74aaef3b3acf4ad5f61abf24cb7b93e"
 
@@ -6214,12 +6206,12 @@ style-loader@0.13.1:
   dependencies:
     loader-utils "^0.2.7"
 
-sublevel-pouchdb@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/sublevel-pouchdb/-/sublevel-pouchdb-6.1.1.tgz#44449b7bb9fd9dbd6ec33923080d0ffa35f8e39e"
+sublevel-pouchdb@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/sublevel-pouchdb/-/sublevel-pouchdb-6.1.2.tgz#2ff50ad8753b1705d3e812d8bc28fb5b11e3b49c"
   dependencies:
     inherits "2.0.3"
-    level-codec "6.2.0"
+    level-codec "7.0.0"
     ltgt "2.1.2"
     readable-stream "1.0.33"
 
@@ -6437,7 +6429,7 @@ type-check@~0.3.2:
   dependencies:
     prelude-ls "~1.1.2"
 
-type-is@~1.6.13:
+type-is@~1.6.14:
   version "1.6.14"
   resolved "https://registry.yarnpkg.com/type-is/-/type-is-1.6.14.tgz#e219639c17ded1ca0789092dd54a03826b817cb2"
   dependencies:
