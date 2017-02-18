@@ -1,6 +1,7 @@
 'use strict'
 
 const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const commonConfig = require('./webpack.config.common')
 
@@ -11,6 +12,18 @@ let config = {
   },
   devtool: '#source-map',
   plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: 'src/images',
+        to: 'images'
+      }
+    ]),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/manifest.json',
+        to: ''
+      }
+    ]),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),

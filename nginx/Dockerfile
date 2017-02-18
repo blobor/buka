@@ -1,4 +1,4 @@
-FROM nginx:1.11.8-alpine
+FROM nginx:1.11.9-alpine
 
 # Create directory where to store dhparam.pem
 RUN mkdir -p /etc/nginx/sites-available/skipass.site/ssl \

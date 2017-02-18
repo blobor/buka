@@ -6,11 +6,12 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import Search from './containers/Search'
 import Skipass from './skipasses/Skipass.container'
 import SkipassGridList from './skipasses/SkipassGridList.container'
+import About from './about'
 import Header from './containers/Header'
 import Footer from './components/Footer'
 
-import { fullWhite } from 'material-ui/styles/colors'
-import { getMuiTheme, MuiThemeProvider } from 'material-ui/styles'
+import { getMuiTheme } from './core/mui-theme'
+import { MuiThemeProvider } from 'material-ui/styles'
 
 import { fetchStoredSkipasses } from './core/actions/stored-skipasses.actions'
 
@@ -27,16 +28,7 @@ class App extends Component {
 
   render () {
     const { userAgent } = this.props
-
-    const muiTheme = getMuiTheme({
-      userAgent: userAgent,
-      textField: {
-        hintColor: '#565656'
-      },
-      svgIcon: {
-        color: fullWhite
-      }
-    })
+    const muiTheme = getMuiTheme(userAgent)
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
@@ -46,6 +38,7 @@ class App extends Component {
             <Match exactly pattern='/' component={Search} />
             <Match exactly pattern='/skipasses' component={SkipassGridList} />
             <Match exactly pattern='/skipasses/:id' component={Skipass} />
+            <Match exactly pattern='/about' component={About} />
           </main>
           <Footer />
         </div>
