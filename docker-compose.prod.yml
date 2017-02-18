@@ -10,7 +10,7 @@ services:
       - 3000
 
   proxy:
-    image: blobor/skipass-nginx-proxy:0.40.0
+    image: blobor/skipass-nginx-proxy:0.40.1
     ports:
       - 80:80
       - 443:443
