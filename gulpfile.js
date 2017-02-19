@@ -5,7 +5,8 @@ const babel = require('gulp-babel')
 const htmlmin = require('gulp-htmlmin')
 const buffer = require('vinyl-buffer')
 const source = require('vinyl-source-stream')
-const webpack = require('webpack-stream')
+const webpack = require('webpack')
+const webpackStream = require('webpack-stream')
 const rollup = require('rollup-stream')
 const babelRollup = require('rollup-plugin-babel')
 const json = require('rollup-plugin-json')
@@ -34,7 +35,7 @@ const buildClient = () => {
   })
 
   return gulp.src(webpackConfig.entry.app)
-    .pipe(webpack(webpackConfig))
+    .pipe(webpackStream(webpackConfig, webpack))
     .pipe(gulp.dest('public'))
 }
 
@@ -76,13 +77,12 @@ gulp.task('build:server', buildServer)
 
 gulp.task('start:watch', gulp.series(clean, buildServer, () => {
   const webpackConfig = Object.assign(require('./config/webpack.config.dev'), {
-    watch: true,
-    progress: true
+    watch: true
   })
 
   gulp.watch(config.index, buildHtml)
   gulp.watch('src/**/*.js', compileServerJS)
   return gulp.src(webpackConfig.entry.app)
-    .pipe(webpack(webpackConfig))
+    .pipe(webpackStream(webpackConfig, webpack))
     .pipe(gulp.dest('public'))
 }))

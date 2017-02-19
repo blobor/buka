@@ -14,7 +14,8 @@
     "lint": "standard --verbose | snazzy",
     "test": "jest",
     "test:ci": "npm run lint && npm run test:coverage",
-    "test:coverage": "npm run test -- --coverage"
+    "test:coverage": "npm run test -- --coverage",
+    "webpack": "webpack --config config/webpack.config.dev.js --color --watch"
   },
   "dependencies": {
     "app-root-path": "2.0.1",
@@ -35,7 +36,7 @@
     "del": "2.2.2",
     "express": "4.14.1",
     "express-handlebars": "3.0.0",
-    "extract-text-webpack-plugin": "1.0.1",
+    "extract-text-webpack-plugin": "beta",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-babel": "6.1.2",
     "gulp-htmlmin": "3.0.0",
@@ -43,7 +44,6 @@
     "immutable": "3.8.1",
     "inputmask-core": "2.2.0",
     "isomorphic-fetch": "2.2.1",
-    "json-loader": "0.5.4",
     "lodash.flow": "3.5.0",
     "lodash.get": "4.4.2",
     "lodash.has": "4.5.2",
@@ -83,7 +83,7 @@
     "style-loader": "0.13.1",
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "1.1.0",
-    "webpack": "1.14.0",
+    "webpack": "2.2.1",
     "webpack-stream": "3.2.0"
   },
   "devDependencies": {

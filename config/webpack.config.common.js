@@ -1,14 +1,7 @@
 'use strict'
 
-const autoprefixer = require('autoprefixer')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const { browsers } = require('./app.config')
-
-const sassLoaders = [
-  'css',
-  'postcss',
-  'sass'
-]
 
 module.exports = {
   entry: {
@@ -47,11 +40,11 @@ module.exports = {
     ]
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel',
+        loader: 'babel-loader',
         query: {
           babelrc: false,
           presets: [
@@ -60,6 +53,7 @@ module.exports = {
               targets: {
                 browsers: browsers
               },
+              modules: false,
               useBuiltIns: true
             }]
           ],
@@ -74,27 +68,29 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', sassLoaders)
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            'css-loader',
+            'postcss-loader',
+            'sass-loader'
+          ]
+        })
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css!postcss')
-      },
-      {
-        test: /\.json?$/,
-        loader: 'json'
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            'css-loader',
+            'postcss-loader'
+          ]
+        })
       }
     ]
   },
   stats: {
     colors: true,
     timings: true
-  },
-  postcss: function () {
-    return [
-      autoprefixer({
-        browsers
-      })
-    ]
   }
 }
