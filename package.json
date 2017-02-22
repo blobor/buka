@@ -15,7 +15,7 @@
     "test": "jest",
     "test:ci": "npm run lint && npm run test:coverage",
     "test:coverage": "npm run test -- --coverage",
-    "webpack": "webpack --config config/webpack.config.dev.js --color --watch"
+    "build:client:watch": "webpack --config config/webpack.config.dev.js --color --watch --progress"
   },
   "dependencies": {
     "app-root-path": "2.0.1",
@@ -94,6 +94,20 @@
     "sinon": "1.17.7",
     "snazzy": "6.0.0",
     "standard": "8.6.0"
+  },
+  "browserslist": {
+    "production": [
+      "> 1%",
+      "last 2 versions",
+      "Firefox ESR",
+      "not ie 10",
+      "not ie_mob 10"
+    ],
+    "development": [
+      "last 1 version",
+      "not ie > 0",
+      "not ie_mob > 0"
+    ]
   },
   "jest": {
     "bail": true,

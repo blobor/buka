@@ -1,6 +1,7 @@
 'use strict'
 
 const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const commonConfig = require('./webpack.config.common')
@@ -41,6 +42,14 @@ let config = {
     }),
     new ExtractTextPlugin({
       filename: 'bundle.css'
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: () => ([
+            autoprefixer()
+          ]
+        )
+      }
     })
   ]
 }

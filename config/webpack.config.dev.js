@@ -1,15 +1,20 @@
 'use strict'
 
+const { resolve, join } = require('path')
 const webpack = require('webpack')
 const autoprefixer = require('autoprefixer')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const commonConfig = require('./webpack.config.common')
-const { browsers } = require('./app.config')
+
+const root = resolve(__dirname, '..');
+const buildDir = join(root, 'public');
 
 let config = {
+  context: root,
   output: {
     publicPath: '/',
+    path: buildDir,
     filename: '[name].js'
   },
   devtool: '#source-map',
@@ -36,13 +41,10 @@ let config = {
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: () => {
-          return [
-            autoprefixer({
-              browsers
-            })
+        postcss: () => ([
+            autoprefixer()
           ]
-        }
+        )
       }
     })
   ]
