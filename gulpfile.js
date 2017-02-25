@@ -30,9 +30,7 @@ const buildHtml = () => {
 
 const buildClient = () => {
   const webpackConfigPath = isDevelopment ? './config/webpack.config.dev' : './config/webpack.config.prod'
-  const webpackConfig = Object.assign(require(webpackConfigPath), {
-    progress: true
-  })
+  const webpackConfig = require(webpackConfigPath)
 
   return gulp.src(webpackConfig.entry.app)
     .pipe(webpackStream(webpackConfig, webpack))

@@ -1,9 +1,19 @@
 'use strict'
 
+const { resolve, join } = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const { browsers } = require('./app.config')
 
+const root = resolve(__dirname, '..')
+const buildDir = join(root, 'public')
+
 module.exports = {
+  context: root,
+  output: {
+    publicPath: '/',
+    path: buildDir,
+    filename: '[name].js'
+  },
   entry: {
     app: './src/client.js',
     vendor: [
@@ -69,7 +79,7 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
+          fallback: 'style-loader',
           use: [
             'css-loader',
             'postcss-loader',
@@ -80,7 +90,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
+          fallback: 'style-loader',
           use: [
             'css-loader',
             'postcss-loader'
@@ -88,9 +98,5 @@ module.exports = {
         })
       }
     ]
-  },
-  stats: {
-    colors: true,
-    timings: true
   }
 }

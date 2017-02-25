@@ -7,10 +7,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const commonConfig = require('./webpack.config.common')
 
 let config = {
-  output: {
-    publicPath: '/',
-    filename: '[name].js'
-  },
   plugins: [
     new CopyWebpackPlugin([
       {
@@ -33,7 +29,7 @@ let config = {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       'screw-ie8': true,
       'compress': {
@@ -45,10 +41,7 @@ let config = {
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: () => ([
-            autoprefixer()
-          ]
-        )
+        postcss: () => [autoprefixer()]
       }
     })
   ]
