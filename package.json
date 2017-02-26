@@ -18,7 +18,6 @@
     "build:client:watch": "webpack --config config/webpack.config.dev.js --color --watch --progress"
   },
   "dependencies": {
-    "app-root-path": "2.0.1",
     "autoprefixer": "6.7.3",
     "babel-core": "6.23.1",
     "babel-loader": "6.3.2",
@@ -38,6 +37,7 @@
     "express": "4.14.1",
     "express-handlebars": "3.0.0",
     "extract-text-webpack-plugin": "2.0.0",
+    "file-loader": "0.10.1",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-babel": "6.1.2",
     "gulp-htmlmin": "3.0.0",
