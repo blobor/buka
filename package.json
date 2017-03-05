@@ -7,15 +7,16 @@
   "main": "src/server.js",
   "scripts": {
     "prebuild": "rm -rf public && rm -rf dist-server && mkdir public && mkdir dist-server",
-    "build": "concurrently --raw \"npm run build:server\" \"npm run build:client\"",
-    "build:server": "gulp build:server",
+    "build": "concurrently --raw \"yarn build:server\" \"yarn build:client\"",
+    "build:server": "webpack --config config/webpack.config.server.js --color --progress",
     "build:client": "webpack --config config/webpack.config.client.js --color --progress",
-    "start:watch": "gulp start:watch",
+    "start:watch": "concurrently --raw \"yarn build:server:watch\" \"yarn build:client:watch\"",
     "lint": "standard --verbose | snazzy",
     "test": "jest",
     "test:ci": "npm run lint && npm run test:coverage",
     "test:coverage": "npm run test -- --coverage",
-    "build:client:watch": "webpack --config config/webpack.config.dev.js --color --watch --progress"
+    "build:client:watch": "webpack --config config/webpack.config.dev.js --color --watch --progress",
+    "build:server:watch": "webpack --config config/webpack.config.server.js --color --watch --progress"
   },
   "dependencies": {
     "autoprefixer": "6.7.3",
