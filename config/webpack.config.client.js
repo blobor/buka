@@ -96,6 +96,8 @@ module.exports = (env = (process.env.NODE_ENV || 'development')) => {
       }),
       ifProduction(new BabiliPlugin()),
       new webpack.LoaderOptionsPlugin({
+        minimize: ifProduction(),
+        debug: ifDevelopment(),
         options: { postcss: () => [autoprefixer()] }
       })
     ])
