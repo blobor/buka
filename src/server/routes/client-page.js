@@ -5,6 +5,8 @@ import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
 import { ServerRouter, createServerRenderContext } from 'react-router'
 
+import indexView from '../../index.hbs'
+
 import App from '../../app/App'
 import configureStore from '../../app/core/store/configureStore'
 import { version, analytics } from '../../config'
@@ -38,7 +40,7 @@ router.get('*', wrapAsync(async (req, res) => {
     html = renderToString(renderAppComponent(req, store, context))
   }
 
-  res.status(httpStatus).render('index', {
+  res.status(httpStatus).render(indexView, {
     content: html,
     version: version,
     analytics: analytics,

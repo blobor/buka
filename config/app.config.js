@@ -8,5 +8,14 @@ module.exports = {
     'Firefox ESR',
     'not ie 10',
     'not ie_mob 10'
-  ]
+  ],
+  index: './src/index.hbs',
+  htmlMinOptions: {
+    removeComments: true,
+    collapseWhitespace: true,
+    collapseBooleanAttributes: true,
+    removeAttributeQuotes: true,
+    removeEmptyAttributes: true,
+    minifyJS: true
+  }
 }

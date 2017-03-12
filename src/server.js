@@ -3,13 +3,11 @@ import express from 'express'
 
 import * as config from './config.js'
 import middlewareManager from './server/infrastructure/middleware-manager.js'
-import assetsManager from './server/infrastructure/assets-manager.js'
 import routeManager from './server/infrastructure/route-manager.js'
 
 const app = express()
 
 middlewareManager.handle(app)
-assetsManager.handle(app)
 routeManager.handle(app)
 
 app.listen(config.port, () => {
