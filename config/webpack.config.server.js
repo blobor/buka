@@ -3,7 +3,7 @@
 const { resolve, join } = require('path')
 const { getIfUtils, removeEmpty } = require('webpack-config-utils')
 const webpack = require('webpack')
-const BabiliPlugin = require("babili-webpack-plugin");
+const BabiliPlugin = require('babili-webpack-plugin')
 
 const root = resolve(__dirname, '..')
 const distDir = 'dist-server'
