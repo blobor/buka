@@ -9,13 +9,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const BabiliPlugin = require('babili-webpack-plugin')
 
 const { browserslist } = require('../package.json')
-const { vendor, browsers } = require('./app.config')
+const { vendor } = require('./app.config')
 
 const root = resolve(__dirname, '..')
 const buildDir = join(root, 'public')
 
 module.exports = (env = (process.env.NODE_ENV || 'development')) => {
-  const { ifProduction,  ifDevelopment} = getIfUtils(env)
+  const { ifProduction, ifDevelopment } = getIfUtils(env)
   const browsers = ifProduction(browserslist.production, browserslist.development)
 
   return {
@@ -29,7 +29,7 @@ module.exports = (env = (process.env.NODE_ENV || 'development')) => {
     },
     entry: {
       app: './src/client.js',
-      vendor: vendor 
+      vendor: vendor
     },
     module: {
       rules: [
