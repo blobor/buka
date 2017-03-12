@@ -28,6 +28,7 @@
     "babel-preset-es2017": "6.22.0",
     "babel-preset-react": "6.23.0",
     "babel-preset-react-optimize": "1.0.1",
+    "babili-webpack-plugin": "0.0.11",
     "cache-manager": "2.4.0",
     "cheerio": "0.22.0",
     "classnames": "2.2.5",
@@ -86,6 +87,7 @@
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "1.1.0",
     "webpack": "2.2.1",
+    "webpack-config-utils": "2.3.0",
     "webpack-stream": "3.2.0"
   },
   "devDependencies": {
