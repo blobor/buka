@@ -1,3 +1,4 @@
+import { resolve as resolvePath } from 'path'
 import morgan from 'morgan'
 import handlebars from 'express-handlebars'
 
@@ -12,6 +13,7 @@ class MiddlewareManager extends Manager {
     app.engine(handlebarsFileExtension, handlebars({
       extname: handlebarsFileExtension
     }))
+    app.set('views', resolvePath('./'))
     app.set('view engine', handlebarsFileExtension)
   }
 

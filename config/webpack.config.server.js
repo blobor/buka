@@ -4,7 +4,8 @@ const { resolve, join } = require('path')
 const webpack = require('webpack')
 
 const root = resolve(__dirname, '..')
-const buildDir = join(root, 'dist-server')
+const distDir = 'dist-server'
+const buildDirPath = join(root, distDir)
 
 module.exports = {
   context: root,
@@ -12,13 +13,12 @@ module.exports = {
     server: './src/server.js'
   },
   output: {
-    publicPath: '/',
-    path: buildDir,
+    publicPath: `${distDir}/`,
+    path: buildDirPath,
     libraryTarget: 'commonjs2',
     filename: '[name].js'
   },
   target: 'node',
-  // ToDo: node option
   module: {
     rules: [
       {
