@@ -5,7 +5,6 @@ import CardNumberInput from '../containers/CardNumberInput'
 import { CARD_NUMBER_PATTERN } from '../helpers/cardNumberValidator'
 
 export default class CardNumberForm extends Component {
-
   constructor () {
     super()
 

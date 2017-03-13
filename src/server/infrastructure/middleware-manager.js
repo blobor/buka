@@ -5,7 +5,6 @@ import handlebars from 'express-handlebars'
 import Manager from './Manager.js'
 
 class MiddlewareManager extends Manager {
-
   configureCommon (app) {
     const handlebarsFileExtension = 'hbs'
 
@@ -20,7 +19,6 @@ class MiddlewareManager extends Manager {
   configureDevelopmentEnv (app) {
     app.use(morgan('dev'))
   }
-
 }
 
 export default new MiddlewareManager()
