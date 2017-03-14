@@ -6,7 +6,7 @@ const DEFAULT_ROUTE = 'balance/balance/getBalance'
 
 const parseResponse = response => {
   if (!response.ok) {
-    return Promise.reject('Response is not ok')
+    return Promise.reject(new Error('Response is not ok'))
   }
 
   return response.json()

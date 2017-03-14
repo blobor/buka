@@ -46,7 +46,7 @@ const bukovelTicketMapping = {
 
 const parseCardNumber = html => {
   if (isNil(html)) {
-    return Promise.reject('Valid HTML string is expected')
+    return Promise.reject(new Error('Valid HTML string is expected'))
   }
 
   const $ = cheerio.load(html)
@@ -54,7 +54,7 @@ const parseCardNumber = html => {
     .find('tr:first-child strong').text()
 
   if (isEmpty(ticketNumberText)) {
-    return Promise.reject('Unable to find ticket number')
+    return Promise.reject(new Error('Unable to find ticket number'))
   }
 
   // ticket number format
@@ -70,7 +70,7 @@ const parseCardNumber = html => {
 
 const parseSkipass = html => {
   if (isNil(html)) {
-    return Promise.reject('Valid HTML string is expected')
+    return Promise.reject(new Error('Valid HTML string is expected'))
   }
 
   const $ = cheerio.load(html)
@@ -90,7 +90,7 @@ const parseSkipass = html => {
 
 const parseSkipassLifts = html => {
   if (isNil(html)) {
-    return Promise.reject('Valid HTML string is expected')
+    return Promise.reject(new Error('Valid HTML string is expected'))
   }
 
   const $ = cheerio.load(html)

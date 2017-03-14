@@ -18,7 +18,8 @@ const cardNumberMemoryCache = caching({
 const BUKOVEL_TICKETS_URL = 'http://tickets.bukovel.com/'
 const getResponseText = response => {
   if (!response.ok) {
-    return Promise.reject(`got not OK (${response.status}) response from ${response.url}`)
+    const message = `got not OK (${response.status}) response from ${response.url}`
+    return Promise.reject(new Error(message))
   }
 
   return response.text()
@@ -26,7 +27,7 @@ const getResponseText = response => {
 
 const getSkipassCardNumber = id => {
   if (isNil(id)) {
-    return Promise.reject('id is required')
+    return Promise.reject(new Error('id is required'))
   }
 
   const params = {
