@@ -15,8 +15,8 @@ const fetchSkipassData = value => {
     try {
       skipass = await getSkipass(value)
       dispatch(fetchSkipassSuccess(skipass))
-    } catch (e) {
-      dispatch(fetchSkipassFailure(e))
+    } catch (error) {
+      dispatch(fetchSkipassFailure(error.message))
     }
 
     if (!isNil(skipass)) {

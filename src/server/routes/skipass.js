@@ -10,9 +10,9 @@ router
     try {
       const skipass = await getSkipass(req.params.skipassID)
       res.json(skipass)
-    } catch (error) {
+    } catch ({ message }) {
       res.json({
-        errors: Array.of(error)
+        errors: Array.of(message)
       })
     }
   }))
@@ -20,9 +20,9 @@ router
     try {
       const lifts = await getSkipassLifts(req.params.skipassID)
       res.json(lifts)
-    } catch (error) {
+    } catch ({ message }) {
       res.json({
-        errors: Array.of(error)
+        errors: Array.of(message)
       })
     }
   }))
