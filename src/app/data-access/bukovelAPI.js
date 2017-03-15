@@ -7,13 +7,13 @@ const url = '/api'
 
 const getSkipass = id => {
   if (isNil(id)) {
-    return Promise.reject('Card Number is nill')
+    return Promise.reject(new Error('Card Number is nill'))
   }
   return fetch(`${url}/skipass/${id}`)
     .then(response => {
       if (!response.ok) {
         return response.text()
-          .then(text => Promise.reject(text))
+          .then(text => Promise.reject(new Error(text)))
       }
 
       return response.json()
@@ -21,7 +21,7 @@ const getSkipass = id => {
     .then(skipass => {
       if (has(skipass, 'errors')) {
         const reason = skipass.errors.join(', ')
-        return Promise.reject(reason)
+        return Promise.reject(new Error(reason))
       }
 
       return Object.assign(skipass, {

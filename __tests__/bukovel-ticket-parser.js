@@ -19,16 +19,17 @@ it('should parse card number from response', () => {
     })
 })
 
-// ToDo: check https://github.com/facebook/jest/issues/1377
-it.skip('should reject in case not valid data passed', () => {
-  // Arrange
+it('should reject in case not valid data passed', async () => {
   const invalidData = [ '--', 321, {}, null, undefined, '<html>' ]
+  expect.assertions(invalidData.length)
 
-  // Act
-  invalidData.forEach(data => {
-    // Assert
-    expect(parseCardNumber(data)).toThrow()
-  })
+  for (const data of invalidData) {
+    try {
+      await parseCardNumber(data)
+    } catch (e) {
+      expect(e).toBeInstanceOf(Error)
+    }
+  }
 })
 
 it('should parse skipass from response', () => {
