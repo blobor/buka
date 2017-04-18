@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/blobor/buka.png?label=ready&title=Ready)](https://waffle.io/blobor/buka)
 # buka
 
 [![Build Status][build-badge]][build]
